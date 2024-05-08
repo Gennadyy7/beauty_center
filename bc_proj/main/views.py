@@ -14,5 +14,5 @@ def news(request):
     return render(request, 'main/news.html', {'articles': articles})
 
 def faq(request):
-    faq_items = FAQ.objects.order_by('date_added')
+    faq_items = FAQ.objects.order_by('-date_added')
     return render(request, 'main/faq.html', {'faq_items': faq_items})
