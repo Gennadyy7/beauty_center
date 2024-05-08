@@ -3,10 +3,10 @@
 {% block title %}Главная{% endblock %}
 
 {% block content %}
-<article>
-    <h5>Актуальная статья</h5>
-    <h2>{{ latest_article.title }}</h2>
-    <p>{{ latest_article.summary }}</p>
-    <img src="{{ latest_article.image }}" alt="{{ latest_article.title }}">
-</article>
+    <article>
+        <h5>Актуальная статья</h5>
+        <h2>{{ latest_article.title }}</h2>
+        <p>{{ latest_article.summary }}</p>
+        <img src="{{ latest_article.image.url }}" alt="{{ latest_article.title }}">
+    </article>
 {% endblock %}
