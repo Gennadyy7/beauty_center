@@ -1,0 +1,18 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}FAQ - Галатея{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>Часто задаваемые вопросы</h1>
+        <ul>
+            {% for faq_item in faq_items %}
+            <li>
+                <h3>{{ faq_item.question }}</h3>
+                <p>{{ faq_item.answer }}</p>
+                <p>Дата добавления: {{ faq_item.date_added }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
