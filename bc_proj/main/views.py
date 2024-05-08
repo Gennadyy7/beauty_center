@@ -1,3 +1,13 @@
 from django.shortcuts import render
 
-# Create your views here.
+def index(request):
+    pass
+
+def about(request):
+    pass
+
+def news(request):
+    pass
+
+def faq(request):
+    pass
