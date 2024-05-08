@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Articles, CompanyInfo, FAQ
 
-# Register your models here.
+admin.site.register(Articles)
+admin.site.register(CompanyInfo)
+admin.site.register(FAQ)

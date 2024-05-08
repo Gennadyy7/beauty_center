@@ -1,13 +1,12 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Главная страница</title>
-</head>
-<body>
-    <h1>Главная страница</h1>
-</body>
-</html>
+{% extends 'main/layout.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<article>
+    <h5>Актуальная статья</h5>
+    <h2>{{ latest_article.title }}</h2>
+    <p>{{ latest_article.summary }}</p>
+    <img src="{{ latest_article.image }}" alt="{{ latest_article.title }}">
+</article>
+{% endblock %}

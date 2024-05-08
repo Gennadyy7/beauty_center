@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <aside>
+        <ul>
+            <!-- First Block: Public Pages -->
+            <a href="{% url 'home' %}"><li>Главная</li></a>
+            <a href="{% url 'news' %}"><li>Новости</li></a>
+            <a href="{% url 'faq' %}"><li>FAQ</li></a>
+            <a href="{% url 'about' %}"><li>О нас</li></a>
+        </ul>
+        <ul>
+            <!-- Second Block: Public Pages with User Data -->
+            <a href="{% url 'home' %}"><li>Главная</li></a>
+            <a href="{% url 'news' %}"><li>Новости</li></a>
+            <a href="{% url 'faq' %}"><li>FAQ</li></a>
+            <a href="{% url 'about' %}"><li>О нас</li></a>
+        </ul>
+        <ul>
+            <!-- Third Block: Dynamic User-specific Pages -->
+            <!-- Jinja template logic to be added here -->
+        </ul>
+    </aside>
+    <main>
+        <!-- Main content of the page goes here -->
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
