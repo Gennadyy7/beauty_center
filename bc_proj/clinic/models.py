@@ -1,8 +1,13 @@
+import datetime
+
 from django.core.exceptions import ValidationError
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator, RegexValidator
 from django.db import models
 from django.contrib.auth.models import User
 from decimal import Decimal
+
+from django.utils import timezone
+
 
 class ServiceCategories(models.Model):
     name = models.CharField('Категория', max_length=50)
@@ -59,14 +64,21 @@ class Services(models.Model):
         verbose_name_plural = 'Услуги'
 
 
+def validate_age(value):
+    if (timezone.now().date() - value) < datetime.timedelta(days=18*365):
+        raise ValidationError("Клиент должен быть совершеннолетним.")
+
 class Clients(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     surname = models.CharField('Фамилия', max_length=50)
     name = models.CharField('Имя', max_length=50)
     patronymic = models.CharField('Отчество', max_length=50)
-    birth_date = models.DateField('Дата рождения')
+    birth_date = models.DateField('Дата рождения', validators=[validate_age])
     address = models.CharField('Адрес', max_length=250)
-    phone = models.CharField('Телефон', max_length=20)
+    phone = models.CharField('Телефон', validators=[RegexValidator(
+        regex=r'^\+375 \(\d{2}\) \d{3}-\d{2}-\d{2}$',
+        message="Телефонный номер должен быть в формате: '+375 (XX) XXX-XX-XX'"
+    )] ,max_length=20)
 
     def save(self, *args, **kwargs):
         if Doctors.objects.filter(user=self.user).exists():
@@ -86,7 +98,10 @@ class Doctors(models.Model):
     surname = models.CharField('Фамилия', max_length=50)
     name = models.CharField('Имя', max_length=50)
     patronymic = models.CharField('Отчество', max_length=50)
-    phone = models.CharField('Телефон', max_length=20)
+    phone = models.CharField('Телефон', validators=[RegexValidator(
+        regex=r'^\+375 \(\d{2}\) \d{3}-\d{2}-\d{2}$',
+        message="Телефонный номер должен быть в формате: '+375 (XX) XXX-XX-XX'"
+    )], max_length=20)
     email = models.EmailField('Электронная почта')
     service_specialization = models.ForeignKey(ServiceSpecializations, on_delete=models.CASCADE, related_name='doctors',
                                                verbose_name='Специализация врача')

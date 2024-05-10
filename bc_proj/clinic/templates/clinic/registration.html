@@ -1,0 +1,20 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+    <h1>Регистрация</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.username }}
+        {{ form.password1 }}
+        {{ form.password2 }}
+        {{ form.surname }}
+        {{ form.name }}
+        {{ form.patronymic }}
+        {{ form.birth_date }}
+        {{ form.phone }}
+        <button type="submit">Зарегистрироваться</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}

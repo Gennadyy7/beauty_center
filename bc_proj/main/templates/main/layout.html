@@ -33,8 +33,8 @@
                     <a href="{% url 'logout' %}?next={% url 'home' %}"><li>Выйти</li></a>
                 {% endif %}
             {% else %}
-                <a href="{% url 'login_view' %}"><li>Войти</li></a>
-                <a href="{% url 'about' %}"><li>Зарегистрироваться</li></a>
+                <a href="{% url 'login' %}"><li>Войти</li></a>
+                <a href="{% url 'registration' %}"><li>Зарегистрироваться</li></a>
             {% endif %}
         </ul>
     </aside>

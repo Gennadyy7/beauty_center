@@ -1,6 +1,7 @@
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
-from .forms import UserLoginForm
+from .forms import UserLoginForm, UserRegistrationForm
+
 
 def login_view(request):
     error = ''
@@ -21,3 +22,11 @@ def login_view(request):
     }
 
     return render(request, 'clinic/login.html', data)
+
+def registration_view(request):
+    form = UserRegistrationForm()
+
+    data = {
+        'form': form
+    }
+    return render(request, 'clinic/registration.html')
