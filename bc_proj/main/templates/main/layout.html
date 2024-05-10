@@ -24,8 +24,18 @@
             <a href="{% url 'about' %}"><li>О нас</li></a>
         </ul>
         <ul>
-            <!-- Third Block: Dynamic User-specific Pages -->
-            <!-- Jinja template logic to be added here -->
+            {% if user.is_authenticated %}
+                {% if user.is_superuser %}
+                    <li>Привет, админ</li>
+                {% elif user.doctors.exists %}
+                    <a href="{% url 'logout' %}?next={% url 'home' %}"><li>Выйти</li></a>
+                {% elif user.clients.exists %}
+                    <a href="{% url 'logout' %}?next={% url 'home' %}"><li>Выйти</li></a>
+                {% endif %}
+            {% else %}
+                <a href="{% url 'login_view' %}"><li>Войти</li></a>
+                <a href="{% url 'about' %}"><li>Зарегистрироваться</li></a>
+            {% endif %}
         </ul>
     </aside>
     <main>

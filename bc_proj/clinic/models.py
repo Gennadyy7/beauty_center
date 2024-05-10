@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.contrib.auth.models import User
@@ -67,6 +68,11 @@ class Clients(models.Model):
     address = models.CharField('Адрес', max_length=250)
     phone = models.CharField('Телефон', max_length=20)
 
+    def save(self, *args, **kwargs):
+        if Doctors.objects.filter(user=self.user).exists():
+            raise ValidationError("Пользователь уже является врачом.")
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.surname
 
@@ -84,6 +90,11 @@ class Doctors(models.Model):
     email = models.EmailField('Электронная почта')
     service_specialization = models.ForeignKey(ServiceSpecializations, on_delete=models.CASCADE, related_name='doctors',
                                                verbose_name='Специализация врача')
+
+    def save(self, *args, **kwargs):
+        if Clients.objects.filter(user=self.user).exists():
+            raise ValidationError("Пользователь уже является клиентом.")
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.surname
