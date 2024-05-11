@@ -1,9 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.models import User
+from django.db.models import Avg
 from django.shortcuts import render, redirect
-from .forms import UserLoginForm, ClientRegistrationForm
-from .models import Clients, ServiceSpecializations, Vacancies
+from .forms import UserLoginForm, ClientRegistrationForm, ReviewForm
+from .models import Clients, ServiceSpecializations, Vacancies, Reviews
 
 
 def login_view(request):
@@ -66,3 +67,33 @@ def contacts_view(request):
 def vacancies_view(request):
     vacancies = Vacancies.objects.all()
     return render(request, 'clinic/vacancies.html', {'vacancies': vacancies})
+
+def reviews_view(request):
+    reviews = Reviews.objects.order_by('-id')
+    average_rating = reviews.aggregate(Avg('rating'))['rating__avg']
+    if average_rating is not None:
+        average_rating = round(average_rating, 1)
+    else:
+        average_rating = '-'
+    return render(request, 'clinic/reviews.html', {'reviews': reviews, 'average_rating': average_rating})
+
+def add_review_view(request):
+    error = ''
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review.save()
+            return redirect('reviews')
+        else:
+            error = 'Форма была неверной'
+
+    form = ReviewForm()
+
+    data = {
+        'form': form,
+        'error': error
+    }
+
+    return render(request, 'clinic/add_review.html', data)

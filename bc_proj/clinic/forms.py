@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
-from .models import Clients
-from django.forms import ModelForm, TextInput, DateInput
+from .models import Clients, Reviews
+from django.forms import ModelForm, Select, Textarea
 
 
 class UserLoginForm(AuthenticationForm):
@@ -22,3 +22,13 @@ class ClientRegistrationForm(ModelForm):
         model = Clients
         fields = ['surname', 'name', 'patronymic', 'birth_date', 'address',
                   'phone']
+
+class ReviewForm(ModelForm):
+    class Meta:
+        model = Reviews
+        fields = ['rating', 'text']
+
+        widgets = {
+            "rating": Select(choices=[(i, i) for i in range(1, 6)], attrs={'placeholder': 'Выберите оценку от 1 до 5', 'title': 'Выберите оценку от 1 до 5'}),
+            "text": Textarea(attrs={'placeholder': 'Напишите здесь свой отзыв'})
+        }

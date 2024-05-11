@@ -1,0 +1,29 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Отзывы о клинике{% endblock %}
+
+{% block content %}
+    <h1>Отзывы о клинике</h1>
+    {% if user.is_authenticated %}
+        {% if user.client %}
+            <form action="{% url 'add_review' %}" method="get">
+                <button type="submit">Оставить отзыв</button>
+            </form>
+        {% else %}
+            <p>Отзывы могут оставлять только клиенты косметологического центра.</p>
+        {% endif %}
+    {% else %}
+        <p><a href="{% url 'to_login' %}">Авторизуйтесь</a>, чтобы оставить отзыв.</p>
+    {% endif %}
+
+    <h2>Средняя оценка клиники: {{ average_rating }} из 5</h2>
+
+    {% for review in reviews %}
+        <div class="review">
+            <h3>{{ review.user.username }}</h3>
+            <p>{{ review.text }}</p>
+            <p>Оценка: {{ review.rating }} из 5</p>
+            <p>Оставлен: {{ review.created_at }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
