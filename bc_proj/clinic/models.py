@@ -69,7 +69,7 @@ def validate_age(value):
         raise ValidationError("Клиент должен быть совершеннолетним.")
 
 class Clients(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='client')
     surname = models.CharField('Фамилия', max_length=50)
     name = models.CharField('Имя', max_length=50)
     patronymic = models.CharField('Отчество', max_length=50)
@@ -94,7 +94,7 @@ class Clients(models.Model):
 
 
 class Doctors(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='doctor')
     surname = models.CharField('Фамилия', max_length=50)
     name = models.CharField('Имя', max_length=50)
     patronymic = models.CharField('Отчество', max_length=50)

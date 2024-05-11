@@ -26,15 +26,28 @@
         <ul>
             {% if user.is_authenticated %}
                 {% if user.is_superuser %}
-                    <li>Привет, админ</li>
-                {% elif user.doctors.exists %}
-                    <a href="{% url 'logout' %}?next={% url 'home' %}"><li>Выйти</li></a>
-                {% elif user.clients.exists %}
-                    <a href="{% url 'logout' %}?next={% url 'home' %}"><li>Выйти</li></a>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit"><li>Выйти админу</li></button>
+                    </form>
+                {% elif user.doctor %}
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit"><li>Выйти врачу</li></button>
+                    </form>
+                {% elif user.client %}
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit"><li>Выйти клиенту</li></button>
+                    </form>
                 {% endif %}
             {% else %}
-                <a href="{% url 'login' %}"><li>Войти</li></a>
-                <a href="{% url 'registration' %}"><li>Зарегистрироваться</li></a>
+                <form action="{% url 'to_login' %}" method="get">
+                    <button type="submit"><li>Войти</li></button>
+                </form>
+                <form action="{% url 'registration' %}" method="get">
+                    <button type="submit"><li>Зарегистрироваться</li></button>
+                </form>
             {% endif %}
         </ul>
     </aside>
