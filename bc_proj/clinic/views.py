@@ -3,7 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from .forms import UserLoginForm, ClientRegistrationForm
-from .models import Clients
+from .models import Clients, ServiceSpecializations
 
 
 def login_view(request):
@@ -58,3 +58,7 @@ def registration_view(request):
         'error': error
     }
     return render(request, 'clinic/registration.html', data)
+
+def contacts_view(request):
+    service_specializations = ServiceSpecializations.objects.all()
+    return render(request, 'clinic/contacts.html', {'service_specializations': service_specializations})

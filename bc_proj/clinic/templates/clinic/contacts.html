@@ -1,0 +1,21 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Контакты врачей{% endblock %}
+
+{% block content %}
+    <h1>Контакты</h1>
+    {% for service in service_specializations %}
+        <div class="specialization">
+            <h2>{{ service.doctor_specialization.name }}</h2>
+            <ul>
+                {% for doctor in service.doctors.all %}
+                    <li>
+                        <h3>{{ doctor.surname }} {{ doctor.name }} {{ doctor.patronymic }}</h3>
+                        <p>Телефон: {{ doctor.phone }}</p>
+                        <p>Email: {{ doctor.email }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+{% endblock %}
