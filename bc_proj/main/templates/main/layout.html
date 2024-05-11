@@ -30,6 +30,12 @@
                         {% csrf_token %}
                         <button type="submit"><li>Выйти админу</li></button>
                     </form>
+                    <form action="{% url 'add_random_client' %}" method="get">
+                        <button type="submit"><li>Создать нового клиента (API)</li></button>
+                    </form>
+                    <form action="{% url 'add_cosmetology_news' %}" method="get">
+                        <button type="submit"><li>Добавить новость про косметику (API)</li></button>
+                    </form>
                 {% elif user.doctor %}
                     <form action="{% url 'logout' %}" method="post">
                         {% csrf_token %}

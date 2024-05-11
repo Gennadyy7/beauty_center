@@ -1,3 +1,7 @@
+import re
+from datetime import datetime
+import random
+
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.models import User
@@ -5,6 +9,7 @@ from django.db.models import Avg
 from django.shortcuts import render, redirect
 from .forms import UserLoginForm, ClientRegistrationForm, ReviewForm
 from .models import Clients, ServiceSpecializations, Vacancies, Reviews
+import requests
 
 
 def login_view(request):
@@ -97,3 +102,27 @@ def add_review_view(request):
     }
 
     return render(request, 'clinic/add_review.html', data)
+
+def add_random_client(request):
+    response = requests.get('https://randomuser.me/api/')
+    data = response.json()
+
+    user_data = data['results'][0]
+    username = user_data['login']['username']
+    password = 'nageraper7'
+    first_name = user_data['name']['first']
+    last_name = user_data['name']['last']
+    patronymic = 'Апишевич'
+    dob = datetime.strptime(user_data['dob']['date'], "%Y-%m-%dT%H:%M:%S.%fZ").date()
+    part1 = random.randint(10, 99)
+    part2 = random.randint(100, 999)
+    part3 = random.randint(10, 99)
+    part4 = random.randint(10, 99)
+    phone = f"+375 ({part1}) {part2}-{part3}-{part4}"
+    address = f"{user_data['location']['street']['name']} {user_data['location']['street']['number']}, {user_data['location']['city']}, {user_data['location']['state']}, {user_data['location']['country']}"
+
+    user = User.objects.create_user(username=username, password=password)
+
+    client = Clients(user=user, surname=last_name, name=first_name, patronymic=patronymic, birth_date=dob, address=address, phone=phone)
+    client.save()
+    return redirect('home')
