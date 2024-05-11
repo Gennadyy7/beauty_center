@@ -22,6 +22,7 @@ class ServiceCategories(models.Model):
 
 class Specializations(models.Model):
     name = models.CharField('Специализация', max_length=50)
+    description = models.TextField('Описание', max_length=500)
 
     def __str__(self):
         return self.name
@@ -171,3 +172,14 @@ class Orders(models.Model):
     class Meta:
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
+
+
+class Vacancies(models.Model):
+    service_specialization = models.ForeignKey(ServiceSpecializations, on_delete=models.CASCADE, related_name='vacancy',
+                                               verbose_name='Специализация вакансии')
+    def __str__(self):
+        return self.service_specialization.doctor_specialization.name
+
+    class Meta:
+        verbose_name = 'Вакансия'
+        verbose_name_plural = 'Вакансии'

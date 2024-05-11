@@ -33,3 +33,4 @@ class FAQ(models.Model):
     class Meta:
         verbose_name = 'Часто задаваемый вопрос'
         verbose_name_plural = 'Часто задаваемые вопросы'
+
