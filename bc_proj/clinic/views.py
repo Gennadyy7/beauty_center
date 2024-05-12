@@ -1,7 +1,7 @@
 import re
 from datetime import datetime
 import random
-
+from django.views.generic import UpdateView, DeleteView
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.models import User
@@ -10,7 +10,24 @@ from django.shortcuts import render, redirect
 from .forms import UserLoginForm, ClientRegistrationForm, ReviewForm
 from .models import Clients, ServiceSpecializations, Vacancies, Reviews
 import requests
+from django.contrib.auth.mixins import UserPassesTestMixin
 
+class AdminRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_superuser
+
+    def handle_no_permission(self):
+        return redirect('home')
+
+class reviewsUpdateView(AdminRequiredMixin, UpdateView):
+    model = Reviews
+    template_name = 'clinic/add_review.html'
+    form_class = ReviewForm
+
+class reviewsDeleteView(AdminRequiredMixin, DeleteView):
+    model = Reviews
+    success_url = '/clinic/reviews'
+    template_name = 'clinic/delete_review.html'
 
 def login_view(request):
     error = ''

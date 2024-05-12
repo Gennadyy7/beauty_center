@@ -24,6 +24,15 @@
             <p>{{ review.text }}</p>
             <p>Оценка: {{ review.rating }} из 5</p>
             <p>Оставлен: {{ review.created_at }}</p>
+            {% if user.is_authenticated and user.is_superuser %}
+            <form action="{% url 'update_review' review.id %}" method="get">
+                <button type="submit">Изменить отзыв</button>
+            </form>
+            <form action="{% url 'delete_review' review.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Удалить отзыв</button>
+            </form>
+            {% endif %}
         </div>
     {% endfor %}
 {% endblock %}

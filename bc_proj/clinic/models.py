@@ -128,6 +128,9 @@ class Reviews(models.Model):
     def __str__(self):
         return f'Отзыв от {self.user.username}'
 
+    def get_absolute_url(self):
+        return '/clinic/reviews'
+
     class Meta:
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
