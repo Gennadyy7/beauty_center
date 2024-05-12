@@ -1,0 +1,32 @@
+{% extends "main/layout.html" %}
+
+{% block title %}Оформление заказа{% endblock %}
+
+{% block content %}
+<h1>Оформление заказа</h1>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <h2>Выбранные услуги:</h2>
+        <ul>
+            {% for service in services %}
+                <li>{{ service.title }} - {{ service.price }} руб.</li>
+            {% endfor %}
+        </ul>
+        <p>Итоговая цена: {{ total_price }} руб.</p>
+    </div>
+    <div>
+        <label for="doctor">Выберите врача:</label>
+        <select name="doctor" id="doctor">
+            {% for doctor in doctors %}
+                <option value="{{ doctor.id }}">{{ doctor.surname }} {{ doctor.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="promo_code">Промокод:</label>
+        <input type="text" name="promo_code" id="promo_code">
+    </div>
+    <button type="submit">Готово</button>
+</form>
+{% endblock %}

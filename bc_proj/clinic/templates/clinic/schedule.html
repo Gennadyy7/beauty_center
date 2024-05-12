@@ -1,0 +1,39 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Ваш график{% endblock %}
+
+{% block content %}
+    <h1>График</h1>
+
+    {% if user.is_authenticated %}
+        <h2>Актуальные заказы</h2>
+        {% for order in current_orders %}
+            <div class="order">
+                <h3>Заказ №{{ order.id }}</h3>
+                <p>На: {{ order.user.client.surname }} {{ order.user.client.name }} {{ order.user.client.patronymic }}</p>
+                <p>Врач: {{ order.doctor.surname }} {{ order.doctor.name }} {{ order.doctor.patronymic }}</p>
+                <p>Дата и время приема: {{ order.appointment_date }}</p>
+                <p>Итоговая цена: {{ order.total_price }}</p>
+                {% if order.promo_code %}
+                    <p>Применен промокод: {{ order.promo_code.code }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <h2>Прошедшие заказы</h2>
+        {% for order in past_orders %}
+            <div class="order">
+                <h3>Заказ №{{ order.id }}</h3>
+                <p>На: {{ order.user.client.surname }} {{ order.user.client.name }} {{ order.user.client.patronymic }}</p>
+                <p>Врач: {{ order.doctor.surname }} {{ order.doctor.name }} {{ order.doctor.patronymic }}</p>
+                <p>Дата и время приема: {{ order.appointment_date }}</p>
+                <p>Итоговая цена: {{ order.total_price }}</p>
+                {% if order.promo_code %}
+                    <p>Применен промокод: {{ order.promo_code.code }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Пожалуйста, <a href="{% url 'to_login' %}">авторизуйтесь</a> для просмотра графика.</p>
+    {% endif %}
+{% endblock %}

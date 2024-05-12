@@ -12,5 +12,8 @@ urlpatterns = [
     path('add_random_client', views.add_random_client, name='add_random_client'),
     path('update_review/<int:pk>', views.reviewsUpdateView.as_view(), name='update_review'),
     path('delete_review/<int:pk>', views.reviewsDeleteView.as_view(), name='delete_review'),
-    path('services', views.services_view, name='services')
+    path('services', views.services_view, name='services'),
+    path('promocodes', views.promocodes_view, name='promocodes'),
+    path('schedule', views.schedule_view, name='schedule'),
+    path('ordering', views.ordering_view, name='ordering')
 ]

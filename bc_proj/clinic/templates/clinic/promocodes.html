@@ -1,0 +1,15 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Промокоды{% endblock %}
+
+{% block content %}
+    <h1>Промокоды</h1>
+
+    {% for promocode in promocodes %}
+        <div class="promocode">
+            <h3>{{ promocode.code }}</h3>
+            <p>Скидка: {{ promocode.discount }}%</p>
+            <p>Действителен до: {{ promocode.expiration_date }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

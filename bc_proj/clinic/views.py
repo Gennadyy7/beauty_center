@@ -1,5 +1,6 @@
-import re
-from datetime import datetime
+from decimal import Decimal
+from datetime import datetime, date
+from django.utils import timezone
 import random
 from django.views.generic import UpdateView, DeleteView
 from django.contrib import messages
@@ -8,7 +9,8 @@ from django.contrib.auth.models import User
 from django.db.models import Avg
 from django.shortcuts import render, redirect
 from .forms import UserLoginForm, ClientRegistrationForm, ReviewForm
-from .models import Clients, ServiceSpecializations, Vacancies, Reviews, Services, ServiceCategories
+from .models import Clients, ServiceSpecializations, Vacancies, Reviews, Services, PromoCodes, \
+    Orders, Doctors
 import requests
 from django.contrib.auth.mixins import UserPassesTestMixin
 
@@ -144,6 +146,7 @@ def add_random_client(request):
     client.save()
     return redirect('home')
 
+
 def services_view(request):
     services = Services.objects.order_by('-id')
     service_specializations = ServiceSpecializations.objects.filter(services__in=services).distinct()
@@ -158,4 +161,95 @@ def services_view(request):
     elif sort == 'price_desc':
         services = services.order_by('-price')
 
-    return render(request, 'clinic/services.html', {'services': services, 'service_specializations': service_specializations, 'selected_category': category, 'selected_sort': sort})
+    ordered_services = request.session.get('ordered_services', [])
+
+    if request.method == 'POST':
+        service_id = request.POST.get('service_id')
+        service = Services.objects.get(id=service_id)
+
+        if service_id in ordered_services:
+            ordered_services.remove(service_id)
+        else:
+            current_category = service.service_specialization.service_category.id
+            ordered_services = [
+                sid for sid in ordered_services
+                if Services.objects.get(id=sid).service_specialization.service_category.id == current_category
+            ]
+            ordered_services.append(service_id)
+
+        request.session['ordered_services'] = ordered_services
+
+    ordered_services_objects = Services.objects.filter(id__in=ordered_services)
+    print(ordered_services_objects)
+
+    return render(request, 'clinic/services.html', {
+        'services': services,
+        'service_specializations': service_specializations,
+        'selected_category': category,
+        'selected_sort': sort,
+        'ordered_services': ordered_services_objects
+    })
+
+def promocodes_view(request):
+    promocodes = PromoCodes.objects.filter(expiration_date__gte=date.today()).order_by('-id')
+    return render(request, 'clinic/promocodes.html', {'promocodes': promocodes})
+
+
+def schedule_view(request):
+    if request.user.is_authenticated:
+        if hasattr(request.user, 'client'):
+            current_orders = Orders.objects.filter(user=request.user, appointment_date__gte=datetime.now())
+            past_orders = Orders.objects.filter(user=request.user, appointment_date__lt=datetime.now())
+            return render(request, 'clinic/schedule.html', {'current_orders': current_orders, 'past_orders': past_orders})
+        elif hasattr(request.user, 'doctor'):
+            current_orders = Orders.objects.filter(doctor=request.user.doctor, appointment_date__gte=datetime.now())
+            past_orders = Orders.objects.filter(doctor=request.user.doctor, appointment_date__lt=datetime.now())
+            print(current_orders)
+            return render(request, 'clinic/schedule.html', {'current_orders': current_orders, 'past_orders': past_orders})
+    return render(request, 'clinic/schedule.html')
+
+def ordering_view(request):
+    ordered_services = request.session.get('ordered_services', [])
+    services = Services.objects.filter(id__in=ordered_services)
+    total_price = sum(service.price for service in services)
+    service_category_id = services.first().service_specialization.service_category.id if services else None
+    doctors = Doctors.objects.filter(service_specialization__service_category__id=service_category_id)
+    promo_codes = PromoCodes.objects.filter(expiration_date__gte=timezone.now().date())
+
+    print(ordered_services, services, total_price, service_category_id, doctors, promo_codes)
+
+    if request.method == 'POST':
+        doctor_id = request.POST.get('doctor')
+        promo_code_input = request.POST.get('promo_code')
+        doctor = Doctors.objects.get(id=doctor_id)
+        promo_code = promo_codes.filter(code=promo_code_input).first()
+
+        if promo_code:
+            discount = total_price * (Decimal(promo_code.discount) / 100)
+            total_price -= discount
+
+        appointment_date = timezone.now().replace(hour=12, minute=0, second=0, microsecond=0) + timezone.timedelta(days=1)
+        last_order = Orders.objects.filter(doctor=doctor).order_by('-appointment_date').first()
+        if last_order and last_order.appointment_date.date() >= appointment_date.date():
+            appointment_date = last_order.appointment_date + timezone.timedelta(days=1)
+
+        new_order = Orders(
+            user=request.user,
+            doctor=doctor,
+            promo_code=promo_code,
+            appointment_date=appointment_date,
+            total_price=total_price
+        )
+        new_order.save()
+        new_order.services.set(services)
+        new_order.save()
+        print(new_order)
+        request.session['ordered_services'] = []
+        return redirect('schedule')
+
+    return render(request, 'clinic/ordering.html', {
+        'services': services,
+        'total_price': total_price,
+        'doctors': doctors,
+        'promo_codes': promo_codes
+    })

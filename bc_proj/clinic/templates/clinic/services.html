@@ -24,7 +24,7 @@
 
     {% if user.is_authenticated %}
         {% if user.client %}
-            <form action="{% url 'about' %}" method="post">
+            <form action="{% url 'ordering' %}" method="get">
                 {% csrf_token %}
                 <button type="submit">Оформить заказ</button>
             </form>
@@ -41,9 +41,14 @@
             <p>{{ service.description }}</p>
             <p>Цена: {{ service.price }}</p>
             {% if user.is_authenticated and user.client %}
-                <form action="{% url 'about' %}" method="post"> <!-- service.id -->
+                <form action="{% url 'services' %}" method="post">
                     {% csrf_token %}
-                    <button type="submit">Добавить в заказ</button>
+                    <input type="hidden" name="service_id" value="{{ service.id }}">
+                    {% if service in ordered_services %}
+                        <button type="submit">Удалить из заказа</button>
+                    {% else %}
+                        <button type="submit">Добавить в заказ</button>
+                    {% endif %}
                 </form>
             {% endif %}
         </div>
