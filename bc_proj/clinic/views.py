@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.db.models import Avg
 from django.shortcuts import render, redirect
 from .forms import UserLoginForm, ClientRegistrationForm, ReviewForm
-from .models import Clients, ServiceSpecializations, Vacancies, Reviews
+from .models import Clients, ServiceSpecializations, Vacancies, Reviews, Services, ServiceCategories
 import requests
 from django.contrib.auth.mixins import UserPassesTestMixin
 
@@ -143,3 +143,19 @@ def add_random_client(request):
     client = Clients(user=user, surname=last_name, name=first_name, patronymic=patronymic, birth_date=dob, address=address, phone=phone)
     client.save()
     return redirect('home')
+
+def services_view(request):
+    services = Services.objects.order_by('-id')
+    service_specializations = ServiceSpecializations.objects.filter(services__in=services).distinct()
+
+    category = request.GET.get('category')
+    if category:
+        services = services.filter(service_specialization__service_category=category)
+
+    sort = request.GET.get('sort')
+    if sort == 'price_asc':
+        services = services.order_by('price')
+    elif sort == 'price_desc':
+        services = services.order_by('-price')
+
+    return render(request, 'clinic/services.html', {'services': services, 'service_specializations': service_specializations, 'selected_category': category, 'selected_sort': sort})

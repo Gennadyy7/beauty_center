@@ -30,7 +30,7 @@ def add_cosmetology_news(request):
         'https://newsapi.org/v2/everything?q=cosmetology&apiKey=aabb6aa60cd64803ad49bcb76aec6ced')
     data = response.json()
 
-    article_data = data['articles'][random.randint(0, 63)]
+    article_data = data['articles'][random.choice([i for i in range(64) if i != 43])]
     title = article_data['title']
     summary = article_data['description']
     image_url = article_data['urlToImage']

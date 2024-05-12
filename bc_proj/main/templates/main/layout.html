@@ -21,7 +21,14 @@
             <a href="{% url 'contacts' %}"><li>Контакты</li></a>
             <a href="{% url 'vacancies' %}"><li>Вакансии</li></a>
             <a href="{% url 'reviews' %}"><li>Отзывы</li></a>
-            <a href="{% url 'about' %}"><li>О нас</li></a>
+        </ul>
+        <ul>
+            <!-- New Block: Services, Promocodes, Schedule -->
+            <a href="{% url 'services' %}"><li>Услуги</li></a>
+            <a href="{% url 'news' %}"><li>Промокоды</li></a>
+            {% if user.is_authenticated and not user.is_superuser %}
+                <a href="{% url 'faq' %}"><li>График</li></a>
+            {% endif %}
         </ul>
         <ul>
             {% if user.is_authenticated %}

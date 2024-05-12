@@ -1,0 +1,51 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Услуги{% endblock %}
+
+{% block content %}
+    <h1>Услуги</h1>
+
+    <form action="{% url 'services' %}" method="get">
+    <select name="category">
+        <option value="">Выберите категорию</option>
+        {% for specialization in service_specializations %}
+            <option value="{{ specialization.service_category.id }}" {% if selected_category == specialization.service_category.id|stringformat:"s" %}selected{% endif %}>{{ specialization.service_category.name }}</option>
+        {% endfor %}
+    </select>
+
+    <select name="sort">
+        <option value="">Не сортировать</option>
+        <option value="price_asc" {% if selected_sort == "price_asc" %}selected{% endif %}>Сортировать по цене (по возрастанию)</option>
+        <option value="price_desc" {% if selected_sort == "price_desc" %}selected{% endif %}>Сортировать по цене (по убыванию)</option>
+    </select>
+
+    <button type="submit">Применить фильтры</button>
+    </form>
+
+    {% if user.is_authenticated %}
+        {% if user.client %}
+            <form action="{% url 'about' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Оформить заказ</button>
+            </form>
+        {% else %}
+            <p>Оформить заказ может только клиент.</p>
+        {% endif %}
+    {% else %}
+        <p><a href="{% url 'to_login' %}">Авторизуйтесь</a>, чтобы оформить заказ.</p>
+    {% endif %}
+
+    {% for service in services %}
+        <div class="service">
+            <h2>{{ service.title }}</h2>
+            <p>{{ service.description }}</p>
+            <p>Цена: {{ service.price }}</p>
+            {% if user.is_authenticated and user.client %}
+                <form action="{% url 'about' %}" method="post"> <!-- service.id -->
+                    {% csrf_token %}
+                    <button type="submit">Добавить в заказ</button>
+                </form>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}
