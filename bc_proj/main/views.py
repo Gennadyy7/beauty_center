@@ -1,25 +1,30 @@
 import random
 from tempfile import NamedTemporaryFile
 from urllib.request import urlopen
-
+from datetime import datetime, timezone
 from django.core.files import File
 from django.shortcuts import render, redirect
-from django.utils import timezone
 from translate import Translator
 from urllib.error import HTTPError
 from .models import Articles, CompanyInfo, FAQ
 import requests
-import pytz
+
 
 def index(request):
     latest_article = Articles.objects.last()
-    user_timezone = 'Europe/Moscow'
-    tz = pytz.timezone(user_timezone)
-    current_date = timezone.now().astimezone(tz)
+
+    date_utc = datetime.now(timezone.utc)
+
+    current_date = date_utc.astimezone()
+
+    user_timezone = str(current_date.tzinfo)
+    utc_offset = current_date.utcoffset().total_seconds() / 3600
+
     return render(request, 'main/index.html', {
         'latest_article': latest_article,
         'current_date': current_date,
         'user_timezone': user_timezone,
+        'utc_offset': utc_offset,
     })
 
 def about(request):

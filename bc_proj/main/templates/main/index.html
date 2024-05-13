@@ -12,5 +12,6 @@
     <div>
         <p>Текущая дата: {{ current_date|date:"d/m/Y" }}</p>
         <p>Часовой пояс пользователя: {{ user_timezone }}</p>
+        <p>Разница в часах от UTC: {{ utc_offset }}</p>
     </div>
 {% endblock %}

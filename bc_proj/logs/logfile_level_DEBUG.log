@@ -300,3 +300,4 @@ Starting new HTTP connection (1): api.mymemory.translated.net:80
 http://api.mymemory.translated.net:80 "GET /get?q=Tanasha+Donna+recently+got+lip+fillers+to+increase+the+volume+of+her+lips.+Many+fans+however+criticized+her+decision+since+at+first+the+lips+looked+swollen.&langpair=en%7Cru HTTP/1.1" 301 134
 Starting new HTTPS connection (1): api.mymemory.translated.net:443
 https://api.mymemory.translated.net:443 "GET /get?q=Tanasha+Donna+recently+got+lip+fillers+to+increase+the+volume+of+her+lips.+Many+fans+however+criticized+her+decision+since+at+first+the+lips+looked+swollen.&langpair=en%7Cru HTTP/1.1" 200 2394
+Watching for file changes with StatReloader
