@@ -8,7 +8,7 @@ from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.db.models import Avg
 from django.shortcuts import render, redirect
-from .forms import UserLoginForm, ClientRegistrationForm, ReviewForm
+from .forms import UserLoginForm, ClientRegistrationForm, ReviewForm, PromocodeForm
 from .models import Clients, ServiceSpecializations, Vacancies, Reviews, Services, PromoCodes, \
     Orders, Doctors
 import requests
@@ -30,6 +30,16 @@ class reviewsDeleteView(AdminRequiredMixin, DeleteView):
     model = Reviews
     success_url = '/clinic/reviews'
     template_name = 'clinic/delete_review.html'
+
+class promocodeUpdateView(AdminRequiredMixin, UpdateView):
+    model = PromoCodes
+    template_name = 'clinic/add_promocode.html'
+    form_class = PromocodeForm
+
+class promocodeDeleteView(AdminRequiredMixin, DeleteView):
+    model = PromoCodes
+    success_url = '/clinic/promocodes'
+    template_name = 'clinic/delete_promocode.html'
 
 def login_view(request):
     error = ''
@@ -71,7 +81,7 @@ def registration_view(request):
             )
             client.save()
             messages.success(request, f'Аккаунт создан для {username}!')
-            return redirect('login')
+            return redirect('to_login')
         else:
             error = 'Неверная форма'
             print(form.errors)
@@ -253,3 +263,21 @@ def ordering_view(request):
         'doctors': doctors,
         'promo_codes': promo_codes
     })
+
+def add_promocode_view(request):
+    error = ''
+    if request.method == 'POST':
+        form = PromocodeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('promocodes')
+        else:
+            error = 'Форма была неверной'
+
+    form = PromocodeForm()
+
+    data = {
+        'form': form,
+        'error': error
+    }
+    return render(request, 'clinic/add_promocode.html', data)

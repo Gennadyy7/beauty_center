@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
-from .models import Clients, Reviews
+from .models import Clients, Reviews, PromoCodes
 from django.forms import ModelForm, Select, Textarea
 
 
@@ -31,4 +31,16 @@ class ReviewForm(ModelForm):
         widgets = {
             "rating": Select(choices=[(i, i) for i in range(1, 6)], attrs={'placeholder': 'Выберите оценку от 1 до 5', 'title': 'Выберите оценку от 1 до 5'}),
             "text": Textarea(attrs={'placeholder': 'Напишите здесь свой отзыв'})
+        }
+
+class PromocodeForm(ModelForm):
+    class Meta:
+        model = PromoCodes
+        fields = ['code', 'discount', 'expiration_date']
+
+        widgets = {
+            "code": forms.TextInput(attrs={'placeholder': 'Кодовое слово'}),
+            "discount": forms.NumberInput(attrs={'min': 1, 'max': 100, 'step': 1, 'placeholder': 'Процент скидки'}),
+            "expiration_date": forms.DateInput(
+                attrs={'type': 'date', 'title': 'Выберите дату истечения срока действия промокода'})
         }

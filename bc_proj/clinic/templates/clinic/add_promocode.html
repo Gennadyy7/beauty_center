@@ -1,0 +1,15 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Добавить промокод{% endblock %}
+
+{% block content %}
+    <h3>Напишите кодовое слово промокода, значение скидки в % и дату истечения срока действия</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.code }}
+        {{ form.discount }}
+        {{ form.expiration_date }}
+        <button type="submit">Применить</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}

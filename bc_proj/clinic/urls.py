@@ -15,5 +15,8 @@ urlpatterns = [
     path('services', views.services_view, name='services'),
     path('promocodes', views.promocodes_view, name='promocodes'),
     path('schedule', views.schedule_view, name='schedule'),
-    path('ordering', views.ordering_view, name='ordering')
+    path('ordering', views.ordering_view, name='ordering'),
+    path('add_promocode', views.add_promocode_view, name='add_promocode'),
+    path('update_promocode/<int:pk>', views.promocodeUpdateView.as_view(), name='update_promocode'),
+    path('delete_promocode/<int:pk>', views.promocodeDeleteView.as_view(), name='delete_promocode')
 ]

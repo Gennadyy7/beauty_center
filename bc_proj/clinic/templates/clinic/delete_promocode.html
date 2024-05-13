@@ -1,0 +1,11 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Удаление промокода{% endblock %}
+
+{% block content %}
+    <h3>Удалить Промокод?</h3>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Удалить</button>
+    </form>
+{% endblock %}

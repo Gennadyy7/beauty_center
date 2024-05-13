@@ -144,6 +144,9 @@ class PromoCodes(models.Model):
     def __str__(self):
         return self.code
 
+    def get_absolute_url(self):
+        return '/clinic/promocodes'
+
     class Meta:
         verbose_name = 'Промокод'
         verbose_name_plural = 'Промокоды'

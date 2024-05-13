@@ -1,0 +1,74 @@
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+E:\IGI\beauty_center\bc_proj\clinic\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+E:\IGI\beauty_center\bc_proj\clinic\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\clinic\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Internal Server Error: /clinic/update_promocode/4
+Traceback (most recent call last):
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\views\generic\edit.py", line 123, in get_success_url
+    url = self.object.get_absolute_url()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'PromoCodes' object has no attribute 'get_absolute_url'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\contrib\auth\mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\views\generic\edit.py", line 206, in post
+    return super().post(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\views\generic\edit.py", line 151, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\views\generic\edit.py", line 134, in form_valid
+    return super().form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\views\generic\edit.py", line 63, in form_valid
+    return HttpResponseRedirect(self.get_success_url())
+                                ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\views\generic\edit.py", line 125, in get_success_url
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: No URL to redirect to.  Either provide a url or define a get_absolute_url method on the Model.
+E:\IGI\beauty_center\bc_proj\clinic\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\clinic\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\clinic\forms.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\clinic\forms.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\clinic\forms.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\clinic\forms.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\clinic\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\clinic\urls.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\clinic\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\clinic\views.py changed, reloading.
+Watching for file changes with StatReloader
