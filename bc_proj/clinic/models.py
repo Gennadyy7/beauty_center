@@ -170,7 +170,7 @@ class Orders(models.Model):
         if self.promo_code:
             discount = Decimal(self.promo_code.discount) / 100
             self.total_price *= (1 - discount)
-        super().save(*args, **kwargs)
+        super(Orders, self).save(update_fields=['total_price'])
 
     class Meta:
         verbose_name = 'Заказ'
