@@ -1,12 +1,21 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from .models import ServiceCategories, Specializations, ServiceSpecializations, Services, Clients, Doctors, Reviews, PromoCodes, Orders, Vacancies
-from .forms import UserLoginForm, ClientRegistrationForm, ReviewForm
+from .forms import UserLoginForm, ClientRegistrationForm, ReviewForm, PromocodeForm
 from django.contrib.auth.models import User
 
 class ClinicTests(TestCase):
     def setUp(self):
         self.client = Client()
+        self.promocode = PromoCodes.objects.create(code='TESTCODE1', discount=10, expiration_date='2024-12-31')
+        self.user = User.objects.create_user(username='testuser1', password='12345')
+        self.client.login(username='testuser1', password='12345')
+
+        self.review = Reviews.objects.create(
+            user=self.user,
+            text='Test review',
+            rating=5
+        )
 
     def test_login_view(self):
         response = self.client.get(reverse('to_login'))
@@ -141,3 +150,56 @@ class ClinicTests(TestCase):
                                       appointment_date='2022-12-31 12:00:00', total_price=90)
         order.services.add(service)
         self.assertEqual(str(order), 'Заказ №1 от testuser')
+
+    def test_add_promocode_view(self):
+        response = self.client.get(reverse('add_promocode'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'clinic/add_promocode.html')
+
+    def test_update_promocode_view(self):
+        response = self.client.get(reverse('update_promocode', args=[self.promocode.id]))
+        self.assertEqual(response.status_code, 302)
+
+    def test_delete_promocode_view(self):
+        response = self.client.get(reverse('delete_promocode', args=[self.promocode.id]))
+        self.assertEqual(response.status_code, 302)
+
+    def test_promocode_form(self):
+        data = {'code': 'NEWCODE', 'discount': 20, 'expiration_date': '2025-12-31'}
+        form = PromocodeForm(data)
+        self.assertTrue(form.is_valid())
+
+    def test_reviews_update_view_POST(self):
+        response = self.client.post(reverse('update_review', args='1'), {
+            'text': 'Updated review',
+            'rating': 4
+        })
+
+        self.review.refresh_from_db()
+        self.assertEquals(response.status_code, 302)
+        self.assertEquals(self.review.text, 'Test review')
+        self.assertEquals(self.review.rating, 5)
+
+    def test_reviews_delete_view_POST(self):
+        response = self.client.post(reverse('delete_review', args='1'))
+
+        self.assertEquals(response.status_code, 302)
+        self.assertEquals(Reviews.objects.filter(id=1).count(), 1)
+
+    def test_promocode_update_view_POST(self):
+        response = self.client.post(reverse('update_promocode', args='1'), {
+            'code': 'NEWCODE',
+            'discount': 20,
+            'expiration_date': '2024-12-31'
+        })
+
+        self.promocode.refresh_from_db()
+        self.assertEquals(response.status_code, 302)
+        self.assertEquals(self.promocode.code, 'TESTCODE1')
+        self.assertEquals(self.promocode.discount, 10)
+
+    def test_promocode_delete_view_POST(self):
+        response = self.client.post(reverse('delete_promocode', args='1'))
+
+        self.assertEquals(response.status_code, 302)
+        self.assertEquals(PromoCodes.objects.filter(id=1).count(), 1)
