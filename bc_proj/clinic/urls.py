@@ -18,5 +18,6 @@ urlpatterns = [
     path('ordering', views.ordering_view, name='ordering'),
     path('add_promocode', views.add_promocode_view, name='add_promocode'),
     path('update_promocode/<int:pk>', views.promocodeUpdateView.as_view(), name='update_promocode'),
-    path('delete_promocode/<int:pk>', views.promocodeDeleteView.as_view(), name='delete_promocode')
+    path('delete_promocode/<int:pk>', views.promocodeDeleteView.as_view(), name='delete_promocode'),
+    path('statistics', views.statistics_view, name='statistics')
 ]

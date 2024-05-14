@@ -23,11 +23,15 @@
             <a href="{% url 'reviews' %}"><li>Отзывы</li></a>
         </ul>
         <ul>
-            <!-- New Block: Services, Promocodes, Schedule -->
+            <!-- New Block: Services, Promocodes, Schedule, Statistics -->
             <a href="{% url 'services' %}"><li>Услуги</li></a>
             <a href="{% url 'promocodes' %}"><li>Промокоды</li></a>
             {% if user.is_authenticated and not user.is_superuser %}
                 <a href="{% url 'schedule' %}"><li>График</li></a>
+            {% endif %}
+            <!-- Link to Statistics page, only for admin -->
+            {% if user.is_authenticated and user.is_superuser %}
+                <a href="{% url 'statistics' %}"><li>Статистика</li></a>
             {% endif %}
         </ul>
         <ul>

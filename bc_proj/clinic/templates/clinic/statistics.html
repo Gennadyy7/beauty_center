@@ -1,0 +1,39 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Статистика{% endblock %}
+
+{% block content %}
+    <h1>Статистика</h1>
+    <section>
+        <h2>Список клиентов</h2>
+        <ul>
+            {% for client in clients_alphabetical %}
+                <li>{{ client.0 }} {{ client.1 }} {{ client.2 }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+    <section>
+        <h2>Общая сумма всех заказов</h2>
+        <p>{{ total_orders_sum }}</p>
+    </section>
+    <section>
+        <h2>Статистические показатели по заказам</h2>
+        <p>Среднее: {{ average_order }}</p>
+        <p>Мода: {{ mode_order }}</p>
+        <p>Медиана: {{ median_order }}</p>
+    </section>
+    <section>
+        <h2>Статистические показатели по возрасту клиентов</h2>
+        <p>Среднее: {{ average_age }}</p>
+        <p>Медиана: {{ median_age }}</p>
+    </section>
+    <section>
+        <h2>Популярность услуг</h2>
+        <p>Наиболее популярная категория: {{ most_popular_service_category }}</p>
+        <p>Наиболее прибыльная категория: {{ most_profitable_service_category }}</p>
+    </section>
+    <section>
+    <h2>Гистограмма доходов врачей</h2>
+    <img src="{{ histogram_url }}" alt="Гистограмма доходов врачей">
+</section>
+{% endblock %}

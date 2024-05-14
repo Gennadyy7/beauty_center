@@ -1,18 +1,25 @@
 from decimal import Decimal
 from datetime import datetime, date
+from io import BytesIO
+from statistics import mean, multimode, median
+
+from django.core.files.base import ContentFile
 from django.utils import timezone
 import random
+
+from django.utils.crypto import get_random_string
 from django.views.generic import UpdateView, DeleteView
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.models import User
-from django.db.models import Avg
+from django.db.models import Avg, Sum
 from django.shortcuts import render, redirect
 from .forms import UserLoginForm, ClientRegistrationForm, ReviewForm, PromocodeForm
 from .models import Clients, ServiceSpecializations, Vacancies, Reviews, Services, PromoCodes, \
     Orders, Doctors
 import requests
 from django.contrib.auth.mixins import UserPassesTestMixin
+import matplotlib.pyplot as plt
 
 class AdminRequiredMixin(UserPassesTestMixin):
     def test_func(self):
@@ -281,3 +288,65 @@ def add_promocode_view(request):
         'error': error
     }
     return render(request, 'clinic/add_promocode.html', data)
+
+
+def calculate_age(born):
+    today = date.today()
+    return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+
+
+def create_doctor_income_histogram(doctor_data):
+    labels = [
+        f'{doctor.surname} {doctor.name} {doctor.patronymic}\n{doctor.service_specialization.doctor_specialization.name}'
+        for doctor in doctor_data]
+
+    income_values = [doctor.total_income for doctor in doctor_data]
+    fig, ax = plt.subplots(figsize=(10, 8))
+    ax.barh(labels, income_values, color='skyblue')
+    ax.set_xlabel('Общая сумма заказов')
+    ax.set_title('Доходы врачей')
+
+    temp_image = BytesIO()
+    plt.savefig(temp_image, format='png', bbox_inches='tight')
+    temp_image.seek(0)
+    file_name = f'doctor_income_histogram_{get_random_string(8)}.png'
+    histogram_image = ContentFile(temp_image.getvalue(), name=file_name)
+    return histogram_image
+
+
+def statistics_view(request):
+    clients_alphabetical = Clients.objects.order_by('surname', 'name', 'patronymic').values_list('surname', 'name',
+                                                                                                 'patronymic')
+    total_orders_sum = Orders.objects.aggregate(Sum('total_price'))['total_price__sum']
+    order_values = list(Orders.objects.values_list('total_price', flat=True))
+    average_order = mean(order_values)
+    mode_order = max(multimode(order_values))
+    median_order = median(order_values)
+    client_ages = [calculate_age(client.birth_date) for client in Clients.objects.all()]
+    average_age = mean(client_ages)
+    median_age = median(client_ages)
+    services_stats = Services.objects.annotate(total_count=Sum('orders__total_price')).order_by('-total_count')
+    most_popular_service_category = services_stats.first().service_specialization.service_category.name
+    most_profitable_service_category = services_stats.first().service_specialization.service_category.name
+    doctor_data = Doctors.objects.annotate(total_income=Sum('orders__total_price')).order_by('-total_income')
+    histogram_image = create_doctor_income_histogram(doctor_data)
+    file_path = f'media/main/images/{histogram_image.name}'
+    with open(file_path, 'wb') as f:
+        f.write(histogram_image.read())
+
+    file_path = f'/media/main/images/{histogram_image.name}'
+
+    data = {
+        'clients_alphabetical': clients_alphabetical,
+        'total_orders_sum': total_orders_sum,
+        'average_order': average_order,
+        'mode_order': mode_order,
+        'median_order': median_order,
+        'average_age': average_age,
+        'median_age': median_age,
+        'most_popular_service_category': most_popular_service_category,
+        'most_profitable_service_category': most_profitable_service_category,
+        'histogram_url': file_path,
+    }
+
+    return render(request, 'clinic/statistics.html', data)
