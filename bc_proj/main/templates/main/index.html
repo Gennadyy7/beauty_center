@@ -3,15 +3,34 @@
 {% block title %}Главная{% endblock %}
 
 {% block content %}
-    <article>
-        <h3>Актуальная статья</h3>
-        <h2>{{ latest_article.title }}</h2>
-        <p>{{ latest_article.summary }}</p>
-        <img src="{{ latest_article.image.url }}" alt="{{ latest_article.title }}">
-    </article>
     <div>
         <p>Текущая дата: {{ current_date|date:"d/m/Y" }}</p>
         <p>Часовой пояс пользователя: {{ user_timezone }}</p>
         <p>Разница в часах от UTC: {{ utc_offset }}</p>
     </div>
+    <div>
+        <p>Календарь:</p>
+        <h3>{{ month_name }}</h3>
+        <table>
+            {% for week in calendar_month %}
+                <tr>
+                    {% for day in week %}
+                        <td>
+                            {% if day == current_day %}
+                                <strong>{{ day }}</strong>
+                            {% elif day != 0 %}
+                                {{ day }}
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <article>
+        <h2>Актуальная статья</h2>
+        <h2>{{ latest_article.title }}</h2>
+        <p>{{ latest_article.summary }}</p>
+        <img src="{{ latest_article.image.url }}" alt="{{ latest_article.title }}">
+    </article>
 {% endblock %}

@@ -8,6 +8,7 @@ from translate import Translator
 from urllib.error import HTTPError
 from .models import Articles, CompanyInfo, FAQ
 import requests
+from calendar import monthcalendar, month_name
 
 
 def index(request):
@@ -17,14 +18,22 @@ def index(request):
 
     current_date = date_utc.astimezone()
 
-    user_timezone = str(current_date.tzinfo)
+    user_timezone = current_date.tzname()
     utc_offset = current_date.utcoffset().total_seconds() / 3600
+
+    year = current_date.year
+    month = current_date.month
+    calendar_month = monthcalendar(year, month)
+    month_name_current  = month_name[int(month)]
 
     return render(request, 'main/index.html', {
         'latest_article': latest_article,
         'current_date': current_date,
         'user_timezone': user_timezone,
         'utc_offset': utc_offset,
+        'calendar_month': calendar_month,
+        'current_day': current_date.day,
+        'month_name': month_name_current
     })
 
 def about(request):

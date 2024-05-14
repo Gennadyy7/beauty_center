@@ -301,3 +301,66 @@ http://api.mymemory.translated.net:80 "GET /get?q=Tanasha+Donna+recently+got+lip
 Starting new HTTPS connection (1): api.mymemory.translated.net:443
 https://api.mymemory.translated.net:443 "GET /get?q=Tanasha+Donna+recently+got+lip+fillers+to+increase+the+volume+of+her+lips.+Many+fans+however+criticized+her+decision+since+at+first+the+lips+looked+swollen.&langpair=en%7Cru HTTP/1.1" 200 2394
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\main\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\main\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\main\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\main\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\main\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\main\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\main\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\main\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\bc_proj\main\views.py", line 27, in index
+    month_name_current  = month_name.index(month)
+                          ^^^^^^^^^^^^^^^^
+AttributeError: '_localized_month' object has no attribute 'index'
+E:\IGI\beauty_center\bc_proj\main\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\bc_proj\main\views.py", line 27, in index
+    month_name_current  = month_name(month)
+                          ^^^^^^^^^^^^^^^^^
+TypeError: '_localized_month' object is not callable
+Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\bc_proj\main\views.py", line 27, in index
+    month_name_current  = month_name[month]
+                          ~~~~~~~~~~^^^^^^^
+TypeError: '_localized_month' object is not callable
+E:\IGI\beauty_center\bc_proj\main\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\main\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\main\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\IGI\beauty_center\bc_proj\main\views.py changed, reloading.
+Watching for file changes with StatReloader
