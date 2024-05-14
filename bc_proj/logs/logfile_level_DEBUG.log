@@ -8486,3 +8486,104 @@ Starting new HTTP connection (1): api.mymemory.translated.net:80
 http://api.mymemory.translated.net:80 "GET /get?q=SHENYANG%2C+China%2C+April+28%2C+2024+%28GLOBE+NEWSWIRE%29+%E2%80%94+On+April+24%2C+the+%E2%80%9C2024+Korea-Shenyang+Activity+Week%E2%80%9D+and+the+%E2%80%9CHello%2C+Shenyang%E2%80%9D+Global+Promotion+%28Seoul+Station%29%C2%A0kicked+off+in+Seoul%2C+South+Korea.+Leaders+from+both+sides+addressed+the+opening%2C+and+leaders+fro%E2%80%A6&langpair=en%7Cru HTTP/1.1" 301 134
 Starting new HTTPS connection (1): api.mymemory.translated.net:443
 https://api.mymemory.translated.net:443 "GET /get?q=SHENYANG%2C+China%2C+April+28%2C+2024+%28GLOBE+NEWSWIRE%29+%E2%80%94+On+April+24%2C+the+%E2%80%9C2024+Korea-Shenyang+Activity+Week%E2%80%9D+and+the+%E2%80%9CHello%2C+Shenyang%E2%80%9D+Global+Promotion+%28Seoul+Station%29%C2%A0kicked+off+in+Seoul%2C+South+Korea.+Leaders+from+both+sides+addressed+the+opening%2C+and+leaders+fro%E2%80%A6&langpair=en%7Cru HTTP/1.1" 200 3083
+Watching for file changes with StatReloader
+matplotlib data path: E:\IGI\beauty_center\venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\pprom\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\pprom\.matplotlib
+Using fontManager instance from C:\Users\pprom\.matplotlib\fontlist-v330.json
+Internal Server Error: /clinic/statistics
+Traceback (most recent call last):
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\bc_proj\clinic\views.py", line 322, in statistics_view
+    average_order = mean(order_values)
+                    ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pprom\AppData\Local\Programs\Python\Python311\Lib\statistics.py", line 432, in mean
+    raise StatisticsError('mean requires at least one data point')
+statistics.StatisticsError: mean requires at least one data point
+E:\IGI\beauty_center\bc_proj\clinic\views.py changed, reloading.
+Watching for file changes with StatReloader
+matplotlib data path: E:\IGI\beauty_center\venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\pprom\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\pprom\.matplotlib
+Using fontManager instance from C:\Users\pprom\.matplotlib\fontlist-v330.json
+E:\IGI\beauty_center\bc_proj\clinic\views.py changed, reloading.
+Watching for file changes with StatReloader
+matplotlib data path: E:\IGI\beauty_center\venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\pprom\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\pprom\.matplotlib
+Using fontManager instance from C:\Users\pprom\.matplotlib\fontlist-v330.json
+E:\IGI\beauty_center\bc_proj\clinic\views.py changed, reloading.
+Watching for file changes with StatReloader
+matplotlib data path: E:\IGI\beauty_center\venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\pprom\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\pprom\.matplotlib
+Using fontManager instance from C:\Users\pprom\.matplotlib\fontlist-v330.json
+E:\IGI\beauty_center\bc_proj\clinic\views.py changed, reloading.
+Watching for file changes with StatReloader
+matplotlib data path: E:\IGI\beauty_center\venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\pprom\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\pprom\.matplotlib
+Using fontManager instance from C:\Users\pprom\.matplotlib\fontlist-v330.json
+E:\IGI\beauty_center\bc_proj\clinic\views.py changed, reloading.
+Watching for file changes with StatReloader
+matplotlib data path: E:\IGI\beauty_center\venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\pprom\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\pprom\.matplotlib
+Using fontManager instance from C:\Users\pprom\.matplotlib\fontlist-v330.json
+Internal Server Error: /clinic/statistics
+Traceback (most recent call last):
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\bc_proj\clinic\views.py", line 333, in statistics_view
+    file_path = f'media/main/images/{histogram_image.name}'
+                                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'name'
+E:\IGI\beauty_center\bc_proj\clinic\views.py changed, reloading.
+Watching for file changes with StatReloader
+matplotlib data path: E:\IGI\beauty_center\venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\pprom\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\pprom\.matplotlib
+Using fontManager instance from C:\Users\pprom\.matplotlib\fontlist-v330.json
+Internal Server Error: /clinic/statistics
+Traceback (most recent call last):
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\IGI\beauty_center\bc_proj\clinic\views.py", line 350, in statistics_view
+    'histogram_url': file_path,
+                     ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'file_path' where it is not associated with a value
+E:\IGI\beauty_center\bc_proj\clinic\views.py changed, reloading.
+Watching for file changes with StatReloader
+matplotlib data path: E:\IGI\beauty_center\venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\pprom\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\pprom\.matplotlib
+Using fontManager instance from C:\Users\pprom\.matplotlib\fontlist-v330.json

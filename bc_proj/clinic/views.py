@@ -317,24 +317,27 @@ def create_doctor_income_histogram(doctor_data):
 def statistics_view(request):
     clients_alphabetical = Clients.objects.order_by('surname', 'name', 'patronymic').values_list('surname', 'name',
                                                                                                  'patronymic')
-    total_orders_sum = Orders.objects.aggregate(Sum('total_price'))['total_price__sum']
+    total_orders_sum = Orders.objects.aggregate(Sum('total_price'))['total_price__sum'] or 0
     order_values = list(Orders.objects.values_list('total_price', flat=True))
-    average_order = mean(order_values)
-    mode_order = max(multimode(order_values))
-    median_order = median(order_values)
+    average_order = mean(order_values) if order_values else 0
+    mode_order = max(multimode(order_values)) if order_values else 0
+    median_order = median(order_values) if order_values else 0
     client_ages = [calculate_age(client.birth_date) for client in Clients.objects.all()]
-    average_age = mean(client_ages)
-    median_age = median(client_ages)
+    average_age = mean(client_ages) if client_ages else 0
+    median_age = median(client_ages) if client_ages else 0
     services_stats = Services.objects.annotate(total_count=Sum('orders__total_price')).order_by('-total_count')
-    most_popular_service_category = services_stats.first().service_specialization.service_category.name
-    most_profitable_service_category = services_stats.first().service_specialization.service_category.name
+    most_popular_service_category = services_stats[0].service_specialization.service_category.name if services_stats else 'Нет данных'
+    most_profitable_service_category = services_stats[0].service_specialization.service_category.name if services_stats else 'Нет данных'
     doctor_data = Doctors.objects.annotate(total_income=Sum('orders__total_price')).order_by('-total_income')
-    histogram_image = create_doctor_income_histogram(doctor_data)
-    file_path = f'media/main/images/{histogram_image.name}'
-    with open(file_path, 'wb') as f:
-        f.write(histogram_image.read())
+    histogram_image = create_doctor_income_histogram(doctor_data) if doctor_data else None
 
-    file_path = f'/media/main/images/{histogram_image.name}'
+    file_path = ''
+
+    if histogram_image:
+        file_path = f'media/main/images/{histogram_image.name}'
+        with open(file_path, 'wb') as f:
+            f.write(histogram_image.read())
+        file_path = f'/media/main/images/{histogram_image.name}'
 
     data = {
         'clients_alphabetical': clients_alphabetical,
