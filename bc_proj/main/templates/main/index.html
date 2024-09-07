@@ -3,12 +3,12 @@
 {% block title %}Главная{% endblock %}
 
 {% block content %}
-    <div>
+    <section>
         <p>Текущая дата: {{ current_date|date:"d/m/Y" }}</p>
         <p>Часовой пояс пользователя: {{ user_timezone }}</p>
         <p>Разница в часах от UTC: {{ utc_offset }}</p>
-    </div>
-    <div>
+    </section>
+    <section>
         <p>Календарь:</p>
         <h3>{{ month_name }}</h3>
         <table>
@@ -26,7 +26,7 @@
                 </tr>
             {% endfor %}
         </table>
-    </div>
+    </section>
     <article>
         <h2>Актуальная статья</h2>
         <h2>{{ latest_article.title }}</h2>

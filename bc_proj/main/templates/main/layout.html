@@ -1,77 +1,76 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
 </head>
+
 <body>
     <aside>
-        <ul>
-            <!-- First Block: Public Pages -->
-            <a href="{% url 'home' %}"><li>Главная</li></a>
-            <a href="{% url 'news' %}"><li>Новости</li></a>
-            <a href="{% url 'faq' %}"><li>FAQ</li></a>
-            <a href="{% url 'about' %}"><li>О нас</li></a>
-        </ul>
-        <ul>
-            <!-- Second Block: Public Pages with User Data -->
-            <a href="{% url 'contacts' %}"><li>Контакты</li></a>
-            <a href="{% url 'vacancies' %}"><li>Вакансии</li></a>
-            <a href="{% url 'reviews' %}"><li>Отзывы</li></a>
-        </ul>
-        <ul>
-            <!-- New Block: Services, Promocodes, Schedule, Statistics -->
-            <a href="{% url 'services' %}"><li>Услуги</li></a>
-            <a href="{% url 'promocodes' %}"><li>Промокоды</li></a>
-            {% if user.is_authenticated and not user.is_superuser %}
-                <a href="{% url 'schedule' %}"><li>График</li></a>
-            {% endif %}
-            <!-- Link to Statistics page, only for admin -->
-            {% if user.is_authenticated and user.is_superuser %}
-                <a href="{% url 'statistics' %}"><li>Статистика</li></a>
-            {% endif %}
-        </ul>
-        <ul>
-            {% if user.is_authenticated %}
+        <nav>
+            <ul>
+                <!-- First Block: Public Pages -->
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'news' %}">Новости</a></li>
+                <li><a href="{% url 'faq' %}">FAQ</a></li>
+                <li><a href="{% url 'about' %}">О нас</a></li>
+            </ul>
+            <ul>
+                <!-- Second Block: Public Pages with User Data -->
+                <li><a href="{% url 'contacts' %}">Контакты</a></li>
+                <li><a href="{% url 'vacancies' %}">Вакансии</a></li>
+                <li><a href="{% url 'reviews' %}">Отзывы</a></li>
+            </ul>
+            <ul>
+                <!-- New Block: Services, Promocodes, Schedule, Statistics -->
+                <li><a href="{% url 'services' %}">Услуги</a></li>
+                <li><a href="{% url 'promocodes' %}">Промокоды</a></li>
+                {% if user.is_authenticated %} {% if not user.is_superuser %}
+                <li><a href="{% url 'schedule' %}">График</a></li>
+                {% else %}
+                <li><a href="{% url 'statistics' %}">Статистика</a></li>
+                {% endif %} {% endif %}
+            </ul>
+            <ul>
+                {% if user.is_authenticated %}
+                <li>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Выйти</button>
+                    </form>
+                </li>
                 {% if user.is_superuser %}
-                    <form action="{% url 'logout' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit"><li>Выйти админу</li></button>
-                    </form>
+                <li>
                     <form action="{% url 'add_random_client' %}" method="get">
-                        <button type="submit"><li>Создать нового клиента (API)</li></button>
+                        <button type="submit">Создать нового клиента (API)</button>
                     </form>
+                </li>
+                <li>
                     <form action="{% url 'add_cosmetology_news' %}" method="get">
-                        <button type="submit"><li>Добавить новость про косметику (API)</li></button>
+                        <button type="submit">Добавить новость про косметику (API)</button>
                     </form>
-                {% elif user.doctor %}
-                    <form action="{% url 'logout' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit"><li>Выйти врачу</li></button>
+                </li>
+                {% endif %} {% else %}
+                <li>
+                    <form action="{% url 'to_login' %}" method="get">
+                        <button type="submit">Войти</button>
                     </form>
-                {% elif user.client %}
-                    <form action="{% url 'logout' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit"><li>Выйти клиенту</li></button>
+                </li>
+                <li>
+                    <form action="{% url 'registration' %}" method="get">
+                        <button type="submit">Зарегистрироваться</button>
                     </form>
+                </li>
                 {% endif %}
-            {% else %}
-                <form action="{% url 'to_login' %}" method="get">
-                    <button type="submit"><li>Войти</li></button>
-                </form>
-                <form action="{% url 'registration' %}" method="get">
-                    <button type="submit"><li>Зарегистрироваться</li></button>
-                </form>
-            {% endif %}
-        </ul>
+            </ul>
+        </nav>
     </aside>
     <main>
-        <!-- Main content of the page goes here -->
-        {% block content %}
-        {% endblock %}
+        {% block content %} {% endblock %}
     </main>
 </body>
+
 </html>
