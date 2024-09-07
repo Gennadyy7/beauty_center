@@ -9872,3 +9872,23 @@ interactive is False
 platform is win32
 CACHEDIR=C:\Users\pprom\.matplotlib
 Using fontManager instance from C:\Users\pprom\.matplotlib\fontlist-v330.json
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+font search path [WindowsPath('C:/External/Python/Projects/STRweb-pr/beauty_center/.venv/Lib/site-packages/matplotlib/mpl-data/fonts/ttf'), WindowsPath('C:/External/Python/Projects/STRweb-pr/beauty_center/.venv/Lib/site-packages/matplotlib/mpl-data/fonts/afm'), WindowsPath('C:/External/Python/Projects/STRweb-pr/beauty_center/.venv/Lib/site-packages/matplotlib/mpl-data/fonts/pdfcorefonts')]
+generated new fontManager
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /favicon.ico
