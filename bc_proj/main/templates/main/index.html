@@ -27,10 +27,52 @@
             {% endfor %}
         </table>
     </section>
+    <section class="banner">
+        <div class="banner-container">
+            <img src="main/partner_logos/flower-girl_cB2BkZh.png" alt="Реклама компании" class="banner-img">
+            <img src="main/partner_logos/flower-girl_cB2BkZh.png" alt="Реклама компании" class="banner-img">
+            <img src="main/partner_logos/flower-girl_cB2BkZh.png" alt="Реклама компании" class="banner-img">
+        </div>
+    </section>
     <article>
         <h2>Актуальная статья</h2>
         <h2>{{ latest_article.title }}</h2>
         <p>{{ latest_article.summary }}</p>
         <img src="{{ latest_article.image.url }}" alt="{{ latest_article.title }}">
     </article>
+    <section class="service-catalog">
+        <h2>Каталог услуг</h2>
+        <div class="service-catalog-container">
+            {% for category, services in grouped_services.items %}
+                <div class="category-block">
+                    <h3>Категория: {{ category.name }}</h3>
+                    <div class="services-list">
+                        {% for service in services %}
+                            <div class="service-item">
+                                <a href="{% url 'services' %}">{{ service.title }}</a>
+                            </div>
+                        {% empty %}
+                            <p>Услуг в данной категории пока нет.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <button class="toggle-button">Развернуть / Свернуть</button>
+    </section>
+    <section class="partners">
+        <h2>Наши партнеры</h2>
+        <ul class="partners-list">
+            {% for partner in partners %}
+                <li class="partner-item">
+                    <a href="{{ partner.website }}" target="_blank" class="partner-link">
+                        <img src="{{ partner.logo.url }}" alt="{{ partner.name }} logo" class="partner-logo">
+                        <span class="partner-name">{{ partner.name }}</span>
+                    </a>
+                </li>
+            {% empty %}
+                <li>Партнеров пока нет.</li>
+            {% endfor %}
+        </ul>
+    </section>
 {% endblock %}

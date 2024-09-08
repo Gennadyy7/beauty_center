@@ -6,9 +6,11 @@ from django.core.files import File
 from django.shortcuts import render, redirect
 from translate import Translator
 from urllib.error import HTTPError
-from .models import Articles, CompanyInfo, FAQ
+from .models import Articles, CompanyInfo, FAQ, Partners
 import requests
 from calendar import monthcalendar, month_name
+
+from clinic.models import ServiceSpecializations
 
 
 def index(request):
@@ -26,8 +28,13 @@ def index(request):
     calendar_month = monthcalendar(year, month)
     month_name_current  = month_name[int(month)]
 
+    grouped_services = {s_specialization.service_category: s_specialization.services.all() for s_specialization in ServiceSpecializations.objects.all()}
+    partners = Partners.objects.all()
+
     return render(request, 'main/index.html', {
         'latest_article': latest_article,
+        'grouped_services': grouped_services,
+        'partners': partners,
         'current_date': current_date,
         'user_timezone': user_timezone,
         'utc_offset': utc_offset,
