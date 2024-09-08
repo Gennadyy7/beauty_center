@@ -34,3 +34,15 @@ class FAQ(models.Model):
         verbose_name = 'Часто задаваемый вопрос'
         verbose_name_plural = 'Часто задаваемые вопросы'
 
+class Partners(models.Model):
+    name = models.CharField('Название партнера', max_length=100)
+    website = models.URLField('Веб-сайт')
+    logo = models.ImageField('Логотип', upload_to='main/partner_logos/')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Партнер'
+        verbose_name_plural = 'Партнеры'
+
