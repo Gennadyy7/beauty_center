@@ -11028,3 +11028,420 @@ Traceback (most recent call last):
     raise self.error(
 django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 32: 'static', expected 'endblock'. Did you forget to register or load this tag?
 Not Found: /main/partner_logos/flower-girl_cB2BkZh.png
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /main/partner_logos/flower-girl_cB2BkZh.png
+Not Found: /favicon.ico
+Not Found: /main/partner_logos/flower-girl_cB2BkZh.png
+Not Found: /main/partner_logos/flower-girl_cB2BkZh.png
+Not Found: /main/partner_logos/flower-girl_cB2BkZh.png
+Not Found: /main/partner_logos/flower-girl_cB2BkZh.png
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\bc_proj\main\views.py", line 34, in index
+    return render(request, 'main/index.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 32: 'static', expected 'endblock'. Did you forget to register or load this tag?
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=cosmetology&apiKey=aabb6aa60cd64803ad49bcb76aec6ced HTTP/11" 200 None
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=ILOVEMAKONNEN+Announces+Retirement%3A+%22It%27s+Time+I+Move+On+and+Go+Live+My+Life%22&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=ILOVEMAKONNEN+Announces+Retirement%3A+%22It%27s+Time+I+Move+On+and+Go+Live+My+Life%22&langpair=en%7Cru HTTP/11" 200 1443
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Just+over+a+decade+on+from+launching+his+career+with+smash+single+%22Tuesday%2C%22+ILOVEMAKONNEN+has+announced+his+retirement+from+music&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Just+over+a+decade+on+from+launching+his+career+with+smash+single+%22Tuesday%2C%22+ILOVEMAKONNEN+has+announced+his+retirement+from+music&langpair=en%7Cru HTTP/11" 200 1834
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=cosmetology&apiKey=aabb6aa60cd64803ad49bcb76aec6ced HTTP/11" 200 None
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Need+kitchen+or+bath+tile%3F+Want+to+learn+cosmetology%3F+Check+out+these+new+NJ+businesses&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Need+kitchen+or+bath+tile%3F+Want+to+learn+cosmetology%3F+Check+out+these+new+NJ+businesses&langpair=en%7Cru HTTP/11" 200 1839
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Say+hello+to+Mendoza+Tops+%26+Tile+in+Morristown+and+Christine+Valmy+International+School+of+Esthetics+%26+Cosmetology+in+Wayne&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Say+hello+to+Mendoza+Tops+%26+Tile+in+Morristown+and+Christine+Valmy+International+School+of+Esthetics+%26+Cosmetology+in+Wayne&langpair=en%7Cru HTTP/11" 200 1599
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=beauty&apiKey=aabb6aa60cd64803ad49bcb76aec6ced HTTP/11" 200 None
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=The+%E2%80%9CAmazing%E2%80%9D+%2413+HomeGoods+Organizer+I%E2%80%99m+Buying+5+Of+%28for+Every+Room+in+My+House%21%29&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=The+%E2%80%9CAmazing%E2%80%9D+%2413+HomeGoods+Organizer+I%E2%80%99m+Buying+5+Of+%28for+Every+Room+in+My+House%21%29&langpair=en%7Cru HTTP/11" 200 1606
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=The+best+part%3F+It+rolls%21%0AREAD+MORE...&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=The+best+part%3F+It+rolls%21%0AREAD+MORE...&langpair=en%7Cru HTTP/11" 200 1743
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=beauty&apiKey=aabb6aa60cd64803ad49bcb76aec6ced HTTP/11" 200 None
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Kickflips+and+Buffer+Slips%3A+An+Exploit+in+Tony+Hawk%E2%80%99s+Pro+Skater&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Kickflips+and+Buffer+Slips%3A+An+Exploit+in+Tony+Hawk%E2%80%99s+Pro+Skater&langpair=en%7Cru HTTP/11" 200 1514
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=%5BRyan+Miceli%5D+wanted+to+build+some+reverse+engineering+skills+by+finding+a+new+exploit+for+an+original+Xbox.+Where+he+ended+up+was+an+exploit+that+worked+across+the+network%2C+across+several+games%2C+a%E2%80%A6&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=%5BRyan+Miceli%5D+wanted+to+build+some+reverse+engineering+skills+by+finding+a+new+exploit+for+an+original+Xbox.+Where+he+ended+up+was+an+exploit+that+worked+across+the+network%2C+across+several+games%2C+a%E2%80%A6&langpair=en%7Cru HTTP/11" 200 2667
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /favicon.ico
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=cosmetics&apiKey=aabb6aa60cd64803ad49bcb76aec6ced HTTP/11" 200 None
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Rendering+Skin+Transparent+Using+the+Food+Dye+Tartrazine&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Rendering+Skin+Transparent+Using+the+Food+Dye+Tartrazine&langpair=en%7Cru HTTP/11" 200 2620
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Although+we+generally+assume+that+opacity+is+the+normal+look+for+animals+like+us+humans%2C+this+factoid+is+only+correct+for+as+long+as+you+maintain+the+dissimilar+optical+refraction+indices+of+skin+a%E2%80%A6&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Although+we+generally+assume+that+opacity+is+the+normal+look+for+animals+like+us+humans%2C+this+factoid+is+only+correct+for+as+long+as+you+maintain+the+dissimilar+optical+refraction+indices+of+skin+a%E2%80%A6&langpair=en%7Cru HTTP/11" 200 2889
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=cosmetics&apiKey=aabb6aa60cd64803ad49bcb76aec6ced HTTP/11" 200 None
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Warhammer+40%2C000%3A+Space+Marine+2+announces+global+release+times%2C+won%E2%80%99t+use+DRM+software+such+as+Denuvo&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Warhammer+40%2C000%3A+Space+Marine+2+announces+global+release+times%2C+won%E2%80%99t+use+DRM+software+such+as+Denuvo&langpair=en%7Cru HTTP/11" 200 1711
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=We%E2%80%99re+a+week+out+from+Warhammer+40%2C000%3A+Space+Marine+2%E2%80%99s+release+date%2C+and+Saber+have+put+out+a+final+roundup+of+details+in+a+Steam+blog.+Alongside+a+global+release+time+map+%28or+two+maps%2C+technically%2C+since+they%E2%80%99re+pulling+that+pay-more-to-play-early+nonsense%E2%80%A6&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=We%E2%80%99re+a+week+out+from+Warhammer+40%2C000%3A+Space+Marine+2%E2%80%99s+release+date%2C+and+Saber+have+put+out+a+final+roundup+of+details+in+a+Steam+blog.+Alongside+a+global+release+time+map+%28or+two+maps%2C+technically%2C+since+they%E2%80%99re+pulling+that+pay-more-to-play-early+nonsense%E2%80%A6&langpair=en%7Cru HTTP/11" 200 3324
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=cosmetics%20OR%20cosmetology%20OR%20%22plastic%20surgery%22&apiKey=aabb6aa60cd64803ad49bcb76aec6ced HTTP/11" 200 None
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Dragon+Age%3A+The+Veilguard+preorder+guide+%E2%80%94+Which+edition+should+you+buy%3F&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Dragon+Age%3A+The+Veilguard+preorder+guide+%E2%80%94+Which+edition+should+you+buy%3F&langpair=en%7Cru HTTP/11" 200 1141
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Preorders+are+open+for+Dragon+Age%3A+The+Veilguard%2C+and+there+are+multiple+ways+you+can+jump+into+BioWare%27s+latest+fantasy+adventure.&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Preorders+are+open+for+Dragon+Age%3A+The+Veilguard%2C+and+there+are+multiple+ways+you+can+jump+into+BioWare%27s+latest+fantasy+adventure.&langpair=en%7Cru HTTP/11" 200 1849
+Not Found: /favicon.ico
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=cosmetics%20OR%20cosmetology%20OR%20%22plastic%20surgery%22&apiKey=aabb6aa60cd64803ad49bcb76aec6ced HTTP/11" 200 None
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Need+kitchen+or+bath+tile%3F+Want+to+learn+cosmetology%3F+Check+out+these+new+NJ+businesses&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Need+kitchen+or+bath+tile%3F+Want+to+learn+cosmetology%3F+Check+out+these+new+NJ+businesses&langpair=en%7Cru HTTP/11" 200 1839
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Say+hello+to+Mendoza+Tops+%26+Tile+in+Morristown+and+Christine+Valmy+International+School+of+Esthetics+%26+Cosmetology+in+Wayne&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Say+hello+to+Mendoza+Tops+%26+Tile+in+Morristown+and+Christine+Valmy+International+School+of+Esthetics+%26+Cosmetology+in+Wayne&langpair=en%7Cru HTTP/11" 200 1599
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /favicon.ico
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=cosmetology%20AND%20%22plastic%20surgery%22&apiKey=aabb6aa60cd64803ad49bcb76aec6ced HTTP/11" 200 None
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Show+HN%3A+I+built+a+Face+Symmetry+Test+tool+%E2%80%93+Analyze+facial+features+instantly&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Show+HN%3A+I+built+a+Face+Symmetry+Test+tool+%E2%80%93+Analyze+facial+features+instantly&langpair=en%7Cru HTTP/11" 200 1457
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=I%27ve+recently+developed+a+simple+Face+Symmetry+Test+tool.+This+web-based+application+allows+users+to+upload+a+photo+and+instantly+analyze+their+facial+symmetry.%0A%0AComments+URL%3A+https%3A%2F%2Fnews.ycombinator.com%2Fitem%3Fid%3D41432231%0APoints%3A+3%0A%23+Comments%3A+2&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=I%27ve+recently+developed+a+simple+Face+Symmetry+Test+tool.+This+web-based+application+allows+users+to+upload+a+photo+and+instantly+analyze+their+facial+symmetry.%0A%0AComments+URL%3A+https%3A%2F%2Fnews.ycombinator.com%2Fitem%3Fid%3D41432231%0APoints%3A+3%0A%23+Comments%3A+2&langpair=en%7Cru HTTP/11" 200 2882
+Internal Server Error: /add_cosmetology_news
+Traceback (most recent call last):
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\bc_proj\main\views.py", line 77, in add_cosmetology_news
+    img_temp.write(urlopen(image_url).read())
+                   ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Professional\AppData\Local\Programs\Python\Python312\Lib\urllib\request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Professional\AppData\Local\Programs\Python\Python312\Lib\urllib\request.py", line 499, in open
+    req = Request(fullurl, data)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Professional\AppData\Local\Programs\Python\Python312\Lib\urllib\request.py", line 318, in __init__
+    self.full_url = url
+    ^^^^^^^^^^^^^
+  File "C:\Users\Professional\AppData\Local\Programs\Python\Python312\Lib\urllib\request.py", line 344, in full_url
+    self._parse()
+  File "C:\Users\Professional\AppData\Local\Programs\Python\Python312\Lib\urllib\request.py", line 373, in _parse
+    raise ValueError("unknown url type: %r" % self.full_url)
+ValueError: unknown url type: 'URL OF IMAGE'
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /favicon.ico
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=%22plastic%20surgery%22&apiKey=aabb6aa60cd64803ad49bcb76aec6ced HTTP/11" 200 None
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Hologic%2C+Inc.+%28HOLX%29%3A+Are+Street+Analysts+Bullish+on+This+Cosmetic+Surgery+and+Aesthetics+Stock+Now%3F&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Hologic%2C+Inc.+%28HOLX%29%3A+Are+Street+Analysts+Bullish+on+This+Cosmetic+Surgery+and+Aesthetics+Stock+Now%3F&langpair=en%7Cru HTTP/11" 200 1522
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=We+recently+compiled+a+list+of+the+10+Best+Cosmetic+Surgery+and+Aesthetics+Stocks+To+Buy.+In+this+article%2C+we+are+going+to+take+a+look+at+where+Hologic%2C+Inc....&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=We+recently+compiled+a+list+of+the+10+Best+Cosmetic+Surgery+and+Aesthetics+Stocks+To+Buy.+In+this+article%2C+we+are+going+to+take+a+look+at+where+Hologic%2C+Inc....&langpair=en%7Cru HTTP/11" 200 2654
+Storage can not find an available filename for "main/images\Hologic_Inc_Sx8a6sp._HOLX_Уличные_аналитики_оптимистичны_в_отношении_этой_косметической_хирургии_и_эстетики.jpg". Please make sure that the corresponding file field allows sufficient "max_length".
+Traceback (most recent call last):
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\bc_proj\main\views.py", line 84, in add_cosmetology_news
+    article.image.save(f"{title_ru}.jpg", File(img_temp))
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\db\models\fields\files.py", line 99, in save
+    self.name = self.storage.save(name, content, max_length=self.field.max_length)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\core\files\storage\base.py", line 44, in save
+    name = self.get_available_name(name, max_length=max_length)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\core\files\storage\base.py", line 107, in get_available_name
+    raise SuspiciousFileOperation(
+django.core.exceptions.SuspiciousFileOperation: Storage can not find an available filename for "main/images\Hologic_Inc_Sx8a6sp._HOLX_Уличные_аналитики_оптимистичны_в_отношении_этой_косметической_хирургии_и_эстетики.jpg". Please make sure that the corresponding file field allows sufficient "max_length".
+Bad Request: /add_cosmetology_news
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /favicon.ico
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=%22plastic%20surgery%22&apiKey=aabb6aa60cd64803ad49bcb76aec6ced HTTP/11" 200 None
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Girl+stabbed+in+Leicester+Square+was+Australian+tourist%2C+ministry+says&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Girl+stabbed+in+Leicester+Square+was+Australian+tourist%2C+ministry+says&langpair=en%7Cru HTTP/11" 200 1500
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=The+11-year-old+girl+who+was+stabbed+in+Leicester+Square+was+an+Australian+tourist%2C+the+country%27s+foreign+ministry+has+said.&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=The+11-year-old+girl+who+was+stabbed+in+Leicester+Square+was+an+Australian+tourist%2C+the+country%27s+foreign+ministry+has+said.&langpair=en%7Cru HTTP/11" 200 1944
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /favicon.ico
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=cosmetics%20OR%20cosmetology&apiKey=aabb6aa60cd64803ad49bcb76aec6ced%20NOT%20game%20NOT%20career HTTP/11" 401 162
+Internal Server Error: /add_cosmetology_news
+Traceback (most recent call last):
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\bc_proj\main\views.py", line 63, in add_cosmetology_news
+    articles = data['articles']
+               ~~~~^^^^^^^^^^^^
+KeyError: 'articles'
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=cosmetics%20OR%20cosmetology&apiKey=aabb6aa60cd64803ad49bcb76aec6ced HTTP/11" 200 None
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Kylie+Jenner+says+she+couldn%27t+decide+on+her+son%27s+name+for+a+year+because+she+was+struggling+with+postpartum+depression&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Kylie+Jenner+says+she+couldn%27t+decide+on+her+son%27s+name+for+a+year+because+she+was+struggling+with+postpartum+depression&langpair=en%7Cru HTTP/11" 200 2052
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Some+baby-naming+consultants+can+charge+up+to+%2410%2C000+to+pick+out+the+perfect+baby+name+for+their+clients.&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Some+baby-naming+consultants+can+charge+up+to+%2410%2C000+to+pick+out+the+perfect+baby+name+for+their+clients.&langpair=en%7Cru HTTP/11" 200 1972
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=cosmetics%20OR%20cosmetology&apiKey=aabb6aa60cd64803ad49bcb76aec6ced HTTP/11" 200 None
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=The+Fortnite+And+Fall+Guys+Crossover+Is+Just+Getting+Started&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=The+Fortnite+And+Fall+Guys+Crossover+Is+Just+Getting+Started&langpair=en%7Cru HTTP/11" 200 1889
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=This+week+has+already+been+one+of+Fortnite%27s+most+eventful+ever+after+the+Paradigm+goof+in+the+item+shop+and+the+changes+to+battle+pass+exclusivity.+And+there%27s+still+more+excitement+to+come.+We+have+a+big+timer+on+the+battle+royale+map+counting+down+to+somet%E2%80%A6&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=This+week+has+already+been+one+of+Fortnite%27s+most+eventful+ever+after+the+Paradigm+goof+in+the+item+shop+and+the+changes+to+battle+pass+exclusivity.+And+there%27s+still+more+excitement+to+come.+We+have+a+big+timer+on+the+battle+royale+map+counting+down+to+somet%E2%80%A6&langpair=en%7Cru HTTP/11" 200 3421
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=cosmetics%20OR%20cosmetology&apiKey=aabb6aa60cd64803ad49bcb76aec6ced HTTP/11" 200 None
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Sony%27s+Big+New+PS5+And+PC+Game+Concord+Got+Off+To+A+Slow+Start&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Sony%27s+Big+New+PS5+And+PC+Game+Concord+Got+Off+To+A+Slow+Start&langpair=en%7Cru HTTP/11" 200 2446
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Sony%27s+latest+big+PlayStation+5+and+PC+game%2C+Concord%2C+launched+on+August+23+after+an+estimated+eight+years+of+development.+The+game+did+not%2C+however%2C+appear+to+put+up+big+numbers+at+release%2C+despite+being+generally+well-received+by+fans+and+critics.+On+Steam%2C%E2%80%A6&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Sony%27s+latest+big+PlayStation+5+and+PC+game%2C+Concord%2C+launched+on+August+23+after+an+estimated+eight+years+of+development.+The+game+did+not%2C+however%2C+appear+to+put+up+big+numbers+at+release%2C+despite+being+generally+well-received+by+fans+and+critics.+On+Steam%2C%E2%80%A6&langpair=en%7Cru HTTP/11" 200 3203
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=cosmetics%20OR%20cosmetology&apiKey=aabb6aa60cd64803ad49bcb76aec6ced HTTP/11" 200 None
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=How+To+Finish+Fortnite%E2%80%99s+Quests+For+Chapter+5%2C+Season+3%2C+Week+11&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=How+To+Finish+Fortnite%E2%80%99s+Quests+For+Chapter+5%2C+Season+3%2C+Week+11&langpair=en%7Cru HTTP/11" 200 1067
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Fortnite%E2%80%99s+Chapter+5+Season+3+Battle+Pass+has+various+weekly+quests+you+can+finish+for+some+sweet+XP%2C+letting+you+unlock+those+tasty+new+cosmetics.+Week+11%27s+batch+of+quests+introduces+five+new+challenges+to+complete%2C+each+worth+15%2C000+XP.+Those+who+complete+%E2%80%A6&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Fortnite%E2%80%99s+Chapter+5+Season+3+Battle+Pass+has+various+weekly+quests+you+can+finish+for+some+sweet+XP%2C+letting+you+unlock+those+tasty+new+cosmetics.+Week+11%27s+batch+of+quests+introduces+five+new+challenges+to+complete%2C+each+worth+15%2C000+XP.+Those+who+complete+%E2%80%A6&langpair=en%7Cru HTTP/11" 200 3836
+Not Found: /favicon.ico
+C:\External\Python\Projects\STRweb-pr\beauty_center\bc_proj\main\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Starting new HTTPS connection (1): newsapi.org:443
+https://newsapi.org:443 "GET /v2/everything?q=cosmetology&apiKey=aabb6aa60cd64803ad49bcb76aec6ced HTTP/11" 200 None
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=The+nail+tech+Sha%E2%80%99Carri+Richardson+trusts+to+overnight+her+custom+press-on+nails&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=The+nail+tech+Sha%E2%80%99Carri+Richardson+trusts+to+overnight+her+custom+press-on+nails&langpair=en%7Cru HTTP/11" 200 1605
+Starting new HTTP connection (1): api.mymemory.translated.net:80
+http://api.mymemory.translated.net:80 "GET /get?q=Surprisingly%2C+nail+art+has+taken+center+stage+during+the+2024+Paris+Olympics.+Gymnast+Jordan+Chiles+said+her+long+acrylic+nails+remind+her+to+be+more+careful+so+as+to+not+break+one%2C+and+sprinter+Noah+Lyles+showed+off+his+manicure+during+his+race.+Sprinter+Sha%E2%80%A6&langpair=en%7Cru HTTP/11" 301 134
+Starting new HTTPS connection (1): api.mymemory.translated.net:443
+https://api.mymemory.translated.net:443 "GET /get?q=Surprisingly%2C+nail+art+has+taken+center+stage+during+the+2024+Paris+Olympics.+Gymnast+Jordan+Chiles+said+her+long+acrylic+nails+remind+her+to+be+more+careful+so+as+to+not+break+one%2C+and+sprinter+Noah+Lyles+showed+off+his+manicure+during+his+race.+Sprinter+Sha%E2%80%A6&langpair=en%7Cru HTTP/11" 200 3869
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico

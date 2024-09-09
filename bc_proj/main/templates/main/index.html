@@ -1,5 +1,7 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}Главная{% endblock %}
 
 {% block content %}
@@ -29,9 +31,9 @@
     </section>
     <section class="banner">
         <div class="banner-container">
-            <img src="main/partner_logos/flower-girl_cB2BkZh.png" alt="Реклама компании" class="banner-img">
-            <img src="main/partner_logos/flower-girl_cB2BkZh.png" alt="Реклама компании" class="banner-img">
-            <img src="main/partner_logos/flower-girl_cB2BkZh.png" alt="Реклама компании" class="banner-img">
+            <img src="{% static 'main/logo_small.png' %}" alt="Реклама компании" class="banner-img">
+            <img src="{% static 'main/logo_small.png' %}" alt="Реклама компании" class="banner-img">
+            <img src="{% static 'main/logo_small.png' %}" alt="Реклама компании" class="banner-img">
         </div>
     </section>
     <article>
