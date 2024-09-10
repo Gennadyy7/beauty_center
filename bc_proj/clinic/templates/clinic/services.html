@@ -36,7 +36,7 @@
     {% endif %}
 
     {% for service in services %}
-        <div class="service">
+        <div class="service" id="service-{{ service.id }}">
             <h2>{{ service.title }}</h2>
             <p>{{ service.description }}</p>
             <p>Цена: {{ service.price }}</p>
@@ -50,7 +50,31 @@
                         <button type="submit">Добавить в заказ</button>
                     {% endif %}
                 </form>
+
+                <form action="{% url 'services' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="basket_service_id" value="{{ service.id }}">
+                    {% if service.id in basket_id_lst %}
+                        <button type="submit">Удалить из корзины</button>
+                    {% else %}
+                        <button type="submit">Добавить в корзину</button>
+                    {% endif %}
+                </form>
             {% endif %}
         </div>
     {% endfor %}
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const scrollToId = urlParams.get('scroll_to');
+
+        if (scrollToId) {
+            const element = document.getElementById(`service-${scrollToId}`);
+            if (element) {
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }, 500);
+            }
+        }
+    </script>
 {% endblock %}

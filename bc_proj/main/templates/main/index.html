@@ -45,7 +45,7 @@
                     <div class="services-list">
                         {% for service in services %}
                             <div class="service-item">
-                                <a href="{% url 'services' %}">{{ service.title }}</a>
+                                <a href="{% url 'service_detail' service.id %}">{{ service.title }}</a>
                             </div>
                         {% empty %}
                             <p>Услуг в данной категории пока нет.</p>

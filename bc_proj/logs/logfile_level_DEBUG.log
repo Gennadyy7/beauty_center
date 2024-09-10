@@ -11731,3 +11731,212 @@ platform is win32
 CACHEDIR=C:\Users\Professional\.matplotlib
 Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
 Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /favicon.ico
+Internal Server Error: /clinic/services/4/
+Traceback (most recent call last):
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view clinic.views.service_detail_view didn't return an HttpResponse object. It returned None instead.
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json

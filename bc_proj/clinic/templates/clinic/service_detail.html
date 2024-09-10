@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ service.title }}{% endblock %}
+
+{% block content %}
+    <div class="service-detail">
+        <h1>{{ service.title }}</h1>
+        {% if user.is_authenticated and user.client %}
+            <form action="{% url 'service_detail' service.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit">
+                    {% if is_service_in_basket %}
+                        Удалить из корзины
+                    {% else %}
+                        Добавить в корзину
+                    {% endif %}
+                </button>
+            </form>
+        {% else %}
+            <p><a href="{% url 'to_login' %}">Авторизуйтесь</a>, чтобы добавить услугу в корзину.</p>
+        {% endif %}
+        <p>{{ service.description }}</p>
+        <p>Цена: {{ service.price }}</p>
+    </div>
+{% endblock %}

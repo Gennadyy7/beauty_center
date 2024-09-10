@@ -13,7 +13,7 @@ from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.db.models import Avg, Sum
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import UserLoginForm, ClientRegistrationForm, ReviewForm, PromocodeForm
 from .models import Clients, ServiceSpecializations, Vacancies, Reviews, Services, PromoCodes, \
     Orders, Doctors
@@ -182,29 +182,47 @@ def services_view(request):
 
     if request.method == 'POST':
         service_id = request.POST.get('service_id')
-        service = Services.objects.get(id=service_id)
+        if service_id:
+            service = Services.objects.get(id=service_id)
 
-        if service_id in ordered_services:
-            ordered_services.remove(service_id)
-        else:
-            current_category = service.service_specialization.service_category.id
-            ordered_services = [
-                sid for sid in ordered_services
-                if Services.objects.get(id=sid).service_specialization.service_category.id == current_category
-            ]
-            ordered_services.append(service_id)
+            if service_id in ordered_services:
+                ordered_services.remove(service_id)
+            else:
+                current_category = service.service_specialization.service_category.id
+                ordered_services = [
+                    sid for sid in ordered_services
+                    if Services.objects.get(id=sid).service_specialization.service_category.id == current_category
+                ]
+                ordered_services.append(service_id)
 
-        request.session['ordered_services'] = ordered_services
+            request.session['ordered_services'] = ordered_services
+
+        if (basket_service_id:=request.POST.get('basket_service_id')):
+            service = get_object_or_404(Services, id=basket_service_id)
+            cat_dict = request.session.get('basket_services', dict())
+            sub_list = cat_dict.setdefault(str(service.service_specialization.service_category), [])
+
+            if service.id in sub_list:
+                sub_list.remove(service.id)
+            else:
+                sub_list.append(service.id)
+
+            request.session['basket_services'] = cat_dict
+            return redirect(f'{request.path}?scroll_to={service.id}')
+
+        return redirect(f'{request.path}?scroll_to={service_id}')
 
     ordered_services_objects = Services.objects.filter(id__in=ordered_services)
-    print(ordered_services_objects)
+    basket_id_lst = sum(request.session.get('basket_services', dict()).values(), [])
 
     return render(request, 'clinic/services.html', {
         'services': services,
         'service_specializations': service_specializations,
         'selected_category': category,
         'selected_sort': sort,
-        'ordered_services': ordered_services_objects
+        'ordered_services': ordered_services_objects,
+        'scroll_to': request.GET.get('scroll_to'),
+        'basket_id_lst': basket_id_lst,
     })
 
 def promocodes_view(request):
@@ -353,3 +371,23 @@ def statistics_view(request):
     }
 
     return render(request, 'clinic/statistics.html', data)
+
+def service_detail_view(request, service_id):
+    service = get_object_or_404(Services, id=service_id)
+    cat_dict = request.session.get('basket_services', dict())
+    sub_list = cat_dict.setdefault(str(service.service_specialization.service_category), [])
+
+    if request.method == 'POST':
+        if service.id in sub_list:
+            sub_list.remove(service.id)
+        else:
+            sub_list.append(service.id)
+
+        request.session['basket_services'] = cat_dict
+
+    is_service_in_basket = service.id in sub_list
+
+    return render(request, 'clinic/service_detail.html', context={
+        'service': service,
+        'is_service_in_basket': is_service_in_basket,
+    })
