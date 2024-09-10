@@ -11445,3 +11445,289 @@ https://api.mymemory.translated.net:443 "GET /get?q=Surprisingly%2C+nail+art+has
 Not Found: /favicon.ico
 Not Found: /favicon.ico
 Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /media/main/partner_logos/flower-girl_cB2BkZh.png
+Not Found: /favicon.ico
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Using proactor: IocpProactor
+Using proactor: IocpProactor
+Using proactor: IocpProactor
+Using proactor: IocpProactor
+Using proactor: IocpProactor
+Using proactor: IocpProactor
+Using proactor: IocpProactor
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+The joined path (C:\Users\Professional\Downloads\partner_1.png) is located outside of the base path component (C:\External\Python\Projects\STRweb-pr\beauty_center\bc_proj\media)
+Traceback (most recent call last):
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\views\static.py", line 45, in serve
+    fullpath = Path(safe_join(document_root, path))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\django\utils\_os.py", line 31, in safe_join
+    raise SuspiciousFileOperation(
+django.core.exceptions.SuspiciousFileOperation: The joined path (C:\Users\Professional\Downloads\partner_1.png) is located outside of the base path component (C:\External\Python\Projects\STRweb-pr\beauty_center\bc_proj\media)
+Not Found: /media/main/partner_logos/flower-girl_cB2BkZh.png
+Bad Request: /media/C:/Users/Professional/Downloads/partner_1.png
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+STREAM b'IHDR' 16 13
+STREAM b'gAMA' 41 4
+STREAM b'iCCP' 57 2601
+iCCP profile name b'icm'
+Compression method 0
+STREAM b'cHRM' 2670 32
+STREAM b'bKGD' 2714 6
+b'bKGD' 2714 6 (unknown)
+STREAM b'pHYs' 2732 9
+STREAM b'IDAT' 2753 18267
+Importing BlpImagePlugin
+Importing BmpImagePlugin
+Importing BufrStubImagePlugin
+Importing CurImagePlugin
+Importing DcxImagePlugin
+Importing DdsImagePlugin
+Importing EpsImagePlugin
+Importing FitsImagePlugin
+Importing FliImagePlugin
+Importing FpxImagePlugin
+Image: failed to import FpxImagePlugin: No module named 'olefile'
+Importing FtexImagePlugin
+Importing GbrImagePlugin
+Importing GifImagePlugin
+Importing GribStubImagePlugin
+Importing Hdf5StubImagePlugin
+Importing IcnsImagePlugin
+Importing IcoImagePlugin
+Importing ImImagePlugin
+Importing ImtImagePlugin
+Importing IptcImagePlugin
+Importing JpegImagePlugin
+Importing Jpeg2KImagePlugin
+Importing McIdasImagePlugin
+Importing MicImagePlugin
+Image: failed to import MicImagePlugin: No module named 'olefile'
+Importing MpegImagePlugin
+Importing MpoImagePlugin
+Importing MspImagePlugin
+Importing PalmImagePlugin
+Importing PcdImagePlugin
+Importing PcxImagePlugin
+Importing PdfImagePlugin
+Importing PixarImagePlugin
+Importing PngImagePlugin
+Importing PpmImagePlugin
+Importing PsdImagePlugin
+Importing QoiImagePlugin
+Importing SgiImagePlugin
+Importing SpiderImagePlugin
+Importing SunImagePlugin
+Importing TgaImagePlugin
+Importing TiffImagePlugin
+Importing WebPImagePlugin
+Importing WmfImagePlugin
+Importing XbmImagePlugin
+Importing XpmImagePlugin
+Importing XVThumbImagePlugin
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+STREAM b'IHDR' 16 13
+STREAM b'gAMA' 41 4
+STREAM b'sRGB' 57 1
+STREAM b'pHYs' 70 9
+STREAM b'PLTE' 91 705
+STREAM b'tRNS' 808 232
+STREAM b'IDAT' 1052 8192
+Importing BlpImagePlugin
+Importing BmpImagePlugin
+Importing BufrStubImagePlugin
+Importing CurImagePlugin
+Importing DcxImagePlugin
+Importing DdsImagePlugin
+Importing EpsImagePlugin
+Importing FitsImagePlugin
+Importing FliImagePlugin
+Importing FpxImagePlugin
+Image: failed to import FpxImagePlugin: No module named 'olefile'
+Importing FtexImagePlugin
+Importing GbrImagePlugin
+Importing GifImagePlugin
+Importing GribStubImagePlugin
+Importing Hdf5StubImagePlugin
+Importing IcnsImagePlugin
+Importing IcoImagePlugin
+Importing ImImagePlugin
+Importing ImtImagePlugin
+Importing IptcImagePlugin
+Importing JpegImagePlugin
+Importing Jpeg2KImagePlugin
+Importing McIdasImagePlugin
+Importing MicImagePlugin
+Image: failed to import MicImagePlugin: No module named 'olefile'
+Importing MpegImagePlugin
+Importing MpoImagePlugin
+Importing MspImagePlugin
+Importing PalmImagePlugin
+Importing PcdImagePlugin
+Importing PcxImagePlugin
+Importing PdfImagePlugin
+Importing PixarImagePlugin
+Importing PngImagePlugin
+Importing PpmImagePlugin
+Importing PsdImagePlugin
+Importing QoiImagePlugin
+Importing SgiImagePlugin
+Importing SpiderImagePlugin
+Importing SunImagePlugin
+Importing TgaImagePlugin
+Importing TiffImagePlugin
+Importing WebPImagePlugin
+Importing WmfImagePlugin
+Importing XbmImagePlugin
+Importing XpmImagePlugin
+Importing XVThumbImagePlugin
+Not Found: /favicon.ico
+STREAM b'IHDR' 16 13
+STREAM b'pHYs' 41 9
+STREAM b'IDAT' 62 8192
+Not Found: /favicon.ico
+STREAM b'IHDR' 16 13
+STREAM b'IDAT' 41 8192
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /favicon.ico
