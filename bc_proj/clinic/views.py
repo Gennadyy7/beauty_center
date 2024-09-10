@@ -207,6 +207,9 @@ def services_view(request):
             else:
                 sub_list.append(service.id)
 
+            if not sub_list:
+                del cat_dict[str(service.service_specialization.service_category)]
+
             request.session['basket_services'] = cat_dict
             return redirect(f'{request.path}?scroll_to={service.id}')
 
@@ -244,14 +247,16 @@ def schedule_view(request):
     return render(request, 'clinic/schedule.html')
 
 def ordering_view(request):
-    ordered_services = request.session.get('ordered_services', [])
+    if (cat_name:=request.GET.get('category_name_from_basket')):
+        ordered_services = request.session.get('basket_services', dict()).get(cat_name, [])
+    else:
+        ordered_services = request.session.get('ordered_services', [])
+
     services = Services.objects.filter(id__in=ordered_services)
     total_price = sum(service.price for service in services)
     service_category_id = services.first().service_specialization.service_category.id if services else None
     doctors = Doctors.objects.filter(service_specialization__service_category__id=service_category_id)
     promo_codes = PromoCodes.objects.filter(expiration_date__gte=timezone.now().date())
-
-    print(ordered_services, services, total_price, service_category_id, doctors, promo_codes)
 
     if request.method == 'POST':
         doctor_id = request.POST.get('doctor')
@@ -383,6 +388,9 @@ def service_detail_view(request, service_id):
         else:
             sub_list.append(service.id)
 
+        if not sub_list:
+            del cat_dict[str(service.service_specialization.service_category)]
+
         request.session['basket_services'] = cat_dict
 
     is_service_in_basket = service.id in sub_list
@@ -390,4 +398,16 @@ def service_detail_view(request, service_id):
     return render(request, 'clinic/service_detail.html', context={
         'service': service,
         'is_service_in_basket': is_service_in_basket,
+    })
+
+def basket_view(request):
+    basket_services = request.session.get('basket_services', dict())
+    cat_obj_services_with_totals = dict()
+
+    for cat, ids in basket_services.items():
+        services = Services.objects.filter(id__in=ids)
+        cat_obj_services_with_totals[(cat, sum(service.price for service in services))] = services
+
+    return render(request, 'clinic/basket.html', context={
+        'cat_obj_services_with_totals': cat_obj_services_with_totals,
     })

@@ -21,4 +21,5 @@ urlpatterns = [
     path('delete_promocode/<int:pk>', views.promocodeDeleteView.as_view(), name='delete_promocode'),
     path('statistics', views.statistics_view, name='statistics'),
     path('services/<int:service_id>/', views.service_detail_view, name='service_detail'),
+    path('basket/', views.basket_view, name='basket'),
 ]

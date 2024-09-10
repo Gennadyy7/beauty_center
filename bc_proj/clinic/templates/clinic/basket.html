@@ -1,0 +1,36 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Корзина{% endblock %}
+
+{% block content %}
+<h1>Моя корзина</h1>
+
+{% if cat_obj_services_with_totals %}
+    {% for category_total_pair, services in cat_obj_services_with_totals.items %}
+        <h2>{{ category_total_pair.0 }}</h2>
+        <ul>
+            {% for service in services %}
+                <li>
+                    {{ service.title }} - {{ service.price }} 
+                    <form action="{% url 'service_detail' service.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit">-</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+        <h3>Цена: {{ category_total_pair.1 }}</h3>
+        <form action="{% url 'ordering' %}" method="GET">
+            {% csrf_token %}
+            <input type="hidden" name="category_name_from_basket" value="{{ services.0.service_specialization.service_category.name }}">
+            <button type="submit">Оформить заказ</button>
+        </form>
+        <form action="{% url 'ordering' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">Удалить</button>
+        </form>
+    {% endfor %}
+{% else %}
+    <p>Ваша корзина пуста.</p>
+{% endif %}
+{% endblock %}
