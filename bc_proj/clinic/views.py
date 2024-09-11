@@ -4,6 +4,7 @@ from io import BytesIO
 from statistics import mean, multimode, median
 
 from django.core.files.base import ContentFile
+from django.http import Http404
 from django.utils import timezone
 import random
 
@@ -20,6 +21,12 @@ from .models import Clients, ServiceSpecializations, Vacancies, Reviews, Service
 import requests
 from django.contrib.auth.mixins import UserPassesTestMixin
 import matplotlib.pyplot as plt
+
+def remove_cat_from_basket(request, cat_name):
+    cat_dict = request.session.get('basket_services', dict())
+    if cat_name in cat_dict:
+        del cat_dict[cat_name]
+    request.session['basket_services'] = cat_dict
 
 class AdminRequiredMixin(UserPassesTestMixin):
     def test_func(self):
@@ -283,8 +290,10 @@ def ordering_view(request):
         new_order.save()
         new_order.services.set(services)
         new_order.save()
-        print(new_order)
-        request.session['ordered_services'] = []
+        if cat_name:
+            remove_cat_from_basket(request, cat_name)
+        else:
+            request.session['ordered_services'] = []
         return redirect('schedule')
 
     return render(request, 'clinic/ordering.html', {
@@ -377,7 +386,7 @@ def statistics_view(request):
 
     return render(request, 'clinic/statistics.html', data)
 
-def service_detail_view(request, service_id):
+def remove_service_from_basket(request, service_id):
     service = get_object_or_404(Services, id=service_id)
     cat_dict = request.session.get('basket_services', dict())
     sub_list = cat_dict.setdefault(str(service.service_specialization.service_category), [])
@@ -395,12 +404,31 @@ def service_detail_view(request, service_id):
 
     is_service_in_basket = service.id in sub_list
 
+    return service, is_service_in_basket
+
+def service_detail_view(request, service_id):
+    service, is_service_in_basket = remove_service_from_basket(request, service_id)
+
     return render(request, 'clinic/service_detail.html', context={
         'service': service,
         'is_service_in_basket': is_service_in_basket,
     })
 
 def basket_view(request):
+    try:
+        request.user.client
+    except Exception:
+        raise Http404('В корзину могут зайти только авторизованные клиенты')
+
+    if request.method == 'POST':
+        match request.POST.get('to_delete'):
+            case str() as service_id if service_id.isdigit():
+                remove_service_from_basket(request, int(service_id))
+            case str() as cat_name:
+                remove_cat_from_basket(request, cat_name)
+            case _:
+                pass
+
     basket_services = request.session.get('basket_services', dict())
     cat_obj_services_with_totals = dict()
 

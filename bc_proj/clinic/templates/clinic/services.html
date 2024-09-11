@@ -37,7 +37,7 @@
 
     {% for service in services %}
         <div class="service" id="service-{{ service.id }}">
-            <h2>{{ service.title }}</h2>
+            <h2><a href="{% url 'service_detail' service.id %}">{{ service.title }}</a></h2>
             <p>{{ service.description }}</p>
             <p>Цена: {{ service.price }}</p>
             {% if user.is_authenticated and user.client %}

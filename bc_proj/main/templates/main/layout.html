@@ -45,6 +45,8 @@
                 <li><a href="{% url 'schedule' %}">График</a></li>
                 {% else %}
                 <li><a href="{% url 'statistics' %}">Статистика</a></li>
+                {% endif %} {% if user.client %}
+                <li><a href="{% url 'basket' %}">Корзина</a></li>
                 {% endif %} {% endif %}
             </ul>
             <ul>
