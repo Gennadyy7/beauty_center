@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 
 {% load static %}
 
@@ -7,6 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{% static 'main/favicon.ico' %}" type="image/x-icon">
+    {% block meta %}
+        <meta name="description" content="Галатея - косметологические услуги и пластическая хирургия, уход за кожей и красота.">
+        <meta name="keywords" content="косметология, уход за кожей, красота">
+    {% endblock %}
     <title>{% block title %}{% endblock %}</title>
 </head>
 
@@ -17,8 +22,8 @@
                 <img src="{% static 'main/logo_small.png' %}" alt="Логотип компании">
             </div>
             <div class="org-info">
-                <h1>Галатея</h1>
-                <p class="slogan">Красота исходит изнутри</p>
+                <h1><strong>Галатея</strong></h1>
+                <p class="slogan"><strong>Красота исходит изнутри</strong></p>
             </div>
         </div>
     </header>
@@ -54,7 +59,7 @@
                 <li>
                     <form action="{% url 'logout' %}" method="post">
                         {% csrf_token %}
-                        <button type="submit">Выйти</button>
+                        <button type="submit" aria-label="Выйти">Выйти</button>
                     </form>
                 </li>
                 {% if user.is_superuser %}
