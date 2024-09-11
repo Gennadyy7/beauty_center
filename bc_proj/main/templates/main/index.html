@@ -4,6 +4,11 @@
 
 {% block title %}Главная{% endblock %}
 
+{% block meta %}
+<meta name="description" content="Главная страница компании Галатея. Узнайте о наших услугах, акциях и партнерах.">
+<meta name="keywords" content="косметология, услуги, акции, партнеры, Галатея">
+{% endblock %}
+
 {% block content %}
     <section>
         <p>Текущая дата: {{ current_date|date:"d/m/Y" }}</p>
@@ -57,8 +62,7 @@
         <button class="toggle-button">Развернуть / Свернуть</button>
     </section>
     <article>
-        <h2>Актуальная статья</h2>
-        <h2>{{ latest_article.title }}</h2>
+        <h2>Актуальная статья: {{ latest_article.title }}</h2>
         <p>{{ latest_article.summary }}</p>
         <img src="{{ latest_article.image.url }}" alt="{{ latest_article.title }}">
     </article>

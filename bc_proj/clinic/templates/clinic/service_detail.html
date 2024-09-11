@@ -2,6 +2,11 @@
 
 {% block title %}{{ service.title }}{% endblock %}
 
+{% block meta %}
+    <meta name="description" content="{{ service.description|truncatewords:20 }}">
+    <meta name="keywords" content="{{ service.title }}, Галатея">
+{% endblock %}
+
 {% block content %}
     <div class="service-detail">
         <h1>{{ service.title }}</h1>
