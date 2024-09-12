@@ -8,9 +8,13 @@
         <ul>
             {% for faq_item in faq_items %}
             <li>
-                <h3>{{ faq_item.question }}</h3>
-                <p>{{ faq_item.answer }}</p>
-                <p>Дата добавления: {{ faq_item.date_added }}</p>
+                <details>
+                    <summary>
+                        <h3>{{ faq_item.question }}</h3>
+                        <p>Дата добавления: {{ faq_item.date_added }}</p>
+                    </summary>
+                <p>Ответ: {{ faq_item.answer }}</p>
+                </details>
             </li>
             {% endfor %}
         </ul>
