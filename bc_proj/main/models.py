@@ -3,6 +3,7 @@ from django.db import models
 class Articles(models.Model):
     title = models.CharField('Название', max_length=50)
     summary = models.CharField('Краткая информация', max_length=500)
+    content = models.TextField('Полный текст', blank=True, null=True)
     image = models.ImageField('Картинка', upload_to='main/images')
 
     def __str__(self):

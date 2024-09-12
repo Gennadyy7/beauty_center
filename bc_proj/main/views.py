@@ -3,12 +3,14 @@ from tempfile import NamedTemporaryFile
 from urllib.request import urlopen
 from datetime import datetime, timezone
 from django.core.files import File
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from translate import Translator
 from urllib.error import HTTPError
 from .models import Articles, CompanyInfo, FAQ, Partners
 import requests
 from calendar import monthcalendar, month_name
+from newspaper import Article
 
 from clinic.models import ServiceSpecializations
 
@@ -71,6 +73,33 @@ def faq(request):
     faq_items = FAQ.objects.order_by('-date_added')
     return render(request, 'main/faq.html', {'faq_items': faq_items})
 
+
+import re
+
+
+def translate_text(text, translator, chunk_size=500):
+    translated_parts = []
+    start = 0
+
+    while start < len(text):
+        end = start + chunk_size
+
+        if end < len(text):
+            part = text[start:end]
+            last_separator = max(part.rfind('.'), part.rfind(','), part.rfind(' '))
+
+            if last_separator != -1:
+                end = start + last_separator
+
+        chunk = text[start:end].strip()
+        if chunk:
+            translated_chunk = translator.translate(chunk)
+            translated_parts.append(translated_chunk)
+
+        start = end
+
+    return ''.join(translated_parts)
+
 def add_cosmetology_news(request):
     response = requests.get(
         'https://newsapi.org/v2/everything?q=cosmetology&apiKey=aabb6aa60cd64803ad49bcb76aec6ced')
@@ -82,11 +111,24 @@ def add_cosmetology_news(request):
         title = article_data.get('title')
         summary = article_data.get('description')
         image_url = article_data.get('urlToImage')
+        source_url = article_data.get('url')
 
         if title and summary and image_url:
             translator = Translator(to_lang="ru")
             title_ru = translator.translate(title)
             summary_ru = translator.translate(summary)
+
+            full_text = ""
+            try:
+                article = Article(source_url)
+                article.download()
+                article.parse()
+                full_text = article.text
+            except Exception as e:
+                print(f"Не удалось извлечь полный текст статьи: {e}")
+                full_text = "Полный текст недоступен."
+
+            full_text_ru = translate_text(full_text, translator)
 
             img_temp = NamedTemporaryFile(delete=True)
             try:
@@ -96,9 +138,12 @@ def add_cosmetology_news(request):
                 continue
             img_temp.flush()
 
-            article = Articles(title=title_ru, summary=summary_ru)
-            article.image.save(f"{title_ru}.jpg", File(img_temp))
-            article.save()
+            article = Articles(title=title_ru, summary=summary_ru, content=full_text_ru)
+            try:
+                article.image.save(f"{title_ru}.jpg", File(img_temp))
+                article.save()
+            except Exception:
+                return HttpResponse('Произошла ошибка при сохранении статьи')
             break
 
     return redirect('home')
