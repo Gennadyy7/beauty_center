@@ -10,6 +10,7 @@
             <ul>
                 {% for doctor in service.doctors.all %}
                     <li>
+                        <img src="{{ doctor.photo.url }}" alt="Фото {{ doctor.name }}" width="150" height="150">
                         <h3>{{ doctor.surname }} {{ doctor.name }} {{ doctor.patronymic }}</h3>
                         <p>Телефон: {{ doctor.phone }}</p>
                         <p>Email: {{ doctor.email }}</p>

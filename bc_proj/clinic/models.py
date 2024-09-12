@@ -106,6 +106,8 @@ class Doctors(models.Model):
     email = models.EmailField('Электронная почта')
     service_specialization = models.ForeignKey(ServiceSpecializations, on_delete=models.CASCADE, related_name='doctors',
                                                verbose_name='Специализация врача')
+    photo = models.ImageField('Фотография', upload_to='doctors_photos/', blank=True, null=True,
+                              default='clinic/john_doe/john_doe.png')
 
     def save(self, *args, **kwargs):
         if Clients.objects.filter(user=self.user).exists():

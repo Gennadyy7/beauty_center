@@ -147,3 +147,6 @@ def add_cosmetology_news(request):
             break
 
     return redirect('home')
+
+def privacy_policy(request):
+    return render(request, 'main/privacy_policy.html')
