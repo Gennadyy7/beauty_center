@@ -14,6 +14,12 @@ class Articles(models.Model):
 
 class CompanyInfo(models.Model):
     info = models.TextField('Информация о компании')
+    video = models.FileField('Видео', upload_to='main/videos/', blank=True, null=True)
+    logo = models.ImageField('Логотип', upload_to='main/logos/', blank=True, null=True)
+    history = models.TextField('История компании', blank=True, null=True)
+    requisites = models.TextField('Реквизиты', blank=True, null=True)
+    certificate_file = models.FileField('Сертификат (HTML файл)', upload_to='main/certificates/', blank=True, null=True)
+    css_file = models.FileField('CSS файл для сертификата', upload_to='main/certificates/', blank=True, null=True)
 
     def __str__(self):
         return "Информация о компании"

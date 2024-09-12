@@ -2,9 +2,51 @@
 
 {% block title %}О нас{% endblock %}
 
+{% block meta %}
+    <meta name="description" content="Узнайте больше о нашем косметологическом центре 'Галатея', который предлагает косметологические услуги и пластическую хирургию.">
+    <meta name="keywords" content="косметология, услуги, уход за кожей, пластическая хирургия, красота, Галатея">
+{% endblock %}
+
 {% block content %}
     <div>
         <h1>Косметологический центр "Галатея"</h1>
-        <p>{{ company_info.info }}</p>
+
+        {% if company_info.logo %}
+            <h2>Логотип</h2>
+            <img src="{{ company_info.logo.url }}" alt="Логотип компании" />
+        {% endif %}
+
+        {% if company_info.info %}
+            <h2>О нас</h2>
+            <p>{{ company_info.info|linebreaks }}</p>
+        {% endif %}
+
+        {% if company_info.video %}
+            <h2>Видео о компании</h2>
+            <video width="600" autoplay controls muted>
+                <source src="{{ company_info.video.url }}" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+        {% endif %}
+
+        {% if company_info.history %}
+            <h2>История компании</h2>
+            <p>{{ company_info.history|linebreaks }}</p>
+        {% endif %}
+
+        {% if company_info.requisites %}
+            <h2>Реквизиты</h2>
+            <p>{{ company_info.requisites|linebreaks }}</p>
+        {% endif %}
+
+        {% if company_info.certificate_file %}
+            <h2>Сертификат</h2>
+            {% if company_info.css_file %}
+                <link rel="stylesheet" type="text/css" href="{{ company_info.css_file.url }}">
+            {% endif %}
+            <div>
+                {{ company_info.certificate_file|safe }}
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
