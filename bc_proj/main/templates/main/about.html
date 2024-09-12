@@ -1,5 +1,7 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}О нас{% endblock %}
 
 {% block meta %}
@@ -19,6 +21,11 @@
         {% if company_info.info %}
             <h2>О нас</h2>
             <p>{{ company_info.info|linebreaks }}</p>
+            <audio controls>
+                <source src="{% static 'main/reincarnation.mp3' %}" type="audio/mpeg">
+                Ваш браузер не поддерживает аудиоплеер.
+            </audio>
+            <p><strong>Подпись к аудио: Вот с таким звуком вы будете перевоплощаться в красотку!</strong></p>
         {% endif %}
 
         {% if company_info.video %}
