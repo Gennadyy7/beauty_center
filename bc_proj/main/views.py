@@ -43,9 +43,25 @@ def index(request):
         'month_name': month_name_current
     })
 
+
 def about(request):
     company_info = CompanyInfo.objects.last()
-    return render(request, 'main/about.html', {'company_info': company_info})
+
+    if company_info:
+        if company_info.certificate_file:
+            with open(company_info.certificate_file.path, 'r+', encoding='utf-8') as f:
+                certificate_html = f.read()
+                f.seek(0)
+
+                if company_info.css_file:
+                    css_link = f'<link rel="stylesheet" type="text/css" href="{company_info.css_file.url}">'
+                    certificate_html = certificate_html.replace("<!--css_link-->", css_link)
+
+                f.write(certificate_html)
+
+    context = {'company_info': company_info}
+
+    return render(request, 'main/about.html', context)
 
 def news(request):
     articles = Articles.objects.order_by('-id')

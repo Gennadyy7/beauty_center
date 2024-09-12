@@ -13,7 +13,7 @@
 
         {% if company_info.logo %}
             <h2>Логотип</h2>
-            <img src="{{ company_info.logo.url }}" alt="Логотип компании" />
+            <img src="{{ company_info.logo.url }}" alt="Логотип компании" width="600"/>
         {% endif %}
 
         {% if company_info.info %}
@@ -22,7 +22,7 @@
         {% endif %}
 
         {% if company_info.video %}
-            <h2>Видео о компании</h2>
+            <h2>Видео о клинике</h2>
             <video width="600" autoplay controls muted>
                 <source src="{{ company_info.video.url }}" type="video/mp4">
                 Ваш браузер не поддерживает видео.
@@ -41,12 +41,21 @@
 
         {% if company_info.certificate_file %}
             <h2>Сертификат</h2>
-            {% if company_info.css_file %}
-                <link rel="stylesheet" type="text/css" href="{{ company_info.css_file.url }}">
-            {% endif %}
             <div>
-                {{ company_info.certificate_file|safe }}
+                <iframe src="{{ company_info.certificate_file.url }}" frameborder="0" width="600" height="249" scrolling="yes"></iframe>
             </div>
+            {% if company_info.css_file %}
+            <div>
+                <a href="{{ company_info.certificate_file.url }}" download>Скачать сертификат (HTML)</a>
+            </div>
+            <div>
+                <a href="{{ company_info.css_file.url }}" download>Скачать стили для сертификата (CSS)</a>
+            </div>
+            {% else %}
+            <div>
+                <a href="{{ company_info.certificate_file.url }}" download>Скачать сертификат (HTML)</a>
+            </div>
+            {% endif %}
         {% endif %}
     </div>
 {% endblock %}
