@@ -15699,3 +15699,13 @@ http://api.mymemory.translated.net:80 "GET /get?q=thoughts%3F+Subscribe+here+to+
 Starting new HTTPS connection (1): api.mymemory.translated.net:443
 https://api.mymemory.translated.net:443 "GET /get?q=thoughts%3F+Subscribe+here+to+our+newly+launched+newsletter%2C+In+Review+by+David+Ehrlich%2C+in+which+our+Chief+Film+Critic+and+Head+Reviews+Editor+rounds+up+the+best+reviews%2C+streaming+picks%2C+and+offers+some+new+musings%2C+all+only+available+to+subscribers.&langpair=en%7Cru HTTP/11" 200 3342
 Not Found: /media/main/certificates/first.css
+Watching for file changes with StatReloader
+matplotlib data path: C:\External\Python\Projects\STRweb-pr\beauty_center\.venv\Lib\site-packages\matplotlib\mpl-data
+CONFIGDIR=C:\Users\Professional\.matplotlib
+interactive is False
+platform is win32
+CACHEDIR=C:\Users\Professional\.matplotlib
+Using fontManager instance from C:\Users\Professional\.matplotlib\fontlist-v390.json
+Not Found: /media/main/certificates/first.css
+Not Found: /favicon.ico
+Not Found: /media/main/certificates/first.css

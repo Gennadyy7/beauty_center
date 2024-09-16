@@ -42,8 +42,10 @@
         {% endif %}
 
         {% if company_info.requisites %}
-            <h2>Реквизиты</h2>
-            <p>{{ company_info.requisites|linebreaks }}</p>
+            <address>
+                <h2>Реквизиты</h2>
+                {{ company_info.requisites|linebreaks }}
+            </address>
         {% endif %}
 
         {% if company_info.certificate_file %}
