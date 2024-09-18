@@ -21,13 +21,9 @@
         </blockquote>
         {% for article in articles %}
             <div class="article">
-                <h2>{{ article.title }}</h2>
+                <h2><a href="{% url 'article_detail' article.id %}">{{ article.title }}</a></h2>
                 <p>{{ article.summary }}</p>
                 <img src="{{ article.image.url }}" alt="{{ article.title }}" width="600">
-                <details>
-                    <summary>Читать статью полностью</summary>
-                    <p>{{ article.content }}</p>
-                </details>
             </div>
         {% endfor %}
     </div>

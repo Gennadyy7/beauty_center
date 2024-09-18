@@ -4,7 +4,7 @@ from urllib.request import urlopen
 from datetime import datetime, timezone
 from django.core.files import File
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from translate import Translator
 from urllib.error import HTTPError
 from .models import Articles, CompanyInfo, FAQ, Partners
@@ -68,6 +68,10 @@ def about(request):
 def news(request):
     articles = Articles.objects.order_by('-id')
     return render(request, 'main/news.html', {'articles': articles})
+
+def article_detail(request, article_id):
+    article = get_object_or_404(Articles, id=article_id)
+    return render(request, 'main/newsletter.html', {'article': article})
 
 def faq(request):
     faq_items = FAQ.objects.order_by('-date_added')
