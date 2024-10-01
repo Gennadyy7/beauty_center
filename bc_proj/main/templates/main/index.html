@@ -10,21 +10,22 @@
 {% endblock %}
 
 {% block content %}
-    <section>
-        <p>Текущая дата: {{ current_date|date:"d/m/Y" }}</p>
-        <p>Часовой пояс пользователя: {{ user_timezone }}</p>
-        <p>Разница в часах от UTC: {{ utc_offset }}</p>
+    <section id="user-info">
+        <p class="current-date">Текущая дата: {{ current_date|date:"d/m/Y" }}</p>
+        <p class="user-timezone">Часовой пояс пользователя: {{ user_timezone }}</p>
+        <p class="utc-offset">Разница в часах от UTC: {{ utc_offset }}</p>
     </section>
-    <section>
-        <p>Календарь:</p>
-        <h3>{{ month_name }}</h3>
-        <table>
+
+    <section id="calendar-section">
+        <p class="calendar-label">Календарь:</p>
+        <h3 class="month-name">{{ month_name }}</h3>
+        <table class="calendar-table">
             {% for week in calendar_month %}
-                <tr>
+                <tr class="calendar-week">
                     {% for day in week %}
-                        <td>
+                        <td class="calendar-day">
                             {% if day == current_day %}
-                                <strong>{{ day }}</strong>
+                                <strong class="current-day">{{ day }}</strong>
                             {% elif day != 0 %}
                                 {{ day }}
                             {% endif %}
@@ -34,31 +35,30 @@
             {% endfor %}
         </table>
     </section>
+
     <section class="banner">
         <div class="banner-container">
-
-            <!--img[src="{% static 'main/banner_1.gif' %}"][alt="Реклама компании"][class="banner-img"][width="600"] + img[src="{% static 'main/banner_2.gif' %}"][alt="Реклама компании"][class="banner-img"][width="600"] + img[src="{% static 'main/banner_3.gif' %}"][alt="Реклама компании"][class="banner-img"][width="600"]-->
-
             <img src="{% static 'main/banner_1.gif' %}" alt="Реклама компании" class="banner-img" width="600">
             <img src="{% static 'main/banner_2.gif' %}" alt="Реклама компании" class="banner-img" width="600">
             <img src="{% static 'main/banner_3.gif' %}" alt="Реклама компании" class="banner-img" width="600">
         </div>
     </section>
+
     <section class="service-catalog">
-        <h2>Каталог услуг</h2>
+        <h2 class="catalog-title">Каталог услуг</h2>
         <div class="service-catalog-container">
-            <details>
-                <summary>Каталог услуг</summary>
+            <details class="service-details">
+                <summary class="service-summary">Каталог услуг</summary>
                 {% for category, services in grouped_services.items %}
                 <div class="category-block">
-                    <h3>Категория: {{ category.name }}</h3>
+                    <h3 class="category-name">Категория: {{ category.name }}</h3>
                     <div class="services-list">
                         {% for service in services %}
                             <div class="service-item">
-                                <a href="{% url 'service_detail' service.id %}">{{ service.title }}</a>
+                                <a href="{% url 'service_detail' service.id %}" class="service-link">{{ service.title }}</a>
                             </div>
                         {% empty %}
-                            <p>Услуг в данной категории пока нет.</p>
+                            <p class="no-services">Услуг в данной категории пока нет.</p>
                         {% endfor %}
                     </div>
                 </div>
@@ -66,13 +66,15 @@
             </details>
         </div>
     </section>
-    <article>
-        <h2>Актуальная статья: {{ latest_article.title }}</h2>
-        <p>{{ latest_article.summary }}</p>
-        <img src="{{ latest_article.image.url }}" alt="{{ latest_article.title }}" width="600">
+
+    <article id="latest-article">
+        <h2 class="article-title">Актуальная статья: {{ latest_article.title }}</h2>
+        <p class="article-summary">{{ latest_article.summary }}</p>
+        <img src="{{ latest_article.image.url }}" alt="{{ latest_article.title }}" class="article-image" width="600">
     </article>
+
     <section class="partners">
-        <h2>Наши партнеры</h2>
+        <h2 class="partners-title">Наши партнеры</h2>
         <ul class="partners-list">
             {% for partner in partners %}
                 <li class="partner-item">
@@ -82,7 +84,7 @@
                     </a>
                 </li>
             {% empty %}
-                <li>Партнеров пока нет.</li>
+                <li class="no-partners">Партнеров пока нет.</li>
             {% endfor %}
         </ul>
     </section>

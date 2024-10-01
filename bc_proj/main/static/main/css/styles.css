@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #0D0D0D; /* Черный текст */
+    background-color: #FFFFFF; /* Белый фон */
+}
+
+#site-header {
+    background-color: #FFFFFF;
+    padding: 10px 20px; /* Верхний и нижний отступы для шапки */
+    display: flex;
+    align-items: center; /* Центрирует элементы по вертикали */
+    border-bottom: 2px solid #DDAA03; /* Линия снизу шапки для разделения */
+    position: fixed; /* Фиксируем шапку */
+    top: 0; /* Прикрепляем к верхней части окна */
+    left: 0; /* Прикрепляем к левой части окна */
+    right: 0; /* Прикрепляем к правой части окна */
+    z-index: 1000; /* Устанавливаем высокий z-index, чтобы шапка была выше других элементов */
+}
+
+#logo-block img {
+    max-height: 80px; /* Логотип будет достаточно крупным */
+    margin: 5px 10px; /* Отступы вокруг логотипа */
+}
+
+#org-info-block {
+    margin-left: 10px; /* Отступ слева для блока с названием и слоганом */
+    display: flex;
+    flex-direction: column; /* Название и слоган вертикально один под другим */
+    justify-content: center; /* Выравнивание по вертикали */
+}
+
+#org-name {
+    font-size: 36px; /* Крупный шрифт для названия */
+    letter-spacing: 6px; /* Отступы между буквами для ширины названия */
+    margin-bottom: 0px; /* Небольшой отступ для слогана */
+}
+
+#org-slogan {
+    font-size: 16px; /* Меньший шрифт для слогана */
+    color: #DDAA03; /* Цвет слогана */
+    margin-left: 0px; /* Слегка смещаем слоган влево для центровки */
+}
+
+#header-nav {
+    margin-left: auto; /* Отправляем навигацию в правый край */
+}
+
+#header-nav ul {
+    list-style: none; /* Убираем маркеры списка */
+}
+
+#top-nav-list li {
+    display: inline-block; /* Ссылки в строку */
+    margin-left: 20px; /* Отступ между ссылками */
+}
+
+#top-nav-list a {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: #0D0D0D; /* Черный цвет текста */
+    font-size: 18px; /* Размер шрифта для ссылок */
+    vertical-align: middle; /* Центрируем по вертикали */
+    position: relative; /* Для анимации */
+    transition: color 0.3s ease, transform 0.3s ease; /* Плавный переход для цвета и трансформации */
+}
+
+/* Эффект при наведении */
+#top-nav-list a:hover {
+    color: #DDAA03; /* Цвет при наведении */
+    transform: scale(1.1); /* Увеличение при наведении */
+
+}
+
+/* Эффект для посещенных ссылок */
+#top-nav-list a:visited {
+    color: #999999; /* Цвет для посещенных ссылок */
+    font-weight: bold; /* Сделаем текст более жирным */
+}
+
+/* Дополнительный эффект при наведении на ссылки */
+#top-nav-list a::after {
+    content: ''; /* Создаем пустое содержимое для псевдоэлемента */
+    position: absolute;
+    left: 50%;
+    bottom: -5px; /* Положение под ссылкой */
+    width: 0; /* Начальное значение ширины */
+    height: 2px; /* Высота линии под ссылкой */
+    background-color: #DDAA03; /* Цвет линии */
+    transition: width 0.3s ease, left 0.3s ease; /* Плавный переход для ширины и позиции */
+}
+
+/* Анимация линии под ссылкой при наведении */
+#top-nav-list a:hover::after {
+    width: 100%; /* Расширяем линию под ссылкой при наведении */
+    left: 0; /* Сдвигаем влево, чтобы линия была по ширине ссылки */
+
+}
+
+/* Сохраняем цвет ссылки после наведения, если это посещенная ссылка */
+#top-nav-list a:hover:visited {
+    color: #DDAA03; /* Цвет для посещенных ссылок при наведении */
+
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#sidebar-nav {
+    position: fixed; /* Фиксируем боковое меню */
+    top: 116px; /* Прикрепляем к верхней части окна */
+    left: 0; /* Прикрепляем к левой части окна */
+    height: 100%; /* Занимаем всю высоту окна */
+    width: 250px; /* Ширина бокового меню */
+    padding: 20px; /* Внутренние отступы */
+    background-color: #FFFFFF; /* Фоновый цвет меню */
+    border-right: 2px solid #DDAA03; /* Разделительная линия справа */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Небольшая тень для объема */
+    z-index: 999; /* Устанавливаем высокий z-index для отображения поверх других элементов */
+}
+
+#sidebar-nav nav {
+    display: flex;
+    flex-direction: column; /* Элементы располагаем вертикально */
+}
+
+#public-pages, #services-section, #user-auth-section {
+    list-style: none; /* Убираем маркеры списка */
+    padding: 0; /* Убираем отступы */
+    margin-bottom: 20px; /* Отступ между секциями */
+}
+
+#public-pages li,
+#services-section li {
+    position: relative; /* Устанавливаем относительное позиционирование для родительского элемента */
+    margin-bottom: 10px; /* Отступ между элементами списка */
+}
+
+#public-pages a,
+#services-section a {
+    display: block; /* Ссылки будут блоками */
+    padding: 10px 15px; /* Внутренние отступы для ссылок */
+    color: #0D0D0D; /* Черный цвет текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    transition: color 0.3s ease; /* Плавный переход для цвета текста */
+    position: relative; /* Устанавливаем относительное позиционирование для псевдоэлемента */
+    z-index: 1; /* Увеличиваем z-index для ссылки, чтобы она была выше псевдоэлемента */
+}
+
+/* Эффект при нажатии на ссылки */
+#public-pages a:active,
+#services-section a:active {
+    transform: scale(0.95); /* Уменьшаем размер при нажатии */
+}
+
+/* Псевдоэлемент для эффекта */
+#public-pages a::before,
+#services-section a::before {
+    content: ""; /* Псевдоэлемент без содержимого */
+    position: absolute; /* Абсолютное позиционирование для псевдоэлемента */
+    left: 0; /* Прикрепляем к левому краю */
+    top: 0; /* Прикрепляем к верхнему краю */
+    height: 100%; /* Занимаем всю высоту ссылки */
+    width: 200%; /* Занимаем всю ширину ссылки */
+    background-color: #DDAA03; /* Цвет фона псевдоэлемента */
+    transform: translateX(-100%); /* Начальное положение за пределами левой границы */
+    transition: transform 0.3s ease; /* Плавный переход для перемещения псевдоэлемента */
+    z-index: -1;
+}
+
+/* Эффект при наведении на ссылки */
+#public-pages a:hover,
+#services-section a:hover {
+    color: #FFFFFF; /* Белый цвет текста при наведении */
+}
+
+/* При наведении на ссылки активируем псевдоэлемент */
+#public-pages a:hover::before,
+#services-section a:hover::before {
+    transform: translateX(-50%); /* Перемещаем псевдоэлемент на место */
+    z-index: -1; /* Псевдоэлемент перемещается под ссылку */
+}
+
+/* Стили для кнопок в секции авторизации */
+#user-auth-section button {
+    width: 100%; /* Кнопки занимают всю ширину */
+    padding: 10px; /* Внутренние отступы */
+    margin-top: 10px; /* Отступ между кнопками */
+    background-color: #DDAA03; /* Цвет фона кнопок */
+    color: #FFFFFF; /* Белый цвет текста кнопок */
+    border: none; /* Убираем рамку */
+    cursor: pointer; /* Курсор при наведении на кнопку */
+    transition: background-color 0.3s ease; /* Плавный переход для цвета фона */
+}
+
+/* Эффект при наведении на кнопки */
+#user-auth-section button:hover {
+    background-color: #0D0D0D; /* Темный цвет фона при наведении на кнопки */
+}
+
+/* Эффект при нажатии на кнопки */
+#user-auth-section button:active {
+    transform: scale(0.95); /* Уменьшаем размер кнопки при нажатии */
+}
+
+body {
+    padding-top: 116px; /* Отступ, чтобы контент не был скрыт под шапкой */
+    padding-left: 300px;
+}
