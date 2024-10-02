@@ -1,0 +1,448 @@
+body {
+    padding-top: 116px; /* Отступ, чтобы контент не был скрыт под шапкой */
+    padding-left: 300px;
+}
+
+/*прелоадер*/
+.container {
+    position: relative;
+    height: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.bar {
+    width: 100px;
+    height: 20px;
+    margin: 5px 0;
+    animation: rotate 2s ease-in-out infinite;
+}
+
+.bar:nth-child(5) {
+    background-color: #ff7bac;
+    animation-delay: 0.8s;
+    transform-origin: 150px center;
+}
+
+.bar:nth-child(4) {
+    background-color: #ff1d25;
+    animation-delay: 0.75s;
+    transform-origin: 120px center;
+}
+
+.bar:nth-child(3) {
+    background-color: #ff931e;
+    animation-delay: 0.7s;
+    transform-origin: 90px center;
+}
+
+.bar:nth-child(2) {
+    background-color: #7ac943;
+    animation-delay: 0.65s;
+    transform-origin: 60px center;
+}
+
+.bar:nth-child(1) {
+    background-color: #3fa9f5;
+    animation-delay: 0.60s;
+    transform-origin: 30px center;
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}
+
+/*girl*/
+.girl-container *{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.girl-container body{
+	display: grid;
+	place-items: center;
+	min-height: 100vh;
+	background: #f6f6f6;
+}
+
+.girl-container .bezel{
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-wrap: center;
+}
+
+.girl-container .girl, .boy{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 10px;
+}
+
+.girl-container .box{
+	position: relative;
+	width: 300px;
+	height: 300px;
+	border: 10px solid #0D0D0D;
+	border-radius: 50%;
+	box-shadow: inset 0 0 20px rgba(0, 0, 0, .2);
+	overflow: hidden;
+}
+
+.girl-container .box .hair{
+	position: absolute;
+	width: 150px;
+	height: 110%;
+	background: #424b54;
+	border-radius: 100px 100px 0 0;
+	left: 50%;
+	top: 70%;
+	transform: translate(-50%, -50%);
+}
+
+.girl-container .box .head{
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	background: #f0beaf;
+	border-radius: 20px 20px 50% 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	box-shadow: 0 1px 10px rgba(0, 0, 0, .2);
+}
+
+.girl-container .box .head .eyes{
+	position: relative;
+	width: 100%;
+	height: 10px;
+	display: flex;
+	margin-top: 15px;
+	background: #f0beaf;
+}
+
+.girl-container .box .head .eyes .eye{
+	position: relative;
+	width: 10px;
+	height: 10px;
+	background: #424b54;
+	border-radius: 50%;
+}
+
+.girl-container .box .head .eyes .eye.one{
+	margin-left: 20px;
+}
+
+.girl-container .box .head .eyes .eye.two{
+	margin-left: 40px;
+}
+
+.girl-container .box .head .eyes .eye::before{
+	content: '';
+	position: absolute;
+	width: 170%;
+	height: 100%;
+	top: -50%;
+	left: -30%;
+	border-top: 3px solid #424b54;
+	border-radius: 6px;
+}
+
+.girl-container .box .head .eyes .eye::after{
+	content: '';
+	position: absolute;
+	width: 2px;
+	height: 2px;
+	background: #fff;
+	top: 40%;
+	left: 10%;
+	border-radius: 50px;
+}
+
+.girl-container .box .head .nose{
+	width: 10px;
+	height: 15px;
+	background: #db9b99;
+	border-radius: 50px;
+}
+
+.girl-container .box .head .mouth{
+	position: relative;
+	width: 40px;
+	height: 20px;
+	background: #424b54;
+	border-radius: 0 0 50px 50px;
+	margin-top: 10px;
+	overflow: hidden;
+}
+
+.girl-container .box .head .mouth::before{
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: indianred;
+	top: 5px;
+	left: 10px;
+	border-radius: 50px;
+
+}
+
+.girl-container .box .neck{
+	position: absolute;
+	width: 20px;
+	height: 30px;
+	background: #f0beaf;
+	z-index: 20;
+	top: 70%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 0 0 10px 10px;
+}
+
+.girl-container .box .body{
+	position: absolute;
+	width: 150px;
+	height: 100px;
+	background: #DDAA03;
+	bottom: -20px;
+	left: 50%;
+	transform: translateX(-50%);
+	border-radius: 100px 100px 0 0;
+}
+
+.girl-container .girl .box .fringe{
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	background: #424b54;
+	border-radius: 180px 50px 300px;
+	top: 60px;
+	left: 80px;
+	z-index: 10;
+}
+
+.girl-container .girl .box .fringe::before{
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #424b54;
+	border-radius: 50px 180px 0px 300px;
+	right: -63px;
+	z-index: 10;
+}
+
+
+.girl-container .custom-paint-brush {
+  --color-brush: #574836;
+  --color-brush-metal: #d6ccc4;
+  --color-brush-handle: #d6b89c;
+  --handle-length: 90px;
+
+  width: var(--handle-length);
+  height: calc(var(--handle-length) * 0.25);
+  background-color: var(--color-brush-handle);
+  border-radius: 0 100% 100% 0;
+  border-left: calc(var(--handle-length) * 0.1) solid var(--color-brush-metal);
+
+  position: relative; /* Важный момент, чтобы кисть сработала корректно */
+  top: 70px;
+  right: -400px;
+  transform-origin: 80% 50%;
+  transform: rotate(30deg);
+	z-index: 25;
+    animation: brushMove 4s ease-in-out infinite;
+}
+
+.girl-container .custom-brush {
+  --brush-size: calc(var(--handle-length) * 0.45);
+  width: calc(var(--brush-size) * 1);
+  height: var(--brush-size);
+  background-color: var(--color-brush);
+  border-radius: 0 50% 50% 50%;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: -48%;
+  right: calc(100% + (var(--handle-length) * 0.09));
+}
+
+@keyframes brushMove {
+  0% { right: -400px; transform: rotate(30deg);}
+  12% { right: -260px; top: 50%; transform: rotate(40deg);}
+	24% { right: -220px; top: 50%; transform: rotate(20deg);}
+	36% { right: -300px; top: 55%; transform: rotate(30deg);}
+  48% { right: -220px; top: 60%; transform: rotate(40deg);}
+  60% { right: -300px; top: 65%; transform: rotate(20deg);}
+  72% { right: -220px; top: 68%; transform: rotate(30deg);}
+	84% { right: -290px; top: 72%; transform: rotate(40deg);}
+  100% { right: -400px; transform: rotate(30deg);}
+}
+
+.girl-container .box .head .eyes .eye::before{
+	opacity: 1;
+	animation: drawBrows 4s ease-in-out infinite;
+}
+
+@keyframes drawBrows {
+	0% {opacity: 1;}
+  12% {opacity: 0;}
+	24% {opacity: 0;}
+	36% {opacity: 0;}
+  48% {opacity: 1;}
+  60% {opacity: 1;}
+  72% {opacity: 1;}
+	84% {opacity: 1;}
+  100% {opacity: 1;}
+}
+
+.girl-container .box .head .eyes .eye{
+	opacity: 1;
+	animation: drawEyes 4s ease-in-out infinite;
+}
+
+@keyframes drawEyes {
+	0% {opacity: 1;}
+  12% {opacity: 0;}
+	24% {opacity: 0;}
+	36% {opacity: 1;}
+  48% {opacity: 1;}
+  60% {opacity: 1;}
+  72% {opacity: 1;}
+	84% {opacity: 1;}
+  100% {opacity: 1;}
+}
+
+.girl-container .box .head .nose{
+	opacity: 1;
+	animation: drawNose 4s ease-in-out infinite;
+}
+
+@keyframes drawNose {
+	0% {opacity: 1;}
+  12% {opacity: 0;}
+	24% {opacity: 0;}
+	36% {opacity: 0;}
+  48% {opacity: 0;}
+  60% {opacity: 1;}
+  72% {opacity: 1;}
+	84% {opacity: 1;}
+  100% {opacity: 1;}
+}
+
+.girl-container .box .head .mouth{
+	opacity: 1;
+	animation: drawMouth 4s ease-in-out infinite;
+}
+
+@keyframes drawMouth {
+	0% {opacity: 1;}
+  12% {opacity: 0;}
+	24% {opacity: 0;}
+	36% {opacity: 0;}
+  48% {opacity: 0;}
+  60% {opacity: 0;}
+  72% {opacity: 1;}
+	84% {opacity: 1;}
+  100% {opacity: 1;}
+}
+
+.girl-container .box .head .mouth::before{
+	opacity: 1;
+	animation: drawTongue 4s ease-in-out infinite;
+}
+
+@keyframes drawTongue {
+	0% {opacity: 1;}
+  12% {opacity: 0;}
+	24% {opacity: 0;}
+	36% {opacity: 0;}
+  48% {opacity: 0;}
+  60% {opacity: 0;}
+  72% {opacity: 0;}
+	84% {opacity: 1;}
+  100% {opacity: 1;}
+}
+
+/*new*/
+.page-layout {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* user-info и calendar-section будут в одной колонке */
+.info-section {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px; /* Можно настроить под нужный размер */
+}
+
+#user-info {
+    margin-bottom: 10px; /* Отступ между user-info и calendar-section */
+}
+
+/* Адаптивность: скрытие girl-container при недостатке места */
+.girl-container {
+    flex-grow: 1; /* Позволяем girl-container расти и занимать оставшееся пространство */
+    display: flex; /* Добавляем flex для центрирования содержимого внутри */
+    justify-content: center; /* Центрируем содержимое внутри girl-container */
+    max-width: 600px;
+}
+
+@media (max-width: 1000px) { /* Если ширина экрана меньше 1000px */
+    .girl-container {
+        display: none; /* Скрытие при уменьшении ширины экрана */
+    }
+}
+
+#user-info {
+    background-color: #f9f9f9; /* Цвет фона */
+    border: 1px solid #DDAA03; /* Граница цвета DDAA03 */
+    border-radius: 10px; /* Закругленные углы */
+    padding: 0px 15px; /* Внутренние отступы */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для объема */
+    font-family: Arial, sans-serif; /* Шрифт */
+    color: #0D0D0D; /* Цвет текста */
+}
+
+#calendar-section {
+    background-color: #FFF8E1; /* Цвет бумаги для календаря (светло-желтый) */
+    border: 1px solid #DDAA03; /* Граница цвета DDAA03 */
+    border-radius: 10px; /* Закругленные углы */
+    padding: 4px; /* Внутренние отступы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень для объема */
+    position: relative; /* Для позиционирования псевдоэлемента */
+    font-family: Arial, sans-serif; /* Шрифт */
+    color: #0D0D0D; /* Цвет текста */
+}
+
+/* Стили для содержимого календаря */
+.calendar-day {
+    margin: 10px 0; /* Отступы между днями */
+    padding: 10px; /* Внутренние отступы для дней */
+    background-color: #ffffff; /* Белый фон для дней */
+    border: 1px solid #DDAA03; /* Граница цвета DDAA03 */
+    border-radius: 5px; /* Закругленные углы для дней */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень для дней */
+}
+
+.current-day {
+    color: red;
+
+}
