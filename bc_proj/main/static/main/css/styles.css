@@ -206,3 +206,7 @@
 #user-auth-section button:active {
     transform: scale(0.95); /* Уменьшаем размер кнопки при нажатии */
 }
+
+#main-content > * {
+    margin-bottom: 15px;
+}

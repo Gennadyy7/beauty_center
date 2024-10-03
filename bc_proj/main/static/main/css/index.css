@@ -6,12 +6,10 @@ body {
 /*прелоадер*/
 .container {
     position: relative;
-    height: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
     flex-direction: column;
 }
 
@@ -446,3 +444,58 @@ body {
     color: red;
 
 }
+
+/*баннеры*/
+.banner-container {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+.banner-img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+.banner-img:nth-child(1) {
+    animation: slideBanner 30s infinite;
+}
+
+.banner-img:nth-child(2) {
+    animation: slideBanner 30s infinite 10s;
+}
+
+.banner-img:nth-child(3) {
+    animation: slideBanner 30s infinite 20s;
+}
+
+@keyframes slideBanner {
+    0% {
+        opacity: 0;
+        z-index: 1;
+    }
+    10% {
+        opacity: 1;
+        z-index: 5;
+    }
+    30% {
+        opacity: 1;
+        z-index: 5;
+    }
+    40% {
+        opacity: 0;
+        z-index: 1;
+    }
+    100% {
+        opacity: 0;
+        z-index: 1;
+    }
+}
+
