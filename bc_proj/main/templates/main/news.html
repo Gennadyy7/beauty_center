@@ -1,5 +1,7 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}Новости{% endblock %}
 
 {% block meta %}
@@ -7,18 +9,23 @@
     <meta name="keywords" content="косметология, новости, слухи, сплетни">
 {% endblock %}
 
+{% block custom_css %}
+<link type="text/css" href="{% static 'main/css/news.css' %}" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
+    <h3 class="news-title">Новости Галатеи</h3>
+    <blockquote class="news-quote">
+        <p>Слухи о красоте — как лёгкий ветер,<br>
+        Новости летят, как звезды по небу.<br>
+        Что слышишь ты? Что будет там дальше?<br>
+        Сплетни кружат в непрерывном танце.</p>
+        <footer>
+            <cite>Автор: Аркадий Смычков</cite>
+        </footer>
+    </blockquote>
     <div class="article-list">
-        <h3>Новости Галатеи</h3>
-        <blockquote>
-            <p>Слухи о красоте — как лёгкий ветер,<br>
-            Новости летят, как звезды по небу.<br>
-            Что слышишь ты? Что будет там дальше?<br>
-            Сплетни кружат в непрерывном танце.</p>
-            <footer>
-                <cite>Автор: Аркадий Смычков</cite>
-            </footer>
-        </blockquote>
+
         {% for article in articles %}
             <div class="article">
                 <h2><a href="{% url 'article_detail' article.id %}">{{ article.title }}</a></h2>

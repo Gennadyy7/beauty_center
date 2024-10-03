@@ -1,0 +1,91 @@
+.news-title {
+    margin-top: 10px;
+    max-width: 250px;
+    font-size: 2em; /* Размер шрифта заголовка */
+    line-height: 1.15; /* Межстрочный интервал */
+    color: #333; /* Цвет текста */
+    font-family: "Marck Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+    position: relative; /* Позиционирование для псевдоэлемента */
+}
+
+.news-title::first-letter {
+    font-size: 3em; /* Размер первой буквы */
+    font-weight: bold; /* Жирный шрифт */
+    float: left; /* Обтекание текста вокруг первой буквы */
+    line-height: 1; /* Вертикальное выравнивание */
+    margin-right: 0.1em; /* Отступ справа */
+    color: #c0392b; /* Цвет первой буквы */
+    font-family: 'Georgia', serif; /* Шрифт первой буквы (можно изменить на курсив или другой) */
+}
+
+.news-quote {
+    font-size: 1.5em; /* Размер шрифта для цитаты */
+    font-style: italic; /* Курсив */
+    background-color: rgba(221, 170, 3, 0.1); /* Легкий фон */
+    border-left: 5px solid #DDAA03; /* Линия слева */
+    padding: 10px 20px; /* Отступы внутри блока */
+    margin: 30px 0; /* Отступы сверху и снизу */
+    position: relative; /* Позиционирование для footer */
+    clear: both; /* Обнуляем плавающие элементы */
+}
+
+.news-quote footer {
+    margin-top: 10px; /* Отступ сверху для footer */
+    font-size: 0.9em; /* Меньший размер шрифта для автора */
+    text-align: right; /* Выравнивание текста вправо */
+    color: #0D0D0D; /* Цвет текста */
+}
+
+/*статьи*/
+.article-list {
+    display: grid; /* Используем сетку для распределения статей */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Автоматическое заполнение колонок */
+    gap: 20px; /* Отступы между статьями */
+    margin-top: 20px; /* Отступ сверху */
+}
+
+.article {
+    background-color: #ffffff; /* Белый фон для статей */
+    border: 1px solid #DDAA03; /* Рамка */
+    border-radius: 10px; /* Скругленные углы */
+    padding: 15px; /* Внутренние отступы */
+    transition: transform 0.3s; /* Плавный переход при наведении */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Тень для глубины */
+    overflow: hidden; /* Скрыть лишнее содержимое */
+}
+
+.article:hover {
+    transform: translateY(-5px); /* Подъем при наведении */
+}
+
+.article h2 {
+    font-size: 1.5em; /* Размер шрифта заголовка статьи */
+    margin: 10px 0; /* Отступы сверху и снизу */
+    color: #0D0D0D; /* Цвет заголовка */
+}
+
+.article h2 a {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: #DDAA03; /* Цвет ссылки */
+}
+
+.article h2 a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+.article p {
+    font-size: 1em; /* Размер шрифта для краткого содержания */
+    color: #333; /* Цвет текста */
+    margin-bottom: 15px; /* Отступ снизу */
+}
+
+.article img {
+    width: 100%; /* Ограничиваем ширину изображения */
+    height: 200px; /* Фиксированная высота */
+    object-fit: cover; /* Масштабируем изображение с сохранением пропорций */
+    border-radius: 5px; /* Скругленные углы для изображения */
+}
+
+

@@ -1,0 +1,82 @@
+.faq-section {
+    margin-top: 20px; /* Отступ сверху */
+}
+
+.faq-title {
+    font-size: 2em; /* Размер шрифта заголовка */
+    margin-bottom: 15px; /* Отступ снизу */
+    color: #0D0D0D; /* Цвет заголовка */
+}
+
+.faq-list {
+    list-style-type: none; /* Убираем маркеры списка */
+    padding: 0; /* Убираем отступы */
+}
+
+.faq-item {
+    margin-bottom: 15px; /* Отступ между элементами списка */
+}
+
+.faq-details {
+    background-color: #ffffff; /* Белый фон для деталей */
+    border: 1px solid #DDAA03; /* Рамка */
+    border-radius: 10px; /* Скругленные углы */
+    padding: 15px; /* Внутренние отступы */
+    transition: box-shadow 0.3s; /* Плавный переход тени */
+    cursor: pointer; /* Курсор для взаимодействия */
+}
+
+.faq-details:hover {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Тень при наведении */
+}
+
+.faq-summary {
+    display: flex; /* Используем флекс для выравнивания */
+    justify-content: space-between; /* Распределяем элементы */
+    align-items: center; /* Вертикальное выравнивание */
+}
+
+.faq-question {
+    font-size: 1.5em; /* Размер шрифта вопроса */
+    color: #0D0D0D; /* Цвет текста вопроса */
+    margin: 0; /* Убираем отступы */
+    max-width: 70%; /* Максимальная ширина для вопроса */
+    word-wrap: break-word; /* Позволяет переносить слова */
+}
+
+.faq-date {
+    font-size: 0.9em; /* Размер шрифта даты */
+    color: #888; /* Цвет текста даты */
+    white-space: nowrap; /* Запрещает перенос строки для даты */
+}
+
+.faq-answer {
+    margin-top: 10px; /* Отступ сверху для ответа */
+    font-size: 1em; /* Размер шрифта для ответа */
+    color: #333; /* Цвет текста ответа */
+}
+
+.knowledge-section {
+    margin-top: 30px; /* Отступ сверху */
+}
+
+.knowledge-title {
+    font-size: 1.8em; /* Размер заголовка секции знаний */
+    margin-bottom: 15px; /* Отступ снизу */
+    color: #0D0D0D; /* Цвет заголовка */
+}
+
+.knowledge-list {
+    margin-left: 20px; /* Отступ слева */
+}
+
+.knowledge-list dt {
+    font-weight: bold; /* Жирный текст для термина */
+    margin-top: 10px; /* Отступ сверху для термина */
+}
+
+.knowledge-list dd {
+    margin-left: 20px; /* Отступ слева для описания */
+    margin-bottom: 10px; /* Отступ снизу для описания */
+    font-style: italic; /* Курсив для описания */
+}

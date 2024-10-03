@@ -9,59 +9,66 @@
     <meta name="keywords" content="косметология, услуги, уход за кожей, пластическая хирургия, красота, Галатея">
 {% endblock %}
 
+{% block custom_css %}
+<link type="text/css" href="{% static 'main/css/about.css' %}" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
-    <div>
-        <h1>Косметологический центр "Галатея"</h1>
+    <div id="about-page">
+        <h1 id="company-name">Косметологический центр "Галатея"</h1>
 
         {% if company_info.logo %}
-            <h2>Логотип</h2>
-            <img src="{{ company_info.logo.url }}" alt="Логотип компании" width="600"/>
+            <h2 class="section-title">Логотип</h2>
+            <img src="{{ company_info.logo.url }}" alt="Логотип компании" class="company-logo" width="600"/>
         {% endif %}
 
         {% if company_info.info %}
-            <h2>О нас</h2>
-            <p>{{ company_info.info|linebreaks }}</p>
-            <audio controls>
+            <h2 class="section-title">О нас</h2>
+            <div class="company-info">
+                {{ company_info.info|linebreaks }}
+            </div>
+            <audio controls class="company-audio">
                 <source src="{% static 'main/reincarnation.mp3' %}" type="audio/mpeg">
                 Ваш браузер не поддерживает аудиоплеер.
             </audio>
-            <p><strong>Подпись к аудио: Вот с таким звуком вы будете перевоплощаться в красотку!</strong></p>
+            <p class="audio-caption"><strong>Подпись к аудио: Вот с таким звуком вы будете перевоплощаться в красотку!</strong></p>
         {% endif %}
 
         {% if company_info.video %}
-            <h2>Видео о клинике</h2>
-            <video width="600" autoplay controls muted>
+            <h2 class="section-title">Видео о клинике</h2>
+            <video width="600" autoplay controls muted class="company-video">
                 <source src="{{ company_info.video.url }}" type="video/mp4">
                 Ваш браузер не поддерживает видео.
             </video>
         {% endif %}
 
         {% if company_info.history %}
-            <h2>История компании</h2>
-            <p>{{ company_info.history|linebreaks }}</p>
+            <h2 class="section-title">История компании</h2>
+            <div class="company-history">
+                {{ company_info.history|linebreaks }}
+            </div>
         {% endif %}
 
+
         {% if company_info.requisites %}
-            <address>
-                <h2>Реквизиты</h2>
+            <address class="company-requisites">
+                <h2 class="section-title">Реквизиты</h2>
                 {{ company_info.requisites|linebreaks }}
             </address>
         {% endif %}
 
         {% if company_info.certificate_file %}
-            <h2>Сертификат</h2>
-            <div>
+            <h2 class="section-title">Сертификат</h2>
+            <div class="certificate-container">
                 <iframe src="{{ company_info.certificate_file.url }}" frameborder="0" width="600" height="249" scrolling="yes"></iframe>
             </div>
             {% if company_info.css_file %}
-            <div>
+            <div class="certificate-links">
                 <a href="{{ company_info.certificate_file.url }}" download>Скачать сертификат (HTML)</a>
-            </div>
-            <div>
                 <a href="{{ company_info.css_file.url }}" download>Скачать стили для сертификата (CSS)</a>
             </div>
             {% else %}
-            <div>
+            <div class="certificate-link">
                 <a href="{{ company_info.certificate_file.url }}" download>Скачать сертификат (HTML)</a>
             </div>
             {% endif %}

@@ -1,27 +1,33 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}FAQ - Галатея{% endblock %}
 
+{% block custom_css %}
+<link type="text/css" href="{% static 'main/css/faq.css' %}" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
-    <section>
-        <h1>Часто задаваемые вопросы</h1>
-        <ul>
+    <section class="faq-section">
+        <h1 class="faq-title">Часто задаваемые вопросы</h1>
+        <ul class="faq-list">
             {% for faq_item in faq_items %}
-            <li>
-                <details>
-                    <summary>
-                        <h3>{{ faq_item.question }}</h3>
-                        <p>Дата добавления: {{ faq_item.date_added }}</p>
+            <li class="faq-item">
+                <details class="faq-details">
+                    <summary class="faq-summary">
+                        <h3 class="faq-question">{{ faq_item.question }}</h3>
+                        <p class="faq-date">Дата добавления: {{ faq_item.date_added }}</p>
                     </summary>
-                <p>Ответ: {{ faq_item.answer }}</p>
+                <p class="faq-answer">Ответ: {{ faq_item.answer }}</p>
                 </details>
             </li>
             {% endfor %}
         </ul>
     </section>
-    <section>
-        <h3>Дополнительные знания</h3>
-        <dl>
+    <section class="knowledge-section">
+        <h3 class="knowledge-title">Дополнительные знания</h3>
+        <dl class="knowledge-list">
           <dt>Косметология</dt>
           <dd>Наука и практическое направление, занимающееся изучением и применением средств и методов для улучшения внешнего вида кожи, волос и ногтей.</dd>
 

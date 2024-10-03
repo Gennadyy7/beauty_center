@@ -1,0 +1,125 @@
+/* Основные стили для всей страницы */
+#about-page {
+    max-width: 1200px; /* Ограничение ширины страницы */
+    margin: 0 auto; /* Центрирование содержимого */
+    padding: 20px;
+    color: #0D0D0D; /* Основной текст черного цвета */
+    border-radius: 10px; /* Скругленные углы */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+/* Заголовок компании */
+#company-name {
+    font-size: 2.5em;
+    color: #DDAA03; /* Основной цвет заголовка */
+    text-align: center; /* Центрирование заголовка */
+    margin-bottom: 30px;
+    text-transform: uppercase; /* Преобразование текста в заглавные */
+}
+
+/* Общий стиль для заголовков разделов */
+.section-title {
+    font-size: 1.8em;
+    color: #0D0D0D;
+    border-bottom: 2px solid #DDAA03; /* Подчеркивание */
+    padding-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* Стиль для логотипа */
+.company-logo {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto; /* Центрирование логотипа */
+    border-radius: 10px; /* Скругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для логотипа */
+}
+
+/* Стиль для блока "О нас" */
+.company-info {
+    font-size: 1.2em;
+    line-height: 1.6em;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.company-audio {
+    display: block; /* Делаем элемент блочным */
+    margin: 20px auto; /* Центрируем аудиоплеер по горизонтали */
+}
+
+.audio-caption {
+    text-align: center; /* Выравниваем текст подписи по центру */
+    margin-top: 10px; /* Отступ сверху для подписи */
+}
+
+
+/* Стиль для видео */
+.company-video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Стиль для истории компании */
+.company-history {
+    font-size: 1.1em;
+    line-height: 1.6em;
+    margin-bottom: 20px;
+    color: #333; /* Основной цвет текста */
+}
+
+.company-history p {
+    margin-bottom: 15px; /* Отступ между абзацами */
+}
+
+.company-history p:last-child {
+    font-style: italic; /* Курсив для последнего абзаца (будущее) */
+    color: #555; /* Чуть более приглушенный цвет */
+}
+
+
+/* Стиль для реквизитов */
+.company-requisites {
+    font-style: normal;
+    font-size: 1.1em;
+    line-height: 1.5em;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Стиль для блока сертификата */
+.certificate-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.certificate-container iframe {
+
+    border: 2px solid #DDAA03;
+    border-radius: 10px;
+}
+
+/* Стили для ссылок на скачивание сертификата */
+.certificate-links, .certificate-link {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.certificate-links a, .certificate-link a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #DDAA03;
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.certificate-links a:hover, .certificate-link a:hover {
+    background-color: #bb8f02; /* При наведении */
+}
