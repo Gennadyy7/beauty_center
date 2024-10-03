@@ -7,7 +7,7 @@
 }
 
 #site-header {
-    background-color: #FFFFFF;
+    background: #fefff1;
     padding: 10px 20px; /* Верхний и нижний отступы для шапки */
     display: flex;
     align-items: center; /* Центрирует элементы по вертикали */
@@ -117,7 +117,7 @@
     height: 100%; /* Занимаем всю высоту окна */
     width: 250px; /* Ширина бокового меню */
     padding: 20px; /* Внутренние отступы */
-    background-color: #FFFFFF; /* Фоновый цвет меню */
+    background: #fefff1; /* Фоновый цвет меню */
     border-right: 2px solid #DDAA03; /* Разделительная линия справа */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Небольшая тень для объема */
     z-index: 999; /* Устанавливаем высокий z-index для отображения поверх других элементов */
@@ -209,4 +209,10 @@
 
 #main-content > * {
     margin-bottom: 15px;
+}
+
+body {
+    padding-top: 116px; /* Отступ, чтобы контент не был скрыт под шапкой */
+    padding-left: 300px;
+    background: #fefff1;
 }
