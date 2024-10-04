@@ -1,0 +1,64 @@
+/* Основные стили для страницы статистики */
+.page-title {
+    font-size: 2.5em;
+    color: #DDAA03; /* Основной цвет сайта */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Стили для секций */
+.clients-section,
+.orders-sum-section,
+.orders-statistics-section,
+.age-statistics-section,
+.services-popularity-section,
+.doctors-income-histogram-section {
+    background-color: #ffffff; /* Белый фон для секций */
+    border: 1px solid #DDAA03; /* Граница для визуального разделения */
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px; /* Отступ между секциями */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили заголовков секций */
+.section-title {
+    font-size: 1.8em; /* Размер шрифта для заголовков секций */
+    color: #0D0D0D; /* Цвет заголовков */
+    margin-bottom: 10px; /* Отступ снизу */
+}
+
+/* Стили для списка клиентов */
+.clients-list {
+    list-style-type: none; /* Убираем маркеры списка */
+    padding: 0; /* Убираем отступы */
+}
+
+/* Стили для каждого клиента */
+.client-item {
+    font-size: 1.2em; /* Размер шрифта для клиентов */
+    color: #333; /* Цвет текста */
+    margin-bottom: 5px; /* Отступ между клиентами */
+}
+
+/* Стили для статистических данных */
+.total-orders-sum,
+.average-order,
+.mode-order,
+.median-order,
+.average-age,
+.median-age,
+.most-popular-category,
+.most-profitable-category {
+    font-size: 1.2em; /* Размер шрифта для статистических данных */
+    color: #555; /* Цвет текста */
+    margin-bottom: 10px; /* Отступ снизу */
+}
+
+/* Стили для изображения гистограммы */
+.histogram-image {
+    max-width: 100%; /* Ограничение ширины изображения */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    border-radius: 5px; /* Закругление углов изображения */
+    margin-top: 15px; /* Отступ сверху */
+}

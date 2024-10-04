@@ -1,0 +1,89 @@
+#contacts-page {
+    padding: 20px;
+    color: #0D0D0D;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #DDAA03;
+}
+
+.specialization {
+    margin-bottom: 40px;
+}
+
+.specialization-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #0D0D0D;
+}
+
+.doctors-list {
+    list-style: none;
+    padding: 0;
+}
+
+.doctor-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.doctor-photo {
+    border-radius: 50%;
+    margin-right: 20px;
+    border: 2px solid #DDAA03;
+}
+
+.doctor-info {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.doctor-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #0D0D0D;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.doctor-phone,
+.doctor-email {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.doctor-email {
+    color: #DDAA03;
+}
+
+@media (max-width: 768px) {
+    .doctor-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .doctor-photo {
+        margin-bottom: 15px;
+        width: 120px;
+        height: 120px;
+    }
+
+    .contact-info {
+        align-items: flex-start;
+    }
+}

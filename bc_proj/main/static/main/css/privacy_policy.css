@@ -1,0 +1,126 @@
+/* Основные стили для страницы */
+#privacy-policy {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #0D0D0D;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок страницы */
+.page-title {
+    font-size: 2.5em;
+    color: #DDAA03;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* Общий стиль для заголовков разделов */
+.section-title {
+    font-size: 1.8em;
+    color: #0D0D0D;
+    border-bottom: 2px solid #DDAA03;
+    padding-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* Стиль для текста параграфов */
+.intro-text, .section-text, .contact-text {
+    font-size: 1.2em;
+    line-height: 1.6em;
+    margin-bottom: 20px;
+    text-align: justify;
+    color: #333;
+}
+
+/* Стили для списков */
+.data-list, .usage-list, .contact-list {
+    margin-bottom: 20px;
+}
+
+.data-list li, .usage-list li, .contact-list li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* Стиль для таблицы */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.data-table th, .data-table td {
+    border: 2px solid #DDAA03;
+    padding: 10px;
+    text-align: center;
+}
+
+.data-table th {
+    background-color: #DDAA03;
+    color: #ffffff;
+}
+
+.data-table td {
+    color: #333;
+}
+
+/* Стиль для ссылки-якоря */
+.code-link {
+    display: block;
+    margin: 20px 0;
+    text-align: center;
+    font-size: 1.2em;
+    color: #DDAA03;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.code-link:hover {
+    color: #bb8f02;
+}
+
+/* Стиль для примера кода */
+.code-example {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto; /* Добавляем горизонтальную прокрутку */
+    white-space: pre; /* Сохраняем пробелы и переносы строки */
+    max-width: 100%; /* Убедимся, что код не выйдет за пределы контейнера */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Дополнительный стиль для скроллбара, если нужно */
+.code-example::-webkit-scrollbar {
+    height: 8px; /* Высота скроллбара */
+}
+
+.code-example::-webkit-scrollbar-thumb {
+    background-color: #DDAA03; /* Цвет ползунка */
+    border-radius: 4px; /* Скругленные углы ползунка */
+}
+
+/* Стиль для фигуры */
+.data-figure {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.data-figure img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.data-figure figcaption {
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+}

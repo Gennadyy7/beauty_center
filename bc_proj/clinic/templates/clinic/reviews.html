@@ -1,38 +1,53 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}Отзывы о клинике{% endblock %}
 
+{% block custom_css %}
+<link type="text/css" href="{% static 'clinic/css/reviews.css' %}" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
-    <h1>Отзывы о клинике</h1>
-    {% if user.is_authenticated %}
-        {% if user.client %}
-            <form action="{% url 'add_review' %}" method="get">
-                <button type="submit">Оставить отзыв</button>
-            </form>
-        {% else %}
-            <p>Отзывы могут оставлять только клиенты косметологического центра.</p>
-        {% endif %}
-    {% else %}
-        <p><a href="{% url 'to_login' %}">Авторизуйтесь</a>, чтобы оставить отзыв.</p>
-    {% endif %}
+    <div id="reviews-page">
+        <h1 class="page-title">Отзывы о клинике</h1>
 
-    <h2>Средняя оценка клиники: {{ average_rating }} из 5</h2>
-
-    {% for review in reviews %}
-        <div class="review">
-            <h3>{{ review.user.username }}</h3>
-            <p>{{ review.text }}</p>
-            <p>Оценка: {{ review.rating }} из 5</p>
-            <p>Оставлен: {{ review.created_at }}</p>
-            {% if user.is_authenticated and user.is_superuser %}
-            <form action="{% url 'update_review' review.id %}" method="get">
-                <button type="submit">Изменить отзыв</button>
-            </form>
-            <form action="{% url 'delete_review' review.id %}" method="post">
-                {% csrf_token %}
-                <button type="submit">Удалить отзыв</button>
-            </form>
+        <div class="leave-review-section">
+            {% if user.is_authenticated %}
+                {% if user.client %}
+                    <form action="{% url 'add_review' %}" method="get" class="leave-review-form">
+                        <button type="submit" class="btn leave-review-btn">Оставить отзыв</button>
+                    </form>
+                {% else %}
+                    <p class="info-text">Отзывы могут оставлять только клиенты косметологического центра.</p>
+                {% endif %}
+            {% else %}
+                <p class="info-text"><a href="{% url 'to_login' %}" class="login-link">Авторизуйтесь</a>, чтобы оставить отзыв.</p>
             {% endif %}
         </div>
-    {% endfor %}
+
+        <h2 class="average-rating">Средняя оценка клиники: {{ average_rating }} из 5</h2>
+
+        <div class="reviews-list">
+            {% for review in reviews %}
+                <div class="review-card" id="review-{{ review.id }}">
+                    <h3 class="review-author">{{ review.user.username }}</h3>
+                    <p class="review-text">{{ review.text }}</p>
+                    <p class="review-rating">Оценка: {{ review.rating }} из 5</p>
+                    <p class="review-date">Оставлен: {{ review.created_at }}</p>
+
+                    {% if user.is_authenticated and user.is_superuser %}
+                        <form action="{% url 'update_review' review.id %}" method="get" class="edit-review-form">
+                            <button type="submit" class="btn edit-review-btn">Изменить отзыв</button>
+                        </form>
+                        <form action="{% url 'delete_review' review.id %}" method="post" class="delete-review-form">
+                            {% csrf_token %}
+                            <button type="submit" class="btn delete-review-btn">Удалить отзыв</button>
+                        </form>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
+

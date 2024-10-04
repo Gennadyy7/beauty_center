@@ -1,0 +1,44 @@
+#vacancies-page {
+    padding: 20px;
+    color: #0D0D0D;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.intro-text {
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.about-link {
+    color: #DDAA03;
+    text-decoration: underline;
+}
+
+.vacancies-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.vacancy-card {
+    border: 1px solid #DDAA03;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.vacancy-title {
+    font-size: 24px;
+    color: #0D0D0D;
+    margin-bottom: 10px;
+}
+
+.vacancy-description {
+    font-size: 16px;
+    color: #555555;
+}

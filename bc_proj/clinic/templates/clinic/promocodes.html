@@ -1,23 +1,33 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}Промокоды{% endblock %}
 
+{% block custom_css %}
+<link type="text/css" href="{% static 'clinic/css/promocodes.css' %}" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
-    <h1>Промокоды</h1>
+    <h1 class="page-title">Промокоды</h1>
 
     {% if user.is_superuser %}
-        <button onclick="location.href='{% url 'add_promocode' %}'">Добавить промокод</button>
+        <button class="btn add-promocode-btn" onclick="location.href='{% url 'add_promocode' %}'">Добавить промокод</button>
     {% endif %}
 
-    {% for promocode in promocodes %}
-        <div class="promocode">
-            <h3>{{ promocode.code }}</h3>
-            <p>Скидка: {{ promocode.discount }}%</p>
-            <p>Действителен до: {{ promocode.expiration_date }}</p>
-            {% if user.is_superuser %}
-                <button onclick="location.href='{% url 'update_promocode' promocode.id %}'">Изменить промокод</button>
-                <button onclick="location.href='{% url 'delete_promocode' promocode.id %}'">Удалить промокод</button>
-            {% endif %}
-        </div>
-    {% endfor %}
+    <div class="promocodes-list">
+        {% for promocode in promocodes %}
+            <div class="promocode-card" id="promocode-{{ promocode.id }}">
+                <h3 class="promocode-code">{{ promocode.code }}</h3>
+                <p class="promocode-discount">Скидка: {{ promocode.discount }}%</p>
+                <p class="promocode-expiration">Действителен до: {{ promocode.expiration_date }}</p>
+                {% if user.is_superuser %}
+                    <div class="promocode-actions">
+                        <button class="btn update-promocode-btn" onclick="location.href='{% url 'update_promocode' promocode.id %}'">Изменить промокод</button>
+                        <button class="btn delete-promocode-btn" onclick="location.href='{% url 'delete_promocode' promocode.id %}'">Удалить промокод</button>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

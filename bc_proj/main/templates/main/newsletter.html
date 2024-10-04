@@ -1,6 +1,12 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}{{ article.title }}{% endblock %}
+
+{% block custom_css %}
+<link type="text/css" href="{% static 'main/css/article_detail.css' %}" rel="stylesheet"/>
+{% endblock %}
 
 {% block content %}
     <div class="article-detail">

@@ -1,0 +1,155 @@
+/* Основные стили для страницы услуг */
+#services-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #0D0D0D;
+    border-radius: 10px;
+}
+
+/* Заголовок страницы */
+.page-title {
+    text-align: center;
+    font-size: 2.5em;
+    color: #DDAA03;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+/* Стили для формы фильтрации */
+.filters-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 10px 20px;
+    background-color: #F9F9F9;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для групп форм */
+.form-group {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Стили для селектов */
+.category-select,
+.sort-select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #DDAA03;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+.category-select:hover,
+.sort-select:hover {
+    border-color: #bb8f02;
+}
+
+.apply-filters-btn:hover {
+    background-color: #bb8f02;
+}
+
+/* Стили для действия пользователя */
+.user-action {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.info-text {
+    font-size: 1.2em;
+}
+
+/* Стили для списка услуг */
+.services-list {
+    margin-top: 20px;
+}
+
+.service-card {
+    background-color: #F9F9F9;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.service-title {
+    font-size: 1.8em;
+    color: #0D0D0D;
+    margin-bottom: 10px;
+}
+
+.service-description {
+    font-size: 1.2em;
+    line-height: 1.6em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.service-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Кнопки для услуг */
+.btn {
+    padding: 10px 20px;
+    background-color: #DDAA03;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+}
+
+.btn:hover {
+    background-color: #bb8f02;
+}
+
+/* Кнопка применения фильтров */
+.apply-filters-btn {
+    padding: 10px 20px;
+    background-color: #DDAA03;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+/* Стили для форм внутри услуг */
+.service-action-form,
+.basket-action-form {
+    display: inline-block;
+}
+
+/* Стили для кнопки оформления заказа */
+.order-btn {
+    padding: 15px 30px;
+    background-color: #DDAA03;
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.order-btn:hover {
+    background-color: #bb8f02;
+}

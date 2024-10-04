@@ -1,22 +1,35 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}Контакты врачей{% endblock %}
 
-{% block content %}
-    <h1>Контакты</h1>
-    {% for service in service_specializations %}
-        <div class="specialization">
-            <h2>{{ service.doctor_specialization.name }}</h2>
-            <ul>
-                {% for doctor in service.doctors.all %}
-                    <li>
-                        <img src="{{ doctor.photo.url }}" alt="Фото {{ doctor.name }}" width="150" height="150">
-                        <h3>{{ doctor.surname }} {{ doctor.name }} {{ doctor.patronymic }}</h3>
-                        <p>Телефон: {{ doctor.phone }}</p>
-                        <p>Email: {{ doctor.email }}</p>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-    {% endfor %}
+{% block custom_css %}
+<link type="text/css" href="{% static 'clinic/css/contacts.css' %}" rel="stylesheet"/>
 {% endblock %}
+
+{% block content %}
+    <div id="contacts-page">
+        <h1 class="page-title">Контакты</h1>
+        {% for service in service_specializations %}
+            <div class="specialization" id="specialization-{{ service.id }}">
+                <h2 class="specialization-title">{{ service.doctor_specialization.name }}</h2>
+                <ul class="doctors-list">
+                    {% for doctor in service.doctors.all %}
+                        <li class="doctor-card" id="doctor-{{ doctor.id }}">
+                            <img src="{{ doctor.photo.url }}" alt="Фото {{ doctor.name }}" class="doctor-photo" width="150" height="150">
+                            <div class="doctor-info">
+                                <h3 class="doctor-name">{{ doctor.surname }} {{ doctor.name }} {{ doctor.patronymic }}</h3>
+                            </div>
+                            <div class="contact-info">
+                                <p class="doctor-phone">Телефон: {{ doctor.phone }}</p>
+                                <p class="doctor-email">Email: {{ doctor.email }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

@@ -1,14 +1,27 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}Вакансии{% endblock %}
 
+{% block custom_css %}
+<link type="text/css" href="{% static 'clinic/css/vacancies.css' %}" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
-    <h1>Вакансии</h1>
-    <p>В наш центр косметологии требуются новые врачи. Пожалуйста, ознакомьтесь с открытыми вакансиями ниже. Информацию о телефоне администрации можно найти на странице <a href="{% url 'about' %}">О нас</a>.</p>
-    {% for vacancy in vacancies %}
-        <div class="vacancy">
-            <h3>{{ vacancy.service_specialization.doctor_specialization.name }}</h3>
-            <p>{{ vacancy.service_specialization.doctor_specialization.description }}</p>
+    <div id="vacancies-page">
+        <h1 class="page-title">Вакансии</h1>
+        <p class="intro-text">
+            В наш центр косметологии требуются новые врачи. Пожалуйста, ознакомьтесь с открытыми вакансиями ниже.
+            Информацию о телефоне администрации можно найти на странице <a href="{% url 'about' %}" class="about-link">О нас</a>.
+        </p>
+        <div class="vacancies-list">
+            {% for vacancy in vacancies %}
+                <div class="vacancy-card" id="vacancy-{{ vacancy.id }}">
+                    <h3 class="vacancy-title">{{ vacancy.service_specialization.doctor_specialization.name }}</h3>
+                    <p class="vacancy-description">{{ vacancy.service_specialization.doctor_specialization.description }}</p>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
 {% endblock %}

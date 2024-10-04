@@ -1,80 +1,100 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}Услуги{% endblock %}
 
+{% block custom_css %}
+<link type="text/css" href="{% static 'clinic/css/services.css' %}" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
-    <h1>Услуги</h1>
+    <div id="services-page">
+        <h1 class="page-title">Услуги</h1>
 
-    <form action="{% url 'services' %}" method="get">
-    <select name="category">
-        <option value="">Выберите категорию</option>
-        {% for specialization in service_specializations %}
-            <option value="{{ specialization.service_category.id }}" {% if selected_category == specialization.service_category.id|stringformat:"s" %}selected{% endif %}>{{ specialization.service_category.name }}</option>
-        {% endfor %}
-    </select>
+        <form id="filters-form" class="filters-form" action="{% url 'services' %}" method="get">
+            <div class="form-group">
+                <label for="category-select" class="form-label">Категория</label>
+                <select id="category-select" class="category-select" name="category">
+                    <option value="">Выберите категорию</option>
+                    {% for specialization in service_specializations %}
+                        <option value="{{ specialization.service_category.id }}" {% if selected_category == specialization.service_category.id|stringformat:"s" %}selected{% endif %}>{{ specialization.service_category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-    <select name="sort">
-        <option value="">Не сортировать</option>
-        <option value="price_asc" {% if selected_sort == "price_asc" %}selected{% endif %}>Сортировать по цене (по возрастанию)</option>
-        <option value="price_desc" {% if selected_sort == "price_desc" %}selected{% endif %}>Сортировать по цене (по убыванию)</option>
-    </select>
+            <div class="form-group">
+                <label for="sort-select" class="form-label">Сортировка</label>
+                <select id="sort-select" class="sort-select" name="sort">
+                    <option value="">Не сортировать</option>
+                    <option value="price_asc" {% if selected_sort == "price_asc" %}selected{% endif %}>Сортировать по цене (по возрастанию)</option>
+                    <option value="price_desc" {% if selected_sort == "price_desc" %}selected{% endif %}>Сортировать по цене (по убыванию)</option>
+                </select>
+            </div>
 
-    <button type="submit">Применить фильтры</button>
-    </form>
+            <button type="submit" class="btn apply-filters-btn">Применить фильтры</button>
+        </form>
 
-    {% if user.is_authenticated %}
-        {% if user.client %}
-            <form action="{% url 'ordering' %}" method="get">
-                {% csrf_token %}
-                <button type="submit">Оформить заказ</button>
-            </form>
-        {% else %}
-            <p>Оформить заказ может только клиент.</p>
-        {% endif %}
-    {% else %}
-        <p><a href="{% url 'to_login' %}">Авторизуйтесь</a>, чтобы оформить заказ.</p>
-    {% endif %}
-
-    {% for service in services %}
-        <div class="service" id="service-{{ service.id }}">
-            <h2><a href="{% url 'service_detail' service.id %}">{{ service.title }}</a></h2>
-            <p>{{ service.description }}</p>
-            <p>Цена: {{ service.price }}</p>
-            {% if user.is_authenticated and user.client %}
-                <form action="{% url 'services' %}" method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="service_id" value="{{ service.id }}">
-                    {% if service in ordered_services %}
-                        <button type="submit">Удалить из заказа</button>
-                    {% else %}
-                        <button type="submit">Добавить в заказ</button>
-                    {% endif %}
-                </form>
-
-                <form action="{% url 'services' %}" method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="basket_service_id" value="{{ service.id }}">
-                    {% if service.id in basket_id_lst %}
-                        <button type="submit">Удалить из корзины</button>
-                    {% else %}
-                        <button type="submit">Добавить в корзину</button>
-                    {% endif %}
-                </form>
+        <div class="user-action">
+            {% if user.is_authenticated %}
+                {% if user.client %}
+                    <form action="{% url 'ordering' %}" method="get" class="order-form">
+                        {% csrf_token %}
+                        <button type="submit" class="btn order-btn">Оформить заказ</button>
+                    </form>
+                {% else %}
+                    <p class="info-text">Оформить заказ может только клиент.</p>
+                {% endif %}
+            {% else %}
+                <p class="info-text"><a href="{% url 'to_login' %}" class="login-link">Авторизуйтесь</a>, чтобы оформить заказ.</p>
             {% endif %}
         </div>
-    {% endfor %}
 
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const scrollToId = urlParams.get('scroll_to');
+        <div class="services-list">
+            {% for service in services %}
+                <div class="service-card" id="service-{{ service.id }}">
+                    <h2 class="service-title"><a href="{% url 'service_detail' service.id %}">{{ service.title }}</a></h2>
+                    <p class="service-description">{{ service.description }}</p>
+                    <p class="service-price">Цена: {{ service.price }}</p>
 
-        if (scrollToId) {
-            const element = document.getElementById(`service-${scrollToId}`);
-            if (element) {
-                setTimeout(() => {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                }, 500);
+                    {% if user.is_authenticated and user.client %}
+                        <form action="{% url 'services' %}" method="post" class="service-action-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="service_id" value="{{ service.id }}">
+                            {% if service in ordered_services %}
+                                <button type="submit" class="btn remove-order-btn">Удалить из заказа</button>
+                            {% else %}
+                                <button type="submit" class="btn add-order-btn">Добавить в заказ</button>
+                            {% endif %}
+                        </form>
+
+                        <form action="{% url 'services' %}" method="post" class="basket-action-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="basket_service_id" value="{{ service.id }}">
+                            {% if service.id in basket_id_lst %}
+                                <button type="submit" class="btn remove-basket-btn">Удалить из корзины</button>
+                            {% else %}
+                                <button type="submit" class="btn add-basket-btn">Добавить в корзину</button>
+                            {% endif %}
+                        </form>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const scrollToId = urlParams.get('scroll_to');
+
+            if (scrollToId) {
+                const element = document.getElementById(`service-${scrollToId}`);
+                if (element) {
+                    setTimeout(() => {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                    }, 500);
+                }
             }
-        }
-    </script>
+        </script>
+    </div>
 {% endblock %}
+
