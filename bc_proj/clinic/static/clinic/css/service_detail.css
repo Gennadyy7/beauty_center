@@ -1,0 +1,50 @@
+#service-detail-container {
+    max-width: 800px; /* Ограничиваем максимальную ширину контейнера */
+    margin: 20px auto; /* Центрируем контейнер */
+    padding: 20px; /* Отступы внутри контейнера */
+    background-color: #f9f9f9; /* Цвет фона */
+    border-radius: 8px; /* Закругленные углы */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень для эффекта приподнятости */
+}
+
+#service-title {
+    font-size: 2rem; /* Размер шрифта заголовка */
+    color: #0D0D0D; /* Цвет текста заголовка */
+    margin-bottom: 15px; /* Отступ снизу */
+}
+
+#basket-form {
+    margin-bottom: 20px; /* Отступ снизу для формы */
+}
+
+#basket-toggle-btn {
+    padding: 10px 20px; /* Отступы внутри кнопки */
+    background-color: #DDAA03; /* Цвет фона кнопки */
+    color: #fff; /* Цвет текста кнопки */
+    font-size: 1rem; /* Размер шрифта кнопки */
+    border: none; /* Убираем рамку */
+    border-radius: 4px; /* Закругленные углы кнопки */
+    cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+#basket-toggle-btn:hover {
+    background-color: #cc9903; /* Цвет кнопки при наведении */
+}
+
+#auth-message {
+    color: #0D0D0D; /* Цвет текста сообщения */
+    margin-bottom: 15px; /* Отступ снизу для сообщения */
+}
+
+#service-description {
+    font-size: 1rem; /* Размер шрифта описания */
+    margin-bottom: 10px; /* Отступ снизу */
+    color: #333; /* Цвет текста описания */
+}
+
+#service-price {
+    font-size: 1.2rem; /* Размер шрифта для цены */
+    font-weight: bold; /* Жирный шрифт для выделения цены */
+    color: #DDAA03; /* Цвет текста для цены */
+}

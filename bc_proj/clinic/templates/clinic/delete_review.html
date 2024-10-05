@@ -1,11 +1,17 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}Удаление отзыва{% endblock %}
 
+{% block custom_css %}
+<link type="text/css" href="{% static 'clinic/css/delete_review.css' %}" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
-    <h3>Удалить отзыв? Это может отразиться на вашей репутации</h3>
-    <form method="post">
+    <h3 id="delete-review-warning">Удалить отзыв? Это может отразиться на вашей репутации</h3>
+    <form method="post" id="delete-review-form">
         {% csrf_token %}
-        <button type="submit">Удалить</button>
+        <button type="submit" class="btn delete-btn">Удалить</button>
     </form>
 {% endblock %}

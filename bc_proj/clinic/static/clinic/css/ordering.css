@@ -1,0 +1,159 @@
+/* Основной контейнер страницы */
+#order-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок страницы */
+#order-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #0D0D0D;
+    margin-bottom: 20px;
+}
+
+/* Секция выбранных услуг */
+.services-section {
+    margin-bottom: 20px;
+}
+
+.services-title {
+    font-size: 1.5rem;
+    color: #0D0D0D;
+    margin-bottom: 10px;
+}
+
+.services-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.service-name {
+    font-size: 1.1rem;
+    color: #0D0D0D;
+}
+
+.service-price {
+    font-size: 1.1rem;
+    color: #DDAA03;
+}
+
+/* Итоговая цена */
+.total-price {
+    text-align: right;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: #0D0D0D;
+}
+
+/* Выбор врача */
+.doctor-selection {
+    margin-bottom: 20px;
+}
+
+.doctor-label {
+    font-size: 1.1rem;
+    color: #0D0D0D;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.doctor-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Промокод */
+.promo-section {
+    margin-bottom: 20px;
+}
+
+.promo-label {
+    font-size: 1.1rem;
+    color: #0D0D0D;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.promo-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.promo-help {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Инструкции по оплате */
+.payment-instructions {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Кнопка отправки формы */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #DDAA03;
+    color: #fff;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #cc9903;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    #order-container {
+        padding: 15px;
+    }
+
+    #order-title {
+        font-size: 1.8rem;
+    }
+
+    .services-title {
+        font-size: 1.3rem;
+    }
+
+    .service-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .service-price {
+        margin-top: 5px;
+    }
+
+    .submit-btn {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}

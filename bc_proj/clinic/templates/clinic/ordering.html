@@ -1,6 +1,12 @@
 {% extends "main/layout.html" %}
 
+{% load static %}
+
 {% block title %}Оформление заказа{% endblock %}
+
+{% block custom_css %}
+<link type="text/css" href="{% static 'clinic/css/ordering.css' %}" rel="stylesheet"/>
+{% endblock %}
 
 {% block meta %}
     <meta name="description" content="Оформите заказ на медицинские услуги. Выберите врача и укажите свои данные.">
@@ -8,41 +14,41 @@
 {% endblock %}
 
 {% block content %}
-<main itemscope itemtype="http://schema.org/Order">
-    <h1 itemprop="name">Оформление заказа</h1>
+<main id="order-container" itemscope itemtype="http://schema.org/Order">
+    <h1 id="order-title" itemprop="name">Оформление заказа</h1>
 
-    <form method="post" itemscope itemtype="http://schema.org/PlaceOrder">
+    <form method="post" id="order-form" itemscope itemtype="http://schema.org/PlaceOrder">
         {% csrf_token %}
-        <div>
-            <h2>Выбранные услуги:</h2>
-            <ul itemscope itemtype="http://schema.org/Basket">
+        <div class="services-section">
+            <h2 class="services-title">Выбранные услуги:</h2>
+            <ul class="services-list" itemscope itemtype="http://schema.org/Basket">
                 {% for service in services %}
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
-                        <span itemprop="name">{{ service.title }}</span> -
-                        <span itemprop="price">{{ service.price }} руб.</span>
+                    <li class="service-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
+                        <span class="service-name" itemprop="name">{{ service.title }}</span>
+                        <span class="service-price" itemprop="price">{{ service.price }} руб.</span>
                     </li>
                 {% endfor %}
             </ul>
-            <p itemprop="orderTotal">Итоговая цена: <span>{{ total_price }}</span> руб.</p>
+            <p class="total-price" itemprop="orderTotal">Итоговая цена: <span>{{ total_price }}</span> руб.</p>
         </div>
-        <div>
-            <label for="doctor" itemprop="doctor">Выберите врача:</label>
-            <select name="doctor" id="doctor" required>
+        <div class="doctor-selection">
+            <label for="doctor" class="doctor-label" itemprop="doctor">Выберите врача:</label>
+            <select name="doctor" id="doctor" class="doctor-select" required>
                 {% for doctor in doctors %}
                     <option value="{{ doctor.id }}">{{ doctor.surname }} {{ doctor.name }}</option>
                 {% endfor %}
             </select>
         </div>
-        <div>
-            <label for="promo_code">Промокод:</label>
-            <input type="text" name="promo_code" id="promo_code" aria-describedby="promo_help" placeholder="Введите промокод">
-            <small id="promo_help">Если вы знаете действующий промокод, введите его здесь.</small>
+        <div class="promo-section">
+            <label for="promo_code" class="promo-label">Промокод:</label>
+            <input type="text" name="promo_code" id="promo_code" class="promo-input" aria-describedby="promo_help" placeholder="Введите промокод">
+            <small id="promo_help" class="promo-help">Если вы знаете действующий промокод, введите его здесь.</small>
         </div>
-        <p itemprop="paymentInstructions">
+        <p class="payment-instructions" itemprop="paymentInstructions">
             Обратите внимание, что оплата заказа осуществляется непосредственно лечащему врачу
             при получении услуги.
         </p>
-        <button type="submit">Готово</button>
+        <button type="submit" class="btn submit-btn">Готово</button>
     </form>
 </main>
 {% endblock %}

@@ -1,6 +1,12 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}{{ service.title }}{% endblock %}
+
+{% block custom_css %}
+<link type="text/css" href="{% static 'clinic/css/service_detail.css' %}" rel="stylesheet"/>
+{% endblock %}
 
 {% block meta %}
     <meta name="description" content="{{ service.description|truncatewords:20 }}">
@@ -8,12 +14,13 @@
 {% endblock %}
 
 {% block content %}
-    <div class="service-detail">
-        <h1>{{ service.title }}</h1>
+    <div id="service-detail-container" class="service-detail">
+        <h1 id="service-title">{{ service.title }}</h1>
+
         {% if user.is_authenticated and user.client %}
-            <form action="{% url 'service_detail' service.id %}" method="post">
+            <form id="basket-form" action="{% url 'service_detail' service.id %}" method="post">
                 {% csrf_token %}
-                <button type="submit">
+                <button type="submit" id="basket-toggle-btn">
                     {% if is_service_in_basket %}
                         Удалить из корзины
                     {% else %}
@@ -22,9 +29,12 @@
                 </button>
             </form>
         {% else %}
-            <p><a href="{% url 'to_login' %}">Авторизуйтесь</a>, чтобы добавить услугу в корзину.</p>
+            <p id="auth-message">
+                <a href="{% url 'to_login' %}">Авторизуйтесь</a>, чтобы добавить услугу в корзину.
+            </p>
         {% endif %}
-        <p>{{ service.description }}</p>
-        <p>Цена: {{ service.price }}</p>
+
+        <p id="service-description">{{ service.description }}</p>
+        <p id="service-price">Цена: {{ service.price }}</p>
     </div>
 {% endblock %}

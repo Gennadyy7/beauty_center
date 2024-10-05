@@ -1,0 +1,93 @@
+/* Общий контейнер формы */
+#registration-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок формы */
+#registration-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #0D0D0D;
+    margin-bottom: 20px;
+}
+
+/* Группы полей формы */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+/* Метки полей формы */
+.form-label {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    color: #0D0D0D;
+}
+
+/* Поля ввода */
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="date"],
+.form-group input[type="tel"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Кнопка отправки */
+.btn.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #DDAA03;
+    color: #fff;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+/* Ховер для кнопки */
+.btn.submit-btn:hover {
+    background-color: #cc9903;
+}
+
+/* Ошибки */
+.error-message {
+    display: block;
+    margin-top: 10px;
+    color: red;
+    text-align: center;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    #registration-form {
+        padding: 15px;
+    }
+
+    #registration-title {
+        font-size: 1.6rem;
+    }
+
+    .form-group input {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .btn.submit-btn {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}

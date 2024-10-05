@@ -1,21 +1,54 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}Регистрация{% endblock %}
 
+{% block custom_css %}
+<link type="text/css" href="{% static 'clinic/css/registration.css' %}" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
-    <h1>Регистрация</h1>
-    <form method="post">
+    <h1 id="registration-title">Регистрация</h1>
+    <form method="post" id="registration-form">
         {% csrf_token %}
-        {{ form.username }}
-        {{ form.password1 }}
-        {{ form.password2 }}
-        {{ form.surname }}
-        {{ form.name }}
-        {{ form.patronymic }}
-        {{ form.birth_date }}
-        {{ form.address }}
-        {{ form.phone }}
-        <button type="submit">Зарегистрироваться</button>
-        <span>{{ error }}</span>
+        <div class="form-group">
+            <label for="username-field" class="form-label">Имя пользователя</label>
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            <label for="password1-field" class="form-label">Пароль</label>
+            {{ form.password1 }}
+        </div>
+        <div class="form-group">
+            <label for="password2-field" class="form-label">Подтверждение пароля</label>
+            {{ form.password2 }}
+        </div>
+        <div class="form-group">
+            <label for="surname-field" class="form-label">Фамилия</label>
+            {{ form.surname }}
+        </div>
+        <div class="form-group">
+            <label for="name-field" class="form-label">Имя</label>
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            <label for="patronymic-field" class="form-label">Отчество</label>
+            {{ form.patronymic }}
+        </div>
+        <div class="form-group">
+            <label for="birthdate-field" class="form-label">Дата рождения</label>
+            {{ form.birth_date }}
+        </div>
+        <div class="form-group">
+            <label for="address-field" class="form-label">Адрес</label>
+            {{ form.address }}
+        </div>
+        <div class="form-group">
+            <label for="phone-field" class="form-label">Телефон</label>
+            {{ form.phone }}
+        </div>
+        <button type="submit" class="btn submit-btn">Зарегистрироваться</button>
+        <span class="error-message">{{ error }}</span>
     </form>
 {% endblock %}

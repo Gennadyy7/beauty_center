@@ -1,0 +1,109 @@
+/* Основной контейнер */
+#schedule-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок страницы */
+#schedule-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #0D0D0D;
+    margin-bottom: 20px;
+}
+
+/* Заголовки секций (актуальные и прошедшие заказы) */
+.section-title {
+    font-size: 1.5rem;
+    color: #DDAA03;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Карточка каждого заказа */
+.order-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок каждого заказа */
+.order-title {
+    font-size: 1.2rem;
+    color: #0D0D0D;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Информация о заказе */
+.order-client,
+.order-doctor,
+.order-date,
+.order-total,
+.order-promo {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Промокод */
+.order-promo {
+    font-style: italic;
+    color: #DDAA03;
+}
+
+/* Сообщение для неавторизованных пользователей */
+#login-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #DDAA03;
+    margin-top: 30px;
+}
+
+/* Ссылка в сообщении для неавторизованных пользователей */
+#login-message a {
+    color: #0D0D0D;
+    text-decoration: underline;
+}
+
+#login-message a:hover {
+    color: #333;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 600px) {
+    #schedule-container {
+        padding: 15px;
+    }
+
+    #schedule-title {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .order-card {
+        padding: 10px;
+    }
+
+    .order-title {
+        font-size: 1.1rem;
+    }
+
+    .order-client,
+    .order-doctor,
+    .order-date,
+    .order-total,
+    .order-promo {
+        font-size: 0.9rem;
+    }
+}

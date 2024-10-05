@@ -1,14 +1,26 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}Вход в систему{% endblock %}
 
+{% block custom_css %}
+<link type="text/css" href="{% static 'clinic/css/login.css' %}" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
-    <h1>Вход в систему</h1>
-    <form method="post">
+    <h1 id="login-title">Вход в систему</h1>
+    <form method="post" id="login-form">
         {% csrf_token %}
-        {{ form.username }}
-        {{ form.password }}
-        <button type="submit">Войти</button>
-        <span>{{ error }}</span>
+        <div class="form-group">
+            <label for="username-field" class="form-label">Имя пользователя</label>
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            <label for="password-field" class="form-label">Пароль</label>
+            {{ form.password }}
+        </div>
+        <button type="submit" class="btn login-btn">Войти</button>
+        <span class="error-message">{{ error }}</span>
     </form>
 {% endblock %}
