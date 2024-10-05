@@ -1,14 +1,28 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}Оставить отзыв{% endblock %}
 
+{% block custom_css %}
+<link type="text/css" href="{% static 'clinic/css/add_review.css' %}" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
-    <h3>Напишите текст отзыва и поставьте оценку косметологическому центру.</h3>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.rating }}
-        {{ form.text }}
-        <button type="submit">Отправить</button>
-        <span>{{ error }}</span>
-    </form>
+    <div id="review-form-container">
+        <h3 class="form-instruction">Напишите текст отзыва и поставьте оценку косметологическому центру.</h3>
+        <form method="post" id="review-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="rating-field" class="form-label">Оценка</label>
+                {{ form.rating }}
+            </div>
+            <div class="form-group">
+                <label for="text-field" class="form-label">Отзыв</label>
+                {{ form.text }}
+            </div>
+            <button type="submit" class="btn submit-btn">Отправить</button>
+            <span class="error-message">{{ error }}</span>
+        </form>
+    </div>
 {% endblock %}

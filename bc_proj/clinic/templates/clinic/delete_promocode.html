@@ -1,11 +1,17 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}Удаление промокода{% endblock %}
 
+{% block custom_css %}
+<link type="text/css" href="{% static 'clinic/css/delete_promocode.css' %}" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
-    <h3>Удалить Промокод?</h3>
-    <form method="post">
+    <h3 class="confirmation-title">Удалить Промокод?</h3>
+    <form method="post" id="delete-promocode-form">
         {% csrf_token %}
-        <button type="submit">Удалить</button>
+        <button type="submit" class="btn delete-btn">Удалить</button>
     </form>
 {% endblock %}

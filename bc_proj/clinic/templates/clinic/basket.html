@@ -1,42 +1,49 @@
 {% extends 'main/layout.html' %}
 
+{% load static %}
+
 {% block title %}Корзина{% endblock %}
 
+{% block custom_css %}
+<link type="text/css" href="{% static 'clinic/css/basket.css' %}" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
-<main itemscope itemtype="http://schema.org/ShoppingCart">
-    <h1 itemprop="name">Моя корзина</h1>
+<main itemscope itemtype="http://schema.org/ShoppingCart" id="cart-container">
+    <h1 itemprop="name" class="cart-title">Моя корзина</h1>
 
     {% if cat_obj_services_with_totals %}
         {% for category_total_pair, services in cat_obj_services_with_totals.items %}
-            <section itemscope itemtype="http://schema.org/ItemList">
-                <h2 itemprop="itemListOrder">Категория: {{ category_total_pair.0 }}</h2>
-                <ul>
+            <section itemscope itemtype="http://schema.org/ItemList" class="cart-category">
+                <h2 itemprop="itemListOrder" class="category-title">Категория: {{ category_total_pair.0 }}</h2>
+                <ul class="service-list">
                     {% for service in services %}
-                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
-                            <span itemprop="name">{{ service.title }}</span> - <span itemprop="price">{{ service.price }}</span>
-                            <form action="{% url 'basket' %}" method="POST" itemscope itemtype="http://schema.org/Action">
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/Product" class="service-item">
+                            <span itemprop="name" class="service-title">{{ service.title }}</span>
+                            <span itemprop="price" class="service-price">{{ service.price }}</span>
+                            <form action="{% url 'basket' %}" method="POST" itemscope itemtype="http://schema.org/Action" class="delete-service-form">
                                 {% csrf_token %}
                                 <input type="hidden" name="to_delete" value="{{ service.id }}">
-                                <button type="submit" aria-label="Удалить {{ service.title }}">-</button>
+                                <button type="submit" class="delete-service-btn" aria-label="Удалить {{ service.title }}">-</button>
                             </form>
                         </li>
                     {% endfor %}
                 </ul>
-                <h3>Цена: <span itemprop="totalPrice">{{ category_total_pair.1 }}</span></h3>
-                <form action="{% url 'ordering' %}" method="GET">
+                <h3 class="category-total">Цена: <span itemprop="totalPrice">{{ category_total_pair.1 }}</span></h3>
+                <form action="{% url 'ordering' %}" method="GET" class="order-form">
                     {% csrf_token %}
                     <input type="hidden" name="category_name_from_basket" value="{{ services.0.service_specialization.service_category.name }}">
-                    <button type="submit" aria-label="Оформить заказ">Оформить заказ</button>
+                    <button type="submit" class="order-btn" aria-label="Оформить заказ">Оформить заказ</button>
                 </form>
-                <form action="{% url 'basket' %}" method="POST">
+                <form action="{% url 'basket' %}" method="POST" class="delete-category-form">
                     {% csrf_token %}
                     <input type="hidden" name="to_delete" value="{{ category_total_pair.0 }}">
-                    <button type="submit" aria-label="Удалить категорию {{ category_total_pair.0 }}">Удалить</button>
+                    <button type="submit" class="delete-category-btn" aria-label="Удалить категорию {{ category_total_pair.0 }}">Удалить</button>
                 </form>
             </section>
         {% endfor %}
     {% else %}
-        <p>Ваша корзина пуста.</p>
+        <p class="empty-cart-message">Ваша корзина пуста.</p>
     {% endif %}
 </main>
 {% endblock %}
