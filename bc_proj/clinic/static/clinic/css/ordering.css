@@ -90,13 +90,21 @@
 }
 
 .promo-input {
-    width: 100%;
+    width: calc(100% - 20px);
     padding: 10px;
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #fff;
+
 }
+
+/**/
+/* Стили для обязательных полей */
+input:required, select:required {
+    border: 2px solid #DDAA03;
+    background-color: #fffaf0;
+}
+/**/
 
 .promo-help {
     font-size: 0.9rem;

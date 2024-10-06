@@ -37,12 +37,18 @@
 .form-group input[type="tel"] {
     padding: 10px;
     font-size: 1rem;
-    border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #fff;
     width: 100%;
     box-sizing: border-box;
 }
+
+/**/
+/* Стили для доступных полей (по умолчанию доступные) */
+input:enabled, select:enabled {
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+/**/
 
 /* Кнопка отправки */
 .btn.submit-btn {

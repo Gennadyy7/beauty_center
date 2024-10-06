@@ -36,6 +36,12 @@
     color: #333;
 }
 
+.intro-text::selection {
+    background-color: #D94F4F; /* Красный оттенок для выделения */
+    color: #4FD9D9; /* Цвет текста в негативе к красному */
+}
+
+
 /* Стили для списков */
 .data-list, .usage-list, .contact-list {
     margin-bottom: 20px;
@@ -45,6 +51,12 @@
     margin-bottom: 10px;
     font-size: 1.1em;
     color: #333;
+}
+
+.data-list li::marker {
+    content: "✓ "; /* Символ галочки */
+    color: green; /* Цвет галочки */
+    font-size: 1.5rem; /* Размер маркера */
 }
 
 /* Стиль для таблицы */

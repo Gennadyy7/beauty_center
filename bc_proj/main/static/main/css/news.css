@@ -31,6 +31,32 @@
     clear: both; /* Обнуляем плавающие элементы */
 }
 
+/**/
+/* Кавычки для английского языка */
+.news-quote > p[lang="en"] {
+    quotes: "“" "”" "‘" "’";
+}
+
+/* Кавычки для русского языка */
+.news-quote > p[lang="ru"] {
+    quotes: "«" "»" "„" "“";
+}
+
+/* Кавычки для французского языка */
+.news-quote > p[lang="fr"] {
+    quotes: "«" "»" "‹" "›";
+}
+
+/* Применение кавычек */
+blockquote > p:before {
+    content: open-quote;
+}
+
+blockquote > p:after {
+    content: close-quote;
+}
+/**/
+
 .news-quote footer {
     margin-top: 10px; /* Отступ сверху для footer */
     font-size: 0.9em; /* Меньший размер шрифта для автора */
