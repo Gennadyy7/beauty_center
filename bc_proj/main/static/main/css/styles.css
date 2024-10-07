@@ -216,3 +216,11 @@ body {
     padding-left: 300px;
     background: #fefff1;
 }
+
+.logo-img {
+transition: transform 0.3s ease-in-out;
+}
+
+.logo-img:hover {
+transform: rotate(360deg);
+}
