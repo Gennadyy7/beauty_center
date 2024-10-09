@@ -63,3 +63,15 @@
 .delete-promocode-btn {
     margin-right: 10px; /* Отступ между кнопками */
 }
+
+.add-promocode-btn:hover {
+    cursor: cell; /* Указатель при наведении */
+}
+
+.update-promocode-btn:hover {
+    cursor: grab; /* Курсор редактирования при наведении */
+}
+
+.delete-promocode-btn:hover {
+    cursor: not-allowed; /* Курсор с предупреждением при наведении */
+}

@@ -43,6 +43,8 @@
 }
 
 .doctor-info {
+    display: flex;
+    flex-direction: column;
     flex: 1;
     margin-right: 20px;
 }

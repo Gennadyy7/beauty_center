@@ -20,12 +20,13 @@
 }
 
 .vacancies-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    overflow: hidden; /* Очищаем плавающие элементы */
 }
 
 .vacancy-card {
+    width: 20%; /* Ограничиваем ширину для каждой карточки */
+    margin: 10px; /* Отступы между карточками */
+    float: left; /* Делаем карточки плавающими влево */
     border: 1px solid #DDAA03;
     padding: 15px;
     border-radius: 8px;
@@ -41,4 +42,11 @@
 .vacancy-description {
     font-size: 16px;
     color: #555555;
+}
+
+/* Очищение обтекания */
+.vacancies-list::after {
+    content: "";
+    display: block;
+    clear: both;
 }

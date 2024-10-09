@@ -1,4 +1,4 @@
-/* Основные стили для страницы новости */
+/* Основные стили для страницы статьи */
 .article-detail {
     max-width: 1000px;
     margin: 0 auto;
@@ -7,15 +7,18 @@
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
+    letter-spacing: 1px; /* Интервал между символами */
 }
 
-/* Стили для заголовка новости */
+/* Стили для заголовка статьи */
 .article-detail h1 {
     font-size: 2.2em;
     color: #DDAA03;
     margin-bottom: 20px;
     text-align: center;
-    text-transform: uppercase;
+    text-transform: uppercase; /* Заголовок заглавными */
+    line-height: 1.4em; /* Межстрочный интервал */
+    font-variant: small-caps; /* Капитель */
 }
 
 /* Стиль для изображения */
@@ -28,13 +31,19 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Стиль для текста новости */
+/* Стиль для текста статьи */
 .article-detail p {
     font-size: 1.2em;
-    line-height: 1.6em;
+    line-height: 1.6em; /* Межстрочный интервал */
     text-align: justify;
     margin-bottom: 20px;
     color: #333;
+    text-indent: 30px; /* Красная строка */
+    word-spacing: 5px; /* Интервал между словами */
+    letter-spacing: 1px; /* Интервал между символами */
+    hyphens: auto; /* Перенос слов */
+    text-indent: 30px; /* Красная строка */
+    word-spacing: 5px; /* Интервал между словами */
 }
 
 /* Стиль для кнопки возврата */

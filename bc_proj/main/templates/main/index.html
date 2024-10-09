@@ -101,8 +101,10 @@
     </section>
 
     <article id="latest-article">
-        <h2 class="article-title">Актуальная статья: {{ latest_article.title }}</h2>
-        <p class="article-summary">{{ latest_article.summary }}</p>
+        <div class="article-content">
+            <h2 class="article-title">Актуальная статья: {{ latest_article.title }}</h2>
+            <p class="article-summary">{{ latest_article.summary }}</p>
+        </div>
         <img src="{{ latest_article.image.url }}" alt="{{ latest_article.title }}" class="article-image" width="600">
     </article>
 
