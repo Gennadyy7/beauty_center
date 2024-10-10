@@ -15,12 +15,30 @@
         <button class="btn add-promocode-btn" onclick="location.href='{% url 'add_promocode' %}'">Добавить промокод</button>
     {% endif %}
 
+    <h3 class="section-title">Активные промокоды</h3>
     <div class="promocodes-list">
         {% for promocode in promocodes %}
             <div class="promocode-card" id="promocode-{{ promocode.id }}">
                 <h3 class="promocode-code">{{ promocode.code }}</h3>
                 <p class="promocode-discount">Скидка: {{ promocode.discount }}%</p>
                 <p class="promocode-expiration">Действителен до: {{ promocode.expiration_date }}</p>
+                {% if user.is_superuser %}
+                    <div class="promocode-actions">
+                        <button class="btn update-promocode-btn" onclick="location.href='{% url 'update_promocode' promocode.id %}'">Изменить промокод</button>
+                        <button class="btn delete-promocode-btn" onclick="location.href='{% url 'delete_promocode' promocode.id %}'">Удалить промокод</button>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <h3 class="section-title">Архивные промокоды</h3>
+    <div class="promocodes-list">
+        {% for promocode in archived_promocodes %}
+            <div class="promocode-card" id="promocode-{{ promocode.id }}">
+                <h3 class="promocode-code">{{ promocode.code }}</h3>
+                <p class="promocode-discount">Скидка: {{ promocode.discount }}%</p>
+                <p class="promocode-expiration">Истек: {{ promocode.expiration_date }}</p>
                 {% if user.is_superuser %}
                     <div class="promocode-actions">
                         <button class="btn update-promocode-btn" onclick="location.href='{% url 'update_promocode' promocode.id %}'">Изменить промокод</button>

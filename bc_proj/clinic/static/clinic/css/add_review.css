@@ -12,6 +12,7 @@
     font-size: 1.5rem;
     color: #0D0D0D;
     margin-bottom: 20px;
+    font-family: serif; /* Ключевое слово для шрифта */
 }
 
 #review-form .form-group {
@@ -24,6 +25,7 @@
     margin-bottom: 5px;
     font-size: 1.1rem;
     color: #0D0D0D;
+    font-family: sans-serif; /* Ключевое слово для шрифта */
 }
 
 #review-form .form-group select,
@@ -33,7 +35,16 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #fff;
+    font-family: sans-serif; /* Ключевое слово для шрифта */
 }
+
+/* Псевдокласс для фокуса на полях формы */
+#review-form .form-group select:focus,
+#review-form .form-group textarea:focus {
+    outline: 2px solid #555;
+    font-family: monospace; /* Шрифт при фокусе */
+}
+
 
 #review-form .submit-btn {
     width: 100%;
@@ -45,10 +56,17 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-family: sans-serif; /* Ключевое слово для шрифта */
 }
 
 #review-form .submit-btn:hover {
     background-color: #cc9903;
+    font-family: serif; /* Шрифт при наведении */
+}
+
+#review-form .submit-btn:focus {
+    outline: 2px solid #555;
+    font-family: monospace; /* Шрифт при фокусе */
 }
 
 .error-message {
@@ -56,6 +74,7 @@
     margin-top: 10px;
     color: red;
     text-align: center;
+    font-family: sans-serif; /* Ключевое слово для шрифта */
 }
 
 /* Простое оформление для выдвигающегося списка */

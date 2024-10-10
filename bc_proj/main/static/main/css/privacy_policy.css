@@ -62,24 +62,73 @@
 /* Стиль для таблицы */
 .data-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: collapse; /* Убираем двойные линии между ячейками */
     margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto; /* Центрируем таблицу на странице */
 }
 
+/* Стили для заголовков таблицы */
 .data-table th, .data-table td {
-    border: 2px solid #DDAA03;
     padding: 10px;
-    text-align: center;
+    text-align: center; /* Горизонтальное выравнивание */
+    vertical-align: middle; /* Вертикальное выравнивание */
 }
 
+/* Убираем двойные линии и уменьшаем толщину границ */
+.data-table th, .data-table td {
+    border: 1px solid #DDAA03;
+}
+
+/* Стиль для шапки таблицы */
 .data-table th {
     background-color: #DDAA03;
     color: #ffffff;
 }
 
+/* Стиль для первой строки заголовка таблицы */
+.data-table thead tr:first-child th {
+    background-color: #ffffff;
+    color: #DDAA03;
+    font-size: 1.2em;
+    padding: 15px;
+}
+
+
+/* Добавляем отступ после первой строки заголовка */
+.data-table thead tr:first-child {
+    border-bottom: 2px solid #DDAA03;
+    margin-bottom: 15px; /* Визуальное отделение заголовка */
+}
+
+/* Стиль для пустых ячеек */
+.data-table td:empty {
+    background-color: #f2f2f2; /* Фон для пустых ячеек */
+}
+
+/* Стиль для тела таблицы */
 .data-table td {
     color: #333;
+    padding: 10px;
 }
+
+/* Стили для строк (зебра) */
+.data-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Чередование строк */
+}
+
+/* Дополнительные стили для первого столбца */
+.data-table td:first-child {
+    font-weight: bold; /* Жирный текст для первого столбца */
+}
+
+/* Вертикальное и горизонтальное выравнивание */
+.data-table th, .data-table td {
+    text-align: center; /* Центровка текста по горизонтали */
+    vertical-align: middle; /* Центровка текста по вертикали */
+}
+
+
 
 /* Стиль для ссылки-якоря */
 .code-link {

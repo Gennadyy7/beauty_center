@@ -237,7 +237,9 @@ def services_view(request):
 
 def promocodes_view(request):
     promocodes = PromoCodes.objects.filter(expiration_date__gte=date.today()).order_by('-id')
-    return render(request, 'clinic/promocodes.html', {'promocodes': promocodes})
+    archived_promocodes = PromoCodes.objects.filter(expiration_date__lt=date.today()).order_by('-id')
+    return render(request, 'clinic/promocodes.html', {'promocodes': promocodes,
+                                                                            'archived_promocodes': archived_promocodes})
 
 
 def schedule_view(request):

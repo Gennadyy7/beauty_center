@@ -21,10 +21,22 @@
     border: none;
     cursor: pointer;
     margin-top: 10px;
+    font-family: sans-serif; /* Используем ключевое слово для шрифта */
+    font-size: 1em;
+    min-width: 180px; /* Увеличиваем минимальную ширину для всех кнопок */
+    text-align: center;
+    white-space: nowrap; /* Запрещаем перенос текста */
 }
 
 .leave-review-btn:hover, .edit-review-btn:hover, .delete-review-btn:hover {
     background-color: #c18e03;
+    font-family: serif; /* Меняем шрифт при наведении */
+}
+
+/* Псевдокласс для фокуса на кнопках */
+.leave-review-btn:focus, .edit-review-btn:focus, .delete-review-btn:focus {
+    outline: 2px solid #555;
+    font-family: monospace; /* Шрифт при фокусе */
 }
 
 .average-rating {
@@ -64,15 +76,18 @@
 
 .info-text {
     text-align: center;
+    font-family: serif; /* Ключевое слово для текста */
 }
 
 .login-link {
     color: #DDAA03;
     text-decoration: none;
+    font-family: sans-serif; /* Ключевое слово для шрифта ссылки */
 }
 
 .login-link:hover {
     text-decoration: underline;
+    font-family: cursive; /* Меняем шрифт при наведении */
 }
 
 .edit-review-btn, .delete-review-btn {
