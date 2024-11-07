@@ -1,0 +1,105 @@
+{% extends 'main/layout.html' %}
+
+{% load static %}
+
+{% block title %}Ваши сотрудники, сэр{% endblock %}
+
+{% block custom_css %}
+<link type="text/css" href="{% static 'clinic/css/employees.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+<div class="employees-container">
+    <h1>Сотрудники клиники</h1>
+
+    <!-- Search and Add Employee Buttons -->
+    <div class="controls">
+        <input type="text" id="searchField" placeholder="Введите текст для фильтрации">
+        <button id="searchButton">Найти</button>
+        <button id="addEmployeeButton">Добавить сотрудника</button>
+    </div>
+
+    <!-- Add Employee Form -->
+    <div id="addEmployeeForm" class="form-container" style="display: none;">
+        <h3>Добавление нового сотрудника</h3>
+        <form id="employeeForm">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="surname">Фамилия:</label>
+            <input type="text" id="surname" name="surname" required>
+
+            <label for="patronymic">Отчество:</label>
+            <input type="text" id="patronymic" name="patronymic" required>
+
+            <label for="photo">Фотография:</label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+
+            <label for="phone">Телефон:</label>
+            <input type="text" id="phone" name="phone" required>
+            <small id="phoneError" class="error"></small>
+
+            <label for="email">Электронная почта:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="url">URL:</label>
+            <input type="url" id="url" name="url" required>
+            <small id="urlError" class="error"></small>
+
+            <button type="submit" id="addToTableButton" disabled>Добавить в таблицу</button>
+        </form>
+    </div>
+
+    <!-- Employees Table -->
+    <table id="employeesTable">
+        <thead>
+            <tr>
+                <th data-sort="surname">Фамилия</th>
+                <th data-sort="name">Имя</th>
+                <th data-sort="patronymic">Отчество</th>
+                <th>Фото</th>
+                <th data-sort="service_specialization">Специализация</th>
+                <th data-sort="phone">Телефон</th>
+                <th data-sort="email">Электронная почта</th>
+                <th>Выбрать</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr data-id="{{ employee.id }}">
+                <td>{{ employee.surname }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.patronymic }}</td>
+                <td><img src="{{ employee.photo.url }}" alt="Фото {{ employee.name }}" class="employee-photo"></td>
+                <td>{{ employee.service_specialization.doctor_specialization }}</td>
+                <td>{{ employee.phone }}</td>
+                <td>{{ employee.email }}</td>
+                <td><input type="checkbox" class="reward-checkbox" data-name="{{ employee.surname }}"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Pagination Controls -->
+    <div class="pagination">
+        <button id="prevPage" disabled>Назад</button>
+        <span id="pageIndicator">Страница 1</span>
+        <button id="nextPage">Вперед</button>
+    </div>
+
+    <!-- Employee Details Display -->
+    <div id="employeeDetails" class="details-container" style="display: none;">
+        <h3>Детали сотрудника</h3>
+        <p>Фамилия: <span id="detailSurname"></span></p>
+        <p>Имя: <span id="detailName"></span></p>
+        <p>Отчество: <span id="detailPatronymic"></span></p>
+        <p>Телефон: <span id="detailPhone"></span></p>
+        <p>Электронная почта: <span id="detailEmail"></span></p>
+        <p>Специализация: <span id="detailSpecialization"></span></p>
+    </div>
+
+    <!-- Reward Button and Output -->
+    <button id="rewardButton">Премировать</button>
+    <div id="rewardOutput"></div>
+</div>
+{% endblock %}

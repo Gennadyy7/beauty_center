@@ -1,0 +1,54 @@
+/* Основной стиль для изображений, чтобы не превышали размер контейнера */
+img {
+    max-width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Центрируем изображение */
+    border-radius: 8px; /* Немного округляем углы */
+}
+
+/* Контейнер для изображений и текста */
+.content-block {
+    padding: 20px;
+    margin: 10px auto;
+    background-color: #FFFFFF; /* Белый фон для выделения контента */
+    border: 1px solid #DDAA03; /* Легкая граница для отделения блока */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для объема */
+    max-width: 800px; /* Ограничиваем ширину блока */
+}
+
+/* Стили для заголовков */
+.content-block h2 {
+    font-size: 24px;
+    color: #DDAA03; /* Акцентный цвет заголовков */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Стили для текста */
+.content-block p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    body {
+        padding-left: 0; /* Убираем отступ слева на мобильных устройствах */
+    }
+    #sidebar-nav {
+        width: 100%; /* Боковое меню будет занимать всю ширину экрана */
+        height: auto;
+        position: relative;
+        top: 0;
+        border-right: none;
+    }
+    .content-block {
+        padding: 15px;
+        max-width: 100%;
+        margin: 10px 5px;
+    }
+}

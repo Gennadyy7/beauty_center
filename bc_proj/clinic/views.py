@@ -1,6 +1,7 @@
 from decimal import Decimal
 from datetime import datetime, date
 from io import BytesIO
+from django.views.generic import ListView
 from statistics import mean, multimode, median
 
 from django.core.files.base import ContentFile
@@ -441,3 +442,8 @@ def basket_view(request):
     return render(request, 'clinic/basket.html', context={
         'cat_obj_services_with_totals': cat_obj_services_with_totals,
     })
+
+class EmployeesView(AdminRequiredMixin, ListView):
+    model = Doctors
+    template_name = 'clinic/employees.html'
+    context_object_name = 'employees'
