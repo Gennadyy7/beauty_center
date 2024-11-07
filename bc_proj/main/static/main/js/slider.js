@@ -92,6 +92,9 @@ class Slider {
     }
 }
 
+const defaultDelay = 5;
+const appliedDelay = localStorage.getItem('sliderDelay') ? parseInt(localStorage.getItem('sliderDelay'), 10) : defaultDelay;
+
 // Инициализация слайдера с параметрами
 const slider = new Slider({
     loop: true,
@@ -99,5 +102,21 @@ const slider = new Slider({
     pags: true,
     auto: true,
     stopMouseHover: true,
-    delay: 5
+    delay: appliedDelay
+});
+
+// Получение элементов
+const delayInput = document.getElementById("delay-input");
+const applyDelayButton = document.getElementById("apply-delay");
+
+delayInput.value = appliedDelay;
+
+// Обработчик для кнопки "Применить"
+applyDelayButton.addEventListener("click", () => {
+    const newDelay = parseInt(delayInput.value, 10);
+    if (newDelay > 0) {
+        localStorage.setItem('sliderDelay', newDelay);
+        slider.delay = newDelay; // обновляем задержку в секундах
+        slider.startAutoSlide(); // перезапускаем авто-слайд с новой задержкой
+    }
 });
