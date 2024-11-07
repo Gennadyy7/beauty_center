@@ -109,14 +109,16 @@ const slider = new Slider({
 const delayInput = document.getElementById("delay-input");
 const applyDelayButton = document.getElementById("apply-delay");
 
-delayInput.value = appliedDelay;
+if (delayInput) {
+    delayInput.value = appliedDelay;
 
-// Обработчик для кнопки "Применить"
-applyDelayButton.addEventListener("click", () => {
-    const newDelay = parseInt(delayInput.value, 10);
-    if (newDelay > 0) {
-        localStorage.setItem('sliderDelay', newDelay);
-        slider.delay = newDelay; // обновляем задержку в секундах
-        slider.startAutoSlide(); // перезапускаем авто-слайд с новой задержкой
-    }
-});
+    // Обработчик для кнопки "Применить"
+    applyDelayButton.addEventListener("click", () => {
+        const newDelay = parseInt(delayInput.value, 10);
+        if (newDelay > 0) {
+            localStorage.setItem('sliderDelay', newDelay);
+            slider.delay = newDelay; // обновляем задержку в секундах
+            slider.startAutoSlide(); // перезапускаем авто-слайд с новой задержкой
+        }
+    });
+}

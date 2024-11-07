@@ -36,6 +36,7 @@
                 <h1 id="org-name"><strong>Галатея</strong></h1>
                 <p class="slogan" id="org-slogan"><strong>Красота исходит изнутри</strong></p>
             </div>
+            <div id="countdown-timer" style="position: relative; text-align: center; font-size: 24px; left: 20%;"></div>
             <nav id="header-nav">
                 <ul class="horizontal" id="top-nav-list">
                     <li><a href="{% url 'contacts' %}">Контакты</a></li>
@@ -104,6 +105,8 @@
     <main id="main-content">
         {% block content %} {% endblock %}
     </main>
+
+    <script src="{% static 'main/js/countdown.js' %}"></script>
 </body>
 
 </html>
