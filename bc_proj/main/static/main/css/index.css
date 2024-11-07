@@ -471,55 +471,87 @@
     width: 600px;
     height: 338px;
     margin: 0 auto;
+    overflow: hidden;
 }
 
-.banner-img {
+
+/* Каждый слайд (изображение и подпись) */
+.slide {
+    display: none; /* скрыть все слайды по умолчанию */
     position: absolute;
     width: 100%;
+    height: 100%;
+}
+
+/* Показать только активный слайд */
+.slide.active {
+    display: block;
+}
+
+/* Изображения баннера */
+.banner-img {
+    width: 100%;
     height: auto;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    z-index: 1;
-    transition: opacity 1s ease-in-out;
 }
 
-.banner-img:nth-child(1) {
-    animation: slideBanner 30s infinite;
+/* Навигационные кнопки */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.banner-img:nth-child(2) {
-    animation: slideBanner 30s infinite 10s;
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
 }
 
-.banner-img:nth-child(3) {
-    animation: slideBanner 30s infinite 20s;
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
-@keyframes slideBanner {
-    0% {
-        opacity: 0;
-        z-index: 1;
-    }
-    10% {
-        opacity: 1;
-        z-index: 5;
-    }
-    30% {
-        opacity: 1;
-        z-index: 5;
-    }
-    40% {
-        opacity: 0;
-        z-index: 1;
-    }
-    100% {
-        opacity: 0;
-        z-index: 1;
-    }
+/* Индикатор слайда */
+.slide-index {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 16px;
 }
 
-/*Каталог услуг*/
+/* Пагинация */
+.pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 3px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: white;
+}
+
+/*Каталог услуг!!!!!!*/
 .service-catalog {
     max-width: 90%; /* Максимальная ширина секции */
     margin: 20px auto; /* Центрирование */
