@@ -1,12 +1,13 @@
 class Slider {
     constructor(options) {
         // Настройки слайдера
-        this.loop = options.loop || true;
-        this.navs = options.navs || true;
-        this.pags = options.pags || true;
-        this.auto = options.auto || true;
-        this.stopMouseHover = options.stopMouseHover || true;
-        this.delay = options.delay || 5;
+        this.loop = 'loop' in options ? options.loop : true;
+        this.navs = 'navs' in options ? options.navs : true;
+        this.pags = 'pags' in options ? options.pags : true;
+        this.auto = 'auto' in options ? options.auto : true;
+        this.stopMouseHover = 'stopMouseHover' in options ? options.stopMouseHover : true;
+        this.delay = 'delay' in options ? options.delay : 5;
+
 
         // Переменные состояния
         this.currentSlide = 0;
@@ -15,6 +16,7 @@ class Slider {
         // Получение элементов слайдера
         this.slides = document.querySelectorAll(".slide");
         this.slideIndexDisplay = document.querySelector(".slide-index");
+        this.captionDisplay = document.querySelector(".caption");
         this.dots = document.querySelectorAll(".dot");
         this.prevButton = document.querySelector(".prev");
         this.nextButton = document.querySelector(".next");
@@ -61,6 +63,9 @@ class Slider {
             if (this.pags) this.dots[i].classList.toggle("active", i === index);
         });
         this.slideIndexDisplay.textContent = `${index + 1}/${this.slides.length}`;
+
+        // Обновляем текст подписи
+        this.captionDisplay.textContent = this.slides[index].getAttribute("data-caption");
     }
 
     changeSlide(offset) {

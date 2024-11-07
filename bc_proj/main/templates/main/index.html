@@ -71,28 +71,28 @@
 
     <section class="banner">
         <div class="banner-container">
-            <div class="slide">
+            <div class="slide" data-caption="Услуги">
                 <a href="https://example.com/page1">
                     <img src="{% static 'main/banner_1.gif' %}" alt="Реклама компании" class="banner-img">
                 </a>
-                <p class="caption">Caption Text 1</p>
             </div>
-            <div class="slide">
+            <div class="slide" data-caption="Контакты">
                 <a href="https://example.com/page2">
                     <img src="{% static 'main/banner_2.gif' %}" alt="Реклама компании" class="banner-img">
                 </a>
-                <p class="caption">Caption Text 2</p>
             </div>
-            <div class="slide">
+            <div class="slide" data-caption="Отзывы">
                 <a href="https://example.com/page3">
                     <img src="{% static 'main/banner_3.gif' %}" alt="Реклама компании" class="banner-img">
                 </a>
-                <p class="caption">Caption Text 3</p>
             </div>
 
             <!-- Кнопки "назад" и "вперед" -->
             <button class="prev">&#10094;</button>
             <button class="next">&#10095;</button>
+
+            <!-- Отображение подписи -->
+            <div class="caption"></div>
 
             <!-- Индикатор слайда и количество -->
             <div class="slide-index">1/3</div>
