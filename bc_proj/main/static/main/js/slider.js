@@ -1,86 +1,98 @@
-// Настройки слайдера
-const loop = true;             // Позволяет слайдеру зацикливаться
-const navs = true;             // Отображение кнопок "вперед"/"назад"
-const pags = true;             // Отображение пагинации
-const auto = true;             // Автоматическое переключение слайдов
-const stopMouseHover = true;   // Остановка авто-прокрутки при наведении мыши
-const delay = 5;               // Задержка в секундах между слайдами при auto
+class Slider {
+    constructor(options) {
+        // Настройки слайдера
+        this.loop = options.loop || true;
+        this.navs = options.navs || true;
+        this.pags = options.pags || true;
+        this.auto = options.auto || true;
+        this.stopMouseHover = options.stopMouseHover || true;
+        this.delay = options.delay || 5;
 
-// Переменные для слайдера
-let currentSlide = 0;
-let autoSlideInterval;
+        // Переменные состояния
+        this.currentSlide = 0;
+        this.autoSlideInterval = null;
 
-// Получение элементов слайдера
-const slides = document.querySelectorAll(".slide");
-const slideIndexDisplay = document.querySelector(".slide-index");
-const dots = document.querySelectorAll(".dot");
-const prevButton = document.querySelector(".prev");
-const nextButton = document.querySelector(".next");
+        // Получение элементов слайдера
+        this.slides = document.querySelectorAll(".slide");
+        this.slideIndexDisplay = document.querySelector(".slide-index");
+        this.dots = document.querySelectorAll(".dot");
+        this.prevButton = document.querySelector(".prev");
+        this.nextButton = document.querySelector(".next");
 
-// Функция отображения текущего слайда
-function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === index);
-        if (pags) dots[i].classList.toggle("active", i === index); // обновляем пагинацию, если включена
-    });
-    slideIndexDisplay.textContent = `${index + 1}/${slides.length}`;
-}
-
-// Функция для перехода к следующему или предыдущему слайду
-function changeSlide(offset) {
-    currentSlide += offset;
-    if (loop) {
-        currentSlide = (currentSlide + slides.length) % slides.length;
-    } else {
-        currentSlide = Math.min(Math.max(currentSlide, 0), slides.length - 1);
+        // Инициализация слайдера
+        this.init();
     }
-    showSlide(currentSlide);
-}
 
-// Автоматическое переключение слайдов
-function startAutoSlide() {
-    if (auto) {
-        autoSlideInterval = setInterval(() => {
-            changeSlide(1);
-        }, delay * 1000);
+    init() {
+        this.showSlide(this.currentSlide);
+        if (this.auto) this.startAutoSlide();
+
+        // Обработчики событий
+        if (this.stopMouseHover && this.auto) {
+            document.querySelector(".banner-container").addEventListener("mouseenter", () => this.stopAutoSlide());
+            document.querySelector(".banner-container").addEventListener("mouseleave", () => this.startAutoSlide());
+        }
+
+        if (this.navs) {
+            this.prevButton.style.display = "block";
+            this.nextButton.style.display = "block";
+            this.prevButton.addEventListener("click", () => this.changeSlide(-1));
+            this.nextButton.addEventListener("click", () => this.changeSlide(1));
+        } else {
+            this.prevButton.style.display = "none";
+            this.nextButton.style.display = "none";
+        }
+
+        if (this.pags) {
+            this.dots.forEach((dot, index) => {
+                dot.addEventListener("click", () => {
+                    this.currentSlide = index;
+                    this.showSlide(this.currentSlide);
+                });
+            });
+        } else {
+            this.dots.forEach(dot => dot.style.display = "none");
+        }
+    }
+
+    showSlide(index) {
+        this.slides.forEach((slide, i) => {
+            slide.classList.toggle("active", i === index);
+            if (this.pags) this.dots[i].classList.toggle("active", i === index);
+        });
+        this.slideIndexDisplay.textContent = `${index + 1}/${this.slides.length}`;
+    }
+
+    changeSlide(offset) {
+        this.currentSlide += offset;
+        if (this.loop) {
+            this.currentSlide = (this.currentSlide + this.slides.length) % this.slides.length;
+        } else {
+            this.currentSlide = Math.min(Math.max(this.currentSlide, 0), this.slides.length - 1);
+        }
+        this.showSlide(this.currentSlide);
+    }
+
+    startAutoSlide() {
+        this.stopAutoSlide(); // Сначала очищаем таймер, если он уже установлен
+        if (this.auto) {
+            this.autoSlideInterval = setInterval(() => {
+                this.changeSlide(1);
+            }, this.delay * 1000);
+        }
+    }
+
+    stopAutoSlide() {
+        clearInterval(this.autoSlideInterval);
     }
 }
 
-// Остановка авто-прокрутки
-function stopAutoSlide() {
-    clearInterval(autoSlideInterval);
-}
-
-// События для управления мышью (для stopMouseHover)
-if (stopMouseHover && auto) {
-    document.querySelector(".banner-container").addEventListener("mouseenter", stopAutoSlide);
-    document.querySelector(".banner-container").addEventListener("mouseleave", startAutoSlide);
-}
-
-// Обработчики для кнопок "вперед" и "назад" (если navs включены)
-if (navs) {
-    prevButton.style.display = "block";
-    nextButton.style.display = "block";
-    prevButton.addEventListener("click", () => changeSlide(-1));
-    nextButton.addEventListener("click", () => changeSlide(1));
-} else {
-    prevButton.style.display = "none";
-    nextButton.style.display = "none";
-}
-
-// Установка событий для пагинации
-dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-        currentSlide = index;
-        showSlide(currentSlide);
-    });
+// Инициализация слайдера с параметрами
+const slider = new Slider({
+    loop: true,
+    navs: true,
+    pags: true,
+    auto: true,
+    stopMouseHover: true,
+    delay: 5
 });
-
-// Показ/скрытие пагинации
-if (!pags) {
-    dots.forEach(dot => dot.style.display = "none");
-}
-
-// Запуск слайдера
-showSlide(currentSlide);
-startAutoSlide();
