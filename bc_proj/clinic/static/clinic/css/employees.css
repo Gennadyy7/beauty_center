@@ -1,54 +1,283 @@
-/* Основной стиль для изображений, чтобы не превышали размер контейнера */
-img {
-    max-width: 50%;
-    height: auto;
-    display: block;
-    margin: 0 auto; /* Центрируем изображение */
-    border-radius: 8px; /* Немного округляем углы */
-}
-
-/* Контейнер для изображений и текста */
-.content-block {
-    padding: 20px;
-    margin: 10px auto;
-    background-color: #FFFFFF; /* Белый фон для выделения контента */
-    border: 1px solid #DDAA03; /* Легкая граница для отделения блока */
+/* Общие стили для таблицы */
+#employeesTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #FFFFFF;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для объема */
-    max-width: 800px; /* Ограничиваем ширину блока */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
 }
 
-/* Стили для заголовков */
-.content-block h2 {
-    font-size: 24px;
+#employeesTable th, #employeesTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #DDAA03; /* Линии между строками */
+}
+
+/* Стили для заголовков таблицы */
+#employeesTable th {
+    background-color: #F5F5F5;
     color: #DDAA03; /* Акцентный цвет заголовков */
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+}
+
+#employeesTable th .sort-direction {
+    margin-left: 8px;
+    font-size: 14px;
+    color: #666; /* Цвет стрелок сортировки */
+    display: inline-block;
+}
+
+#employeesTable th[data-sortable="true"]:hover {
+    background-color: #F0E5C9; /* Фон при наведении на заголовки, которые можно сортировать */
+}
+
+#employeesTable th:nth-child(1),
+#employeesTable td:nth-child(1) {
+    width: 12.5%;
+}
+
+#employeesTable th:nth-child(2),
+#employeesTable td:nth-child(2) {
+    width: 12.5%;
+}
+
+#employeesTable th:nth-child(3),
+#employeesTable td:nth-child(3) {
+    width: 12.5%;
+}
+
+#employeesTable th:nth-child(4),
+#employeesTable td:nth-child(4) {
+    width: 9.5%;
+}
+
+#employeesTable th:nth-child(5),
+#employeesTable td:nth-child(5) {
+    width: 20%;
+}
+
+#employeesTable th:nth-child(6),
+#employeesTable td:nth-child(6) {
+    width: 14%;
+}
+
+#employeesTable th:nth-child(7),
+#employeesTable td:nth-child(7) {
+    width: 14%;
+}
+
+#employeesTable th:nth-child(8),
+#employeesTable td:nth-child(8) {
+    width: 5%;
+}
+
+/* Стили для стрелок сортировки */
+.sort-asc::after {
+    content: '▲'; /* Стрелка вверх для сортировки по возрастанию */
+}
+
+.sort-desc::after {
+    content: '▼'; /* Стрелка вниз для сортировки по убыванию */
+}
+
+/* Стили для строк таблицы */
+#employeesTable tbody tr:hover {
+    background-color: #FAF3D0; /* Подсветка строки при наведении */
+    cursor: pointer;
+}
+
+.employee-row.selected {
+    background-color: #FFF2B2; /* Фон выделенной строки */
+}
+
+/* Стиль для изображения сотрудников */
+.employee-photo {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+    object-fit: cover; /* Централизуем и обрезаем изображение, если нужно */
+    display: block;
+    margin: 0 auto;
+}
+
+/* Стили для управления пагинацией */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.pagination button {
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-color: #DDAA03;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    background-color: #F0E5C9;
+    color: #A0A0A0;
+    cursor: not-allowed;
+}
+
+#pageIndicator {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Стили для поискового поля и кнопки */
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#searchField {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #DDAA03;
+    border-radius: 5px;
+}
+
+#searchButton, #addEmployeeButton {
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-color: #DDAA03;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#searchButton:hover, #addEmployeeButton:hover {
+    background-color: #C49400;
+}
+
+/* Стили для формы добавления сотрудника */
+.form-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #FFFFFF;
+    border: 1px solid #DDAA03;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h3 {
+    font-size: 18px;
+    color: #DDAA03;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.form-container label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="url"],
+.form-container input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.form-container input[type="text"].invalid,
+.form-container input[type="email"].invalid,
+.form-container input[type="url"].invalid {
+    border: 1px solid #E74C3C;
+    background-color: #FDEDEC;
+}
+
+/* Кнопка добавления в таблицу */
+#addToTableButton {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #FFFFFF;
+    background-color: #DDAA03;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+#addToTableButton:disabled {
+    background-color: #F0E5C9;
+    color: #A0A0A0;
+    cursor: not-allowed;
+}
+
+/* Стили для отображения деталей сотрудника */
+.details-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #F9F9F9;
+    border: 1px solid #DDAA03;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.details-container h3 {
+    font-size: 18px;
+    color: #DDAA03;
     text-align: center;
     margin-bottom: 10px;
 }
 
-/* Стили для текста */
-.content-block p {
+.details-container p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Стиль для кнопки премирования */
+#rewardButton {
+    display: block;
+    width: 100%;
+    padding: 10px;
     font-size: 16px;
-    line-height: 1.5;
-    color: #333333;
-    margin-bottom: 10px;
+    color: #FFFFFF;
+    background-color: #DDAA03;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+#rewardOutput {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
 }
 
 /* Адаптивные стили */
 @media (max-width: 768px) {
-    body {
-        padding-left: 0; /* Убираем отступ слева на мобильных устройствах */
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
     }
-    #sidebar-nav {
-        width: 100%; /* Боковое меню будет занимать всю ширину экрана */
-        height: auto;
-        position: relative;
-        top: 0;
-        border-right: none;
+    #searchField, #searchButton, #addEmployeeButton {
+        width: 100%;
     }
-    .content-block {
-        padding: 15px;
-        max-width: 100%;
-        margin: 10px 5px;
+    .pagination {
+        flex-direction: column;
+    }
+    #employeesTable th, #employeesTable td {
+        padding: 10px;
     }
 }

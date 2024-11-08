@@ -36,14 +36,14 @@
             <input type="file" id="photo" name="photo" accept="image/*">
 
             <label for="phone">Телефон:</label>
-            <input type="text" id="phone" name="phone" required>
+            <input type="text" id="phone" name="phone" required data-validation="phone">
             <small id="phoneError" class="error"></small>
 
             <label for="email">Электронная почта:</label>
             <input type="email" id="email" name="email" required>
 
             <label for="url">URL:</label>
-            <input type="url" id="url" name="url" required>
+            <input type="url" id="url" name="url" required data-validation="url">
             <small id="urlError" class="error"></small>
 
             <button type="submit" id="addToTableButton" disabled>Добавить в таблицу</button>
@@ -54,19 +54,19 @@
     <table id="employeesTable">
         <thead>
             <tr>
-                <th data-sort="surname">Фамилия</th>
-                <th data-sort="name">Имя</th>
-                <th data-sort="patronymic">Отчество</th>
+                <th data-sort="surname" data-sortable="true">Фамилия <span class="sort-direction"></span></th>
+                <th data-sort="name" data-sortable="true">Имя <span class="sort-direction"></span></th>
+                <th data-sort="patronymic" data-sortable="true">Отчество <span class="sort-direction"></span></th>
                 <th>Фото</th>
-                <th data-sort="service_specialization">Специализация</th>
-                <th data-sort="phone">Телефон</th>
-                <th data-sort="email">Электронная почта</th>
+                <th data-sort="service_specialization" data-sortable="true">Специализация <span class="sort-direction"></span></th>
+                <th data-sort="phone" data-sortable="true">Телефон <span class="sort-direction"></span></th>
+                <th data-sort="email" data-sortable="true">Электронная почта <span class="sort-direction"></span></th>
                 <th>Выбрать</th>
             </tr>
         </thead>
         <tbody>
             {% for employee in employees %}
-            <tr data-id="{{ employee.id }}">
+            <tr data-id="{{ employee.id }}" class="employee-row" data-clickable="true" data-page="1">
                 <td>{{ employee.surname }}</td>
                 <td>{{ employee.name }}</td>
                 <td>{{ employee.patronymic }}</td>
