@@ -74,6 +74,10 @@
     width: 5%;
 }
 
+#employeesTable th:nth-child(n){
+    white-space: nowrap;
+}
+
 /* Стили для стрелок сортировки */
 .sort-asc::after {
     content: '▲'; /* Стрелка вверх для сортировки по возрастанию */
