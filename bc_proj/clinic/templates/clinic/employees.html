@@ -50,6 +50,13 @@
         </form>
     </div>
 
+    <!-- Pagination Controls -->
+    <div class="pagination">
+        <button id="prevPage" disabled>Назад</button>
+        <span id="pageIndicator">Страница 1</span>
+        <button id="nextPage">Вперед</button>
+    </div>
+
     <!-- Employees Table -->
     <table id="employeesTable">
         <thead>
@@ -80,13 +87,6 @@
         </tbody>
     </table>
 
-    <!-- Pagination Controls -->
-    <div class="pagination">
-        <button id="prevPage" disabled>Назад</button>
-        <span id="pageIndicator">Страница 1</span>
-        <button id="nextPage">Вперед</button>
-    </div>
-
     <!-- Employee Details Display -->
     <div id="employeeDetails" class="details-container" style="display: none;">
         <button id="closeDetailsButton" class="close-button">×</button>
@@ -104,5 +104,5 @@
     <div id="rewardOutput"></div>
 </div>
 
-<script src="{% static 'clinic/js/table.js' %}"></script>
+<script src="{% static 'clinic/js/pagination_details_sorting.js' %}"></script>
 {% endblock %}

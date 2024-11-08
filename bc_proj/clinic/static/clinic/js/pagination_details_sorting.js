@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentPage = 1;
     let sortColumn = null;
     let sortAscending = true;
+    let filteredRows = [];
 
     const employeesTable = document.getElementById("employeesTable");
     const rows = Array.from(employeesTable.querySelectorAll("tbody tr"));
@@ -21,12 +22,27 @@ document.addEventListener("DOMContentLoaded", function () {
     const detailSpecialization = document.getElementById("detailSpecialization");
     const closeDetailsButton = document.getElementById("closeDetailsButton");
 
+    const searchField = document.getElementById("searchField");
+    const searchButton = document.getElementById("searchButton");
+
+    filteredRows = rows;
+
     function displayPage(page) {
         const start = (page - 1) * rowsPerPage;
         const end = start + rowsPerPage;
 
+        console.log('start-end:', start, end);
+
         rows.forEach((row, index) => {
+            row.style.display = "none";
+        });
+
+        filteredRows.forEach((row, index) => {
+            console.log('style-display строки:', row.style.display);
+            console.log(index, index >= start && index < end ? "" : "none")
             row.style.display = index >= start && index < end ? "" : "none";
+            console.log('style-display строки:', row.style.display);
+            console.log('Обработка строки завершена');
         });
 
         currentPage = page;
@@ -34,16 +50,41 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updatePaginationControls() {
+        const totalPages = Math.ceil(filteredRows.length / rowsPerPage);
         pageIndicator.textContent = `Страница ${currentPage} из ${totalPages}`;
         prevPageButton.disabled = currentPage === 1;
         nextPageButton.disabled = currentPage === totalPages;
     }
+
+    function applyFilter() {
+        const query = searchField.value.trim().toLowerCase();
+        console.warn('запрос:', query);
+
+        if (query === "") {
+            filteredRows = rows;  // Сброс фильтрации
+        } else {
+            // Фильтруем строки, оставляя только те, которые содержат запрос
+            filteredRows = rows.filter(row => row.textContent.toLowerCase().includes(query));
+        }
+
+        currentPage = 1;  // Сброс на первую страницу
+        console.log(filteredRows);
+        console.log('sortColumn:', sortColumn);
+        if (false) {
+            sortTable(sortColumn, sortAscending);  // Сортировка отфильтрованных данных
+        } else {
+            displayPage(currentPage);  // Обновление отображения страницы
+        }
+    }
+
+    searchButton.addEventListener("click", applyFilter);
 
     prevPageButton.addEventListener("click", () => {
         if (currentPage > 1) displayPage(currentPage - 1);
     });
 
     nextPageButton.addEventListener("click", () => {
+        const totalPages = Math.ceil(filteredRows.length / rowsPerPage);
         if (currentPage < totalPages) displayPage(currentPage + 1);
     });
 
@@ -80,10 +121,16 @@ document.addEventListener("DOMContentLoaded", function () {
             return res;
         });
 
+        console.warn('Отсортированный массив:', rows);
+        console.warn('Детки таблицы:', employeesTable.querySelector("tbody").rows);
+
         // Переставляем строки в таблице
         rows.forEach((row) => employeesTable.querySelector("tbody").appendChild(row));
 
-        displayPage(currentPage);
+        console.warn('Детки таблицы:', employeesTable.querySelector("tbody").rows);
+
+        // displayPage(currentPage);
+        applyFilter();
     }
 
     // Обработчики для заголовков столбцов
@@ -103,5 +150,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    console.log('almost done');
     displayPage(currentPage);
 });
