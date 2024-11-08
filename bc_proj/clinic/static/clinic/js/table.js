@@ -10,6 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const nextPageButton = document.getElementById("nextPage");
     const pageIndicator = document.getElementById("pageIndicator");
 
+    const detailsContainer = document.getElementById('employeeDetails');
+    const detailSurname = document.getElementById('detailSurname');
+    const detailName = document.getElementById('detailName');
+    const detailPatronymic = document.getElementById('detailPatronymic');
+    const detailPhone = document.getElementById('detailPhone');
+    const detailEmail = document.getElementById('detailEmail');
+    const detailSpecialization = document.getElementById('detailSpecialization');
+
     // Функция для отображения строки на конкретной странице
     function displayPage(page) {
         const start = (page - 1) * rowsPerPage;
@@ -37,6 +45,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     nextPageButton.addEventListener("click", () => {
         if (currentPage < totalPages) displayPage(currentPage + 1);
+    });
+
+    // Функция для отображения деталей сотрудника
+    function displayEmployeeDetails(row) {
+        const surname = row.children[0].textContent;
+        const name = row.children[1].textContent;
+        const patronymic = row.children[2].textContent;
+        const phone = row.children[5].textContent;
+        const email = row.children[6].textContent;
+        const specialization = row.children[4].textContent;
+
+        detailSurname.textContent = surname;
+        detailName.textContent = name;
+        detailPatronymic.textContent = patronymic;
+        detailPhone.textContent = phone;
+        detailEmail.textContent = email;
+        detailSpecialization.textContent = specialization;
+
+        detailsContainer.style.display = 'block';
+    }
+
+    // Добавление обработчика кликов для каждой строки таблицы
+    rows.forEach(row => {
+        row.addEventListener('click', function () {
+            displayEmployeeDetails(row);
+        });
     });
 
     // Отобразить первую страницу при загрузке
