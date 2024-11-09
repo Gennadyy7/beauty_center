@@ -27,7 +27,18 @@
 </head>
 
 <body id="body-content">
-    <header id="site-header">
+    <div id="preloader" class="container">
+        <div class="bar-container">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+
+
+<header id="site-header">
         <div class="header-content">
             <div class="logo" id="logo-block">
                 <img class="logo-img" src="{% static 'main/logo_small.png' %}" alt="Логотип компании">
@@ -107,6 +118,17 @@
         {% block content %} {% endblock %}
     </main>
 
+    <script>
+        function hidePreloader() {
+            const preloader = document.getElementById("preloader");
+            preloader.classList.add("hide");
+            setTimeout(() => {
+                preloader.style.visibility = "hidden";
+            }, 400);
+        }
+
+        window.onload = hidePreloader;
+    </script>
     <script src="{% static 'main/js/countdown.js' %}"></script>
 </body>
 

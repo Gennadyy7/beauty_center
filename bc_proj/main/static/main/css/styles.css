@@ -230,3 +230,78 @@ transform: rotate(360deg);
         display: none;
     }
 }
+
+/*прелоадер*/
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 211, 146, 0.8);
+    z-index: 9999;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.container.hide {
+    opacity: 0;
+}
+
+.bar-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bar {
+    width: 100px;
+    height: 20px;
+    margin: 5px 0;
+    animation: rotate 0.5s ease-in-out infinite;
+}
+
+.bar:nth-child(5) {
+    background-color: #ff7bac;
+    animation-delay: 0.08s;
+    transform-origin: 150px center;
+}
+
+.bar:nth-child(4) {
+    background-color: #ff1d25;
+    animation-delay: 0.06s;
+    transform-origin: 120px center;
+}
+
+.bar:nth-child(3) {
+    background-color: #ff931e;
+    animation-delay: 0.04s;
+    transform-origin: 90px center;
+}
+
+.bar:nth-child(2) {
+    background-color: #7ac943;
+    animation-delay: 0.02s;
+    transform-origin: 60px center;
+}
+
+.bar:nth-child(1) {
+    background-color: #3fa9f5;
+    animation-delay: 0.00s;
+    transform-origin: 30px center;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
