@@ -12,6 +12,14 @@
 <div class="employees-container">
     <h1>Сотрудники клиники</h1>
 
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     <!-- Search and Add Employee Buttons -->
     <div class="controls">
         <input type="text" id="searchField" placeholder="Введите текст для фильтрации">
@@ -22,40 +30,61 @@
     <!-- Add Employee Form -->
     <div id="addEmployeeForm" class="form-container" style="display: none;">
         <h3>Добавление нового сотрудника</h3>
-        <form id="employeeForm" action="{% url 'adding_an_employee_via_a_form' %}">
+        <form id="employeeForm" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <label for="name">Имя:</label>
-            <input type="text" id="name" name="name" required>
+            {{ form.name }}
+            {% if form.name.errors %}
+            <small class="error">{{ form.name.errors.0 }}</small>
+            {% endif %}
 
             <label for="surname">Фамилия:</label>
-            <input type="text" id="surname" name="surname" required>
+            {{ form.surname }}
+            {% if form.surname.errors %}
+            <small class="error">{{ form.surname.errors.0 }}</small>
+            {% endif %}
 
             <label for="patronymic">Отчество:</label>
-            <input type="text" id="patronymic" name="patronymic" required>
+            {{ form.patronymic }}
+            {% if form.patronymic.errors %}
+            <small class="error">{{ form.patronymic.errors.0 }}</small>
+            {% endif %}
 
             <label for="specialisation">Специализация:</label>
-            <select name="specialisation" id="specialisation">
-                {% for specialisation in specialisations %}
-                <option value="{{ specialisation.id }}">{{ specialisation }}</option>
-                {% endfor %}
-            </select>
+            {{ form.service_specialization }}
+            {% if form.service_specialization.errors %}
+            <small class="error">{{ form.service_specialization.errors.0 }}</small>
+            {% endif %}
 
             <label for="photo">Фотография:</label>
-            <input type="file" id="photo" name="photo" accept="image/*">
+            {{ form.photo }}
+            {% if form.photo.errors %}
+            <small class="error">{{ form.photo.errors.0 }}</small>
+            {% endif %}
 
             <label for="phone">Телефон:</label>
-            <input type="text" id="phone" name="phone" required data-validation="phone">
+            {{ form.phone }}
             <small id="phoneError" class="error"></small>
+            {% if form.phone.errors %}
+            <small class="error">{{ form.phone.errors.0 }}</small>
+            {% endif %}
 
             <label for="email">Электронная почта:</label>
-            <input type="email" id="email" name="email" required>
+            {{ form.email }}
+            {% if form.email.errors %}
+            <small class="error">{{ form.email.errors.0 }}</small>
+            {% endif %}
 
             <label for="url">URL:</label>
-            <input type="url" id="url" name="url" required data-validation="url">
+            {{ form.url }}
             <small id="urlError" class="error"></small>
-
+            {% if form.url.errors %}
+            <small class="error">{{ form.url.errors.0 }}</small>
+            {% endif %}
             <button type="submit" id="addToTableButton" disabled>Добавить в таблицу</button>
         </form>
     </div>
+
 
     <!-- Pagination Controls -->
     <div class="pagination">

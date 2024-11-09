@@ -1,7 +1,8 @@
 from decimal import Decimal
 from datetime import datetime, date
 from io import BytesIO
-from django.views.generic import ListView
+
+from django.urls import reverse_lazy
 from statistics import mean, multimode, median
 
 from django.core.files.base import ContentFile
@@ -16,12 +17,15 @@ from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.db.models import Avg, Sum
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import UserLoginForm, ClientRegistrationForm, ReviewForm, PromocodeForm
+from .forms import UserLoginForm, ClientRegistrationForm, ReviewForm, PromocodeForm, DoctorForm
 from .models import Clients, ServiceSpecializations, Vacancies, Reviews, Services, PromoCodes, \
     Orders, Doctors, Specializations
 import requests
 from django.contrib.auth.mixins import UserPassesTestMixin
 import matplotlib.pyplot as plt
+from django.views.generic import CreateView
+from django.utils.crypto import get_random_string
+
 
 def remove_cat_from_basket(request, cat_name):
     cat_dict = request.session.get('basket_services', dict())
@@ -443,13 +447,25 @@ def basket_view(request):
         'cat_obj_services_with_totals': cat_obj_services_with_totals,
     })
 
-class EmployeesView(AdminRequiredMixin, ListView):
-    model = Doctors
+class EmployeesView(AdminRequiredMixin, CreateView):
+    form_class = DoctorForm
     template_name = 'clinic/employees.html'
-    context_object_name = 'employees'
-    extra_context = {
-        'specialisations': Specializations.objects.all(),
-    }
+    success_url = reverse_lazy('employees')
 
-def adding_an_employee(request):
-    return redirect('employees')
+    def form_valid(self, form):
+        temp_password = get_random_string(10)
+        user = User.objects.create_user(
+            username=form.cleaned_data['email'],
+            password=temp_password
+        )
+        form.instance.user = user
+
+        messages.success(self.request, f'Новый пользователь успешно создан. Его пароль: {temp_password}')
+
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['employees'] = Doctors.objects.all()
+        context['specialisations'] = Specializations.objects.all()
+        return context

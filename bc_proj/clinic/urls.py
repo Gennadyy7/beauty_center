@@ -23,5 +23,4 @@ urlpatterns = [
     path('services/<int:service_id>/', views.service_detail_view, name='service_detail'),
     path('basket/', views.basket_view, name='basket'),
     path('employees/', views.EmployeesView.as_view(), name='employees'),
-    path('adding_an_employee_via_a_form/', views.adding_an_employee, name='adding_an_employee_via_a_form'),
 ]
