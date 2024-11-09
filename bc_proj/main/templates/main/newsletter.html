@@ -9,10 +9,34 @@
 {% endblock %}
 
 {% block content %}
-    <div class="article-detail">
-        <a href="{% url 'news' %}">Вернуться к новостям</a>
-        <h1>{{ article.title }}</h1>
-        <img src="{{ article.image.url }}" alt="{{ article.title }}" width="800">
-        <p>{{ article.content }}</p>
+<div class="article-detail">
+    <a href="{% url 'news' %}">Вернуться к новостям</a>
+    <h1>{{ article.title }}</h1>
+    <img src="{{ article.image.url }}" alt="{{ article.title }}" width="800">
+    <!-- Чекбокс для активации панели настроек -->
+    <div class="settings-container">
+        <label>
+            <input type="checkbox" id="toggle-settings"> Настройки отображения
+        </label>
+
+        <!-- Панель настроек, скрыта по умолчанию -->
+        <div id="settings-panel" class="settings-panel" style="display: none;">
+            <label>
+                Размер шрифта:
+                <input type="range" id="font-size-slider" min="14" max="24" value="16">
+            </label>
+            <label>
+                Цвет текста:
+                <input type="color" id="text-color-picker" value="#0D0D0D">
+            </label>
+            <label>
+                Цвет фона:
+                <input type="color" id="bg-color-picker" value="#FFFFFF">
+            </label>
+        </div>
     </div>
+    <p>{{ article.content }}</p>
+</div>
+
+<script src="{% static 'main/js/article_settings.js' %}"></script>
 {% endblock %}

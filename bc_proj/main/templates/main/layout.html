@@ -88,11 +88,11 @@
                     </form>
                 </li>
                 {% if user.is_superuser %}
-                <li>
-                    <form action="{% url 'add_random_client' %}" method="get">
-                        <button type="submit">Создать нового клиента (API)</button>
-                    </form>
-                </li>
+<!--                <li>-->
+<!--                    <form action="{% url 'add_random_client' %}" method="get">-->
+<!--                        <button type="submit">Создать нового клиента (API)</button>-->
+<!--                    </form>-->
+<!--                </li>-->
                 <li>
                     <form action="{% url 'add_cosmetology_news' %}" method="get">
                         <button type="submit">Добавить новость про косметику (API)</button>
