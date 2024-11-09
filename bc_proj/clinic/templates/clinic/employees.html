@@ -22,7 +22,7 @@
     <!-- Add Employee Form -->
     <div id="addEmployeeForm" class="form-container" style="display: none;">
         <h3>Добавление нового сотрудника</h3>
-        <form id="employeeForm">
+        <form id="employeeForm" action="{% url 'adding_an_employee_via_a_form' %}">
             <label for="name">Имя:</label>
             <input type="text" id="name" name="name" required>
 
@@ -31,6 +31,13 @@
 
             <label for="patronymic">Отчество:</label>
             <input type="text" id="patronymic" name="patronymic" required>
+
+            <label for="specialisation">Специализация:</label>
+            <select name="specialisation" id="specialisation">
+                {% for specialisation in specialisations %}
+                <option value="{{ specialisation.id }}">{{ specialisation }}</option>
+                {% endfor %}
+            </select>
 
             <label for="photo">Фотография:</label>
             <input type="file" id="photo" name="photo" accept="image/*">
@@ -104,5 +111,6 @@
     <div id="rewardOutput"></div>
 </div>
 
+<script src="{% static 'clinic/js/form.js' %}"></script>
 <script src="{% static 'clinic/js/pagination_details_sorting.js' %}"></script>
 {% endblock %}

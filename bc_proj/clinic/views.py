@@ -18,7 +18,7 @@ from django.db.models import Avg, Sum
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import UserLoginForm, ClientRegistrationForm, ReviewForm, PromocodeForm
 from .models import Clients, ServiceSpecializations, Vacancies, Reviews, Services, PromoCodes, \
-    Orders, Doctors
+    Orders, Doctors, Specializations
 import requests
 from django.contrib.auth.mixins import UserPassesTestMixin
 import matplotlib.pyplot as plt
@@ -447,3 +447,9 @@ class EmployeesView(AdminRequiredMixin, ListView):
     model = Doctors
     template_name = 'clinic/employees.html'
     context_object_name = 'employees'
+    extra_context = {
+        'specialisations': Specializations.objects.all(),
+    }
+
+def adding_an_employee(request):
+    return redirect('employees')
