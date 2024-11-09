@@ -27,21 +27,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Validate phone number
     function validatePhone(phone) {
-        const phonePattern = /^(8|(\+375))\s?\(?\d{2}\)?\s?\d{3}[-\s]?\d{2}[-\s]?\d{2}$/;
+        const phonePattern = /^(8|\+375)(\s?)(\(?\d{2,3}\)?)(\s?)(\d{3})([-\s]?)(\d{2})([-\s]?)(\d{2})$/;
         return phonePattern.test(phone);
     }
 
     // Check URL validity on input
     urlInput.addEventListener("input", () => {
         const isValid = validateURL(urlInput.value);
-        updateInputState(urlInput, urlError, isValid, "Некорректный URL. Он должен начинаться с http:// или https:// и заканчиваться на .php или .html");
+        updateInputState(urlInput, urlError, isValid, "URL должен начинаться с http:// или https:// и заканчиваться на .php или .html");
         toggleSubmitButton();
     });
 
     // Check phone validity on input
     phoneInput.addEventListener("input", () => {
         const isValid = validatePhone(phoneInput.value);
-        updateInputState(phoneInput, phoneError, isValid, "Некорректный номер телефона. Пример: 80291112233, +375 (29) 111-22-33");
+        updateInputState(phoneInput, phoneError, isValid,"Такие номера должны быть валидными: 80291112233, 8 (029) 1112233, +375 (29) 111-22-33, +375 (29) 111 22 33. Т.е. телефон может начинаться как и с +375, так и с 8. Код оператора может быть в скобках и без, и с пробелами. Оставшиеся часть могут быть с дефисами и пробелами.");
         toggleSubmitButton();
     });
 

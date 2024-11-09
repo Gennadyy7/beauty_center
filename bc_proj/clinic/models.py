@@ -100,8 +100,8 @@ class Doctors(models.Model):
     name = models.CharField('Имя', max_length=50)
     patronymic = models.CharField('Отчество', max_length=50)
     phone = models.CharField('Телефон', validators=[RegexValidator(
-        regex=r'^\+375 \(\d{2}\) \d{3}-\d{2}-\d{2}$',
-        message="Телефонный номер должен быть в формате: '+375 (XX) XXX-XX-XX'"
+        regex=r"^(8|\+375)(\s?)(\(?\d{2,3}\)?)(\s?)(\d{3})([-\s]?)(\d{2})([-\s]?)(\d{2})$",
+        message="Такие номера должны быть валидными: 80291112233, 8 (029) 1112233, +375 (29) 111-22-33, +375 (29) 111 22 33. Т.е. телефон может начинаться как и с +375, так и с 8. Код оператора может быть в скобках и без, и с пробелами. Оставшиеся часть могут быть с дефисами и пробелами."
     )], max_length=20)
     email = models.EmailField('Электронная почта')
     service_specialization = models.ForeignKey(ServiceSpecializations, on_delete=models.CASCADE, related_name='doctors',
