@@ -155,3 +155,43 @@
 .order-btn:hover {
     background-color: #bb8f02;
 }
+
+/*пагинация*/
+#pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #F9F9F9;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#pagination-controls .pagination-arrow {
+    font-size: 1.5em;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d4af37 0%, #e3c16f 100%);
+}
+
+#pagination-controls .pagination-arrow:hover {
+    color: #333;
+    background: linear-gradient(135deg, #e3c16f 0%, #d4af37 100%);
+    transform: scale(1.15);
+    box-shadow: 0px 0px 8px rgba(211, 175, 55, 0.7);
+}
+
+#pagination-controls .page-indicator {
+    font-size: 1.2em;
+    color: #0D0D0D;
+    font-weight: bold;
+    padding: 0 10px;
+    border: 2px solid #0D0D0D;
+    border-radius: 5px;
+}
+

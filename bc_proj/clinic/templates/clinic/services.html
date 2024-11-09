@@ -50,6 +50,15 @@
             {% endif %}
         </div>
 
+        <!-- Пагинация -->
+        <div id="pagination-controls" class="pagination-controls">
+            <span id="firstPage" class="pagination-arrow" style="visibility: hidden">&#171;</span>
+            <span id="prevPage" class="pagination-arrow" style="visibility: hidden">&#8249;</span>
+            <span id="pageIndicator" class="page-indicator">Страница 1</span>
+            <span id="nextPage" class="pagination-arrow">&#8250;</span>
+            <span id="lastPage" class="pagination-arrow">&#187;</span>
+        </div>
+
         <div class="services-list">
             {% for service in services %}
                 <div class="service-card" id="service-{{ service.id }}">
@@ -81,20 +90,8 @@
                 </div>
             {% endfor %}
         </div>
-
-        <script>
-            const urlParams = new URLSearchParams(window.location.search);
-            const scrollToId = urlParams.get('scroll_to');
-
-            if (scrollToId) {
-                const element = document.getElementById(`service-${scrollToId}`);
-                if (element) {
-                    setTimeout(() => {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                    }, 500);
-                }
-            }
-        </script>
     </div>
+
+    <script src="{% static 'clinic/js/service_pagination.js' %}"></script>
 {% endblock %}
 
