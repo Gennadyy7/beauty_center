@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from django.core.files import File
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import TemplateView
 from translate import Translator
 from urllib.error import HTTPError
 from .models import Articles, CompanyInfo, FAQ, Partners
@@ -154,3 +155,6 @@ def add_cosmetology_news(request):
 
 def privacy_policy(request):
     return render(request, 'main/privacy_policy.html')
+
+class SeventhTask(TemplateView):
+    template_name = 'main/seventh_task.html'

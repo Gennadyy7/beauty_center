@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование библиотеки учебников</title>
+</head>
+<body>
+<h1>Добавление учебников</h1>
+
+<!-- Форма для добавления учебников -->
+<form id="bookForm">
+    <label for="subject">Предмет:</label>
+    <input type="text" id="subject" required><br>
+
+    <label for="author">Автор:</label>
+    <input type="text" id="author" required><br>
+
+    <label for="grade">Класс:</label>
+    <input type="number" id="grade" min="1" max="11" required><br>
+
+    <button type="button" id="addBookButton">Добавить учебник</button>
+</form>
+
+<h2>Список учебников</h2>
+<div id="output"></div>
+
+<h2>Поиск популярного предмета</h2>
+<label for="gradeSearch">Класс для поиска:</label>
+<input type="number" id="gradeSearch" min="1" max="11" required>
+<button type="button" id="findPopularSubjectButton">Найти предмет</button>
+
+<!-- Область для отображения результата -->
+<div id="result"></div>
+
+<!-- Подключение JavaScript-кода -->
+<!--<script src="{% static 'main/js/seventh_task_prototype_inheritance.js' %}"></script>-->
+<script src="{% static 'main/js/seventh_task_class_and_extends.js' %}"></script>
+</body>
+</html>

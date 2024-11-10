@@ -84,6 +84,12 @@
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.service-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .service-title {
@@ -176,7 +182,7 @@
     transition: all 0.3s ease;
     padding: 10px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #d4af37 0%, #e3c16f 100%);
+    background: #DDAA03;
 }
 
 #pagination-controls .pagination-arrow:hover {
