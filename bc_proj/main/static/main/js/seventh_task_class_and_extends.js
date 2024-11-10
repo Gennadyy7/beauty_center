@@ -1,77 +1,87 @@
 // Базовый класс для книги
-class Book {
-    constructor(subject, author) {
-        this.subject = subject;
+class OrdinaryBook {
+    constructor(topic, author) {
+        this.topic = topic;
         this.author = author;
     }
 
     // Геттеры и сеттеры
-    get subject() {
-        return this._subject;
+    getTopic() {
+        return this.topic;
     }
 
-    set subject(value) {
-        this._subject = value;
+    setTopic(topic) {
+        this.topic = topic;
     }
 
-    get author() {
-        return this._author;
+    getAuthor() {
+        return this.author;
     }
 
-    set author(value) {
-        this._author = value;
+    setAuthor(author) {
+        this.author = author;
+    }
+
+    displayInfo() {
+        return `Тема книги: ${this.topic}, Автор: ${this.author}<br>`;
     }
 }
 
-// Класс-наследник для библиотеки
-class SchoolLibrary extends Book {
-    constructor() {
-        super(); // Вызов конструктора родительского класса
-        this.books = [];
+// Класс-наследник
+class SchoolBook extends OrdinaryBook {
+    constructor(topic, author, grade) {
+        super(topic, author);
+        this.grade = grade;
     }
 
-    // Метод добавления книги из HTML-формы
-    addBookFromForm() {
+    getGrade() {
+        return this.grade;
+    }
+
+    setGrade(grade) {
+        this.grade = grade;
+    }
+
+    displayInfo() {
+        return `${this.topic}, ${this.author}, ${this.grade}<br>`;
+    }
+
+    // Метод добавления учебника из HTML-формы с проверкой на корректность ввода
+    static addFromForm(books) {
         const subject = document.getElementById('subject').value;
         const author = document.getElementById('author').value;
         const grade = parseInt(document.getElementById('grade').value, 10);
 
-        // Проверка на корректность ввода класса
-        if (isNaN(grade)) {
-            alert("Пожалуйста, введите корректное значение для класса.");
+        // Проверка на пустые поля и некорректное значение grade
+        if (!subject || !author || isNaN(grade)) {
+            alert("Пожалуйста, заполните все поля корректно.");
             return;
         }
 
-        // Создаем новый объект Book и добавляем его в массив books
-        const newBook = new Book(subject, author);
-        newBook.grade = grade; // Добавляем свойство grade
-        this.books.push(newBook);
+        const newSchoolBook = new SchoolBook(subject, author, grade);
+        books.push(newSchoolBook);
     }
 
-    // Метод вывода всех книг на страницу
-    displayBooks() {
+    // Метод вывода всех учебников на страницу
+    static displayBooks(books) {
         const output = document.getElementById('output');
         output.innerHTML = '';
-        this.books.forEach(book => {
-            output.innerHTML += `Предмет: ${book.subject}, Автор: ${book.author}, Класс: ${book.grade}<br>`;
+        books.forEach(book => {
+            output.innerHTML += book.displayInfo();
         });
     }
 
     // Метод нахождения предмета с наибольшим количеством разных авторов
-    findMostPopularSubject(grade) {
+    static findMostPopularSubject(books, grade) {
         const subjects = {};
-        this.books.forEach(book => {
-            if (book.grade === grade) {
-                if (!subjects[book.subject]) {
-                    subjects[book.subject] = new Set();
+        books.forEach(book => {
+            if (book.getGrade() === grade) {
+                if (!subjects[book.getTopic()]) {
+                    subjects[book.getTopic()] = new Set();
                 }
-                subjects[book.subject].add(book.author);
+                subjects[book.getTopic()].add(book.getAuthor());
             }
         });
-
-        if (Object.keys(subjects).length === 0) {
-            return `Учебники для ${grade} класса отсутствуют.`;
-        }
 
         let mostPopularSubject = '';
         let maxAuthors = 0;
@@ -87,19 +97,23 @@ class SchoolLibrary extends Book {
         return mostPopularSubject;
     }
 
-    // Метод вывода результата на страницу
-    displayMostPopularSubject(grade) {
-        const result = this.findMostPopularSubject(grade);
+    // Метод вывода результата на страницу с проверкой на корректный ввод
+    static displayMostPopularSubject(books, grade) {
+        if (isNaN(grade)) {
+            document.getElementById('output').innerHTML = 'Пожалуйста, введите корректное значение для класса.';
+            return;
+        }
+        const result = SchoolBook.findMostPopularSubject(books, grade);
         const output = document.getElementById('output');
-
-        if (result === null) {
-            output.innerHTML = `Ошибка: Пожалуйста, введите корректное значение для класса.`;
-        } else {
+        if (result) {
             output.innerHTML = `Предмет с наибольшим количеством учебников для ${grade} класса: ${result}`;
+        } else {
+            output.innerHTML = `Для класса ${grade} учебников не найдено.`;
         }
     }
 }
 
+// Пример использования
 const books = [
     { subject: "Физика", author: "Иванов", grade: 7 },
     { subject: "Физика", author: "Петров", grade: 7 },
@@ -146,19 +160,14 @@ const books = [
     { subject: "История", author: "Ключевский", grade: 9 },
     { subject: "История", author: "Карамзин", grade: 10 },
     { subject: "История", author: "Платонов", grade: 11 }
-];
-
-// Пример использования
-const library = new SchoolLibrary();
-library.books = books; // Заполняем библиотеку тестовыми данными
-library.displayBooks(); // Выводим все учебники на страницу
+].map(book => new SchoolBook(book.subject, book.author, book.grade));
+SchoolBook.displayBooks(books);
 
 document.getElementById('addBookButton').addEventListener('click', () => {
-    library.addBookFromForm();
-    library.displayBooks();
+    SchoolBook.addFromForm(books);
+    SchoolBook.displayBooks(books);
 });
-
 document.getElementById('findPopularSubjectButton').addEventListener('click', () => {
     const grade = parseInt(document.getElementById('gradeSearch').value, 10);
-    library.displayMostPopularSubject(grade);
+    SchoolBook.displayMostPopularSubject(books, grade);
 });

@@ -1,61 +1,86 @@
 // Базовый класс для книги
-function Book(subject, author) {
-    this.subject = subject;
+function OrdinaryBook(topic, author) {
+    this.topic = topic;
     this.author = author;
 }
 
 // Геттеры и сеттеры
-Book.prototype.getSubject = function() {
-    return this.subject;
+OrdinaryBook.prototype.getTopic = function() {
+    return this.topic;
 };
 
-Book.prototype.setSubject = function(subject) {
-    this.subject = subject;
+OrdinaryBook.prototype.setTopic = function(topic) {
+    this.topic = topic;
 };
 
-Book.prototype.getAuthor = function() {
+OrdinaryBook.prototype.getAuthor = function() {
     return this.author;
 };
 
-Book.prototype.setAuthor = function(author) {
+OrdinaryBook.prototype.setAuthor = function(author) {
     this.author = author;
 };
 
-// Класс-наследник для библиотеки
-function SchoolLibrary() {
-    this.books = [];
+OrdinaryBook.prototype.displayInfo = function() {
+    return `Тема книги: ${this.topic}, Автор: ${this.author}<br>`;
+};
+
+// Класс-наследник
+function SchoolBook(topic, author, grade) {
+    OrdinaryBook.call(this, topic, author);
+    this.grade = grade;
 }
 
-// Наследуем от базового класса Book
-SchoolLibrary.prototype = Object.create(Book.prototype);
+SchoolBook.prototype = Object.create(OrdinaryBook.prototype);
+SchoolBook.prototype.constructor = SchoolBook; // Устанавливаем правильный конструктор
 
-// Метод добавления книги из HTML-формы
-SchoolLibrary.prototype.addBookFromForm = function() {
+SchoolBook.prototype.getGrade = function() {
+    return this.grade;
+};
+
+SchoolBook.prototype.setGrade = function(grade) {
+    this.grade = grade;
+};
+
+SchoolBook.prototype.displayInfo = function() {
+    return `${this.topic}, ${this.author}, ${this.grade}<br>`;
+};
+
+// Метод добавления учебника из HTML-формы с проверкой на корректность ввода
+SchoolBook.addFromForm = function(books) {
     const subject = document.getElementById('subject').value;
     const author = document.getElementById('author').value;
     const grade = parseInt(document.getElementById('grade').value, 10);
-    const newBook = { subject, author, grade };
-    this.books.push(newBook);
+
+    // Проверка на пустые поля и некорректное значение grade
+    if (!subject || !author || isNaN(grade)) {
+        alert("Пожалуйста, заполните все поля корректно.");
+        return;
+    }
+
+    const newSchoolBook = new SchoolBook(subject, author, grade);
+    books.push(newSchoolBook);
 };
 
-// Метод вывода всех книг на страницу
-SchoolLibrary.prototype.displayBooks = function() {
+
+// Метод вывода всех учебников на страницу
+SchoolBook.displayBooks = function(books) {
     const output = document.getElementById('output');
     output.innerHTML = '';
-    this.books.forEach(book => {
-        output.innerHTML += `Предмет: ${book.subject}, Автор: ${book.author}, Класс: ${book.grade}<br>`;
+    books.forEach(book => {
+        output.innerHTML += book.displayInfo();
     });
 };
 
 // Метод нахождения предмета с наибольшим количеством разных авторов
-SchoolLibrary.prototype.findMostPopularSubject = function(grade) {
+SchoolBook.findMostPopularSubject = function(books, grade) {
     const subjects = {};
-    this.books.forEach(book => {
-        if (book.grade === grade) {
-            if (!subjects[book.subject]) {
-                subjects[book.subject] = new Set();
+    books.forEach(book => {
+        if (book.getGrade() === grade) {
+            if (!subjects[book.getTopic()]) {
+                subjects[book.getTopic()] = new Set();
             }
-            subjects[book.subject].add(book.author);
+            subjects[book.getTopic()].add(book.getAuthor());
         }
     });
 
@@ -63,6 +88,7 @@ SchoolLibrary.prototype.findMostPopularSubject = function(grade) {
     let maxAuthors = 0;
 
     for (let subject in subjects) {
+        console.log(subjects[subject]);
         const authorCount = subjects[subject].size;
         if (authorCount > maxAuthors) {
             maxAuthors = authorCount;
@@ -74,13 +100,13 @@ SchoolLibrary.prototype.findMostPopularSubject = function(grade) {
 };
 
 // Метод вывода результата на страницу с проверкой на корректный ввод
-SchoolLibrary.prototype.displayMostPopularSubject = function(grade) {
+SchoolBook.displayMostPopularSubject = function(books, grade) {
+    console.log(isNaN(grade));
     if (isNaN(grade)) {
         document.getElementById('output').innerHTML = 'Пожалуйста, введите корректное значение для класса.';
         return;
     }
-
-    const result = this.findMostPopularSubject(grade);
+    const result = SchoolBook.findMostPopularSubject(books, grade);
     const output = document.getElementById('output');
     if (result) {
         output.innerHTML = `Предмет с наибольшим количеством учебников для ${grade} класса: ${result}`;
@@ -89,6 +115,7 @@ SchoolLibrary.prototype.displayMostPopularSubject = function(grade) {
     }
 };
 
+// Пример использования
 const books = [
     { subject: "Физика", author: "Иванов", grade: 7 },
     { subject: "Физика", author: "Петров", grade: 7 },
@@ -135,18 +162,16 @@ const books = [
     { subject: "История", author: "Ключевский", grade: 9 },
     { subject: "История", author: "Карамзин", grade: 10 },
     { subject: "История", author: "Платонов", grade: 11 }
-];
+].map(book => new SchoolBook(book.subject, book.author, book.grade));
+SchoolBook.displayBooks(books);
 
-// Пример использования
-const library = new SchoolLibrary();
-library.books = books; // Заполняем библиотеку тестовыми данными
-console.log(library.books);
-library.displayBooks(); // Выводим все учебники на страницу
+
 document.getElementById('addBookButton').addEventListener('click', () => {
-    library.addBookFromForm();
-    library.displayBooks();
+    SchoolBook.addFromForm(books);
+    SchoolBook.displayBooks(books);
 });
 document.getElementById('findPopularSubjectButton').addEventListener('click', () => {
     const grade = parseInt(document.getElementById('gradeSearch').value, 10);
-    library.displayMostPopularSubject(grade);
+    console.log(grade);
+    SchoolBook.displayMostPopularSubject(books, grade);
 });
