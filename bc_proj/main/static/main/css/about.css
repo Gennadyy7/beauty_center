@@ -5,7 +5,6 @@
     padding: 20px;
     color: #0D0D0D; /* Основной текст черного цвета */
     border-radius: 10px; /* Скругленные углы */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Легкая тень */
 }
 
 /* Заголовок компании */
@@ -34,7 +33,6 @@
     height: auto;
     margin: 20px auto; /* Центрирование логотипа */
     border-radius: 10px; /* Скругленные углы */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для логотипа */
 }
 
 /* Стиль для блока "О нас" */
@@ -122,4 +120,89 @@
 
 .certificate-links a:hover, .certificate-link a:hover {
     background-color: #bb8f02; /* При наведении */
+}
+
+/*Молекулы*/
+#molecules_container {
+    --molecule-size: 60px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Помещаем молекулы за контент */
+    pointer-events: none; /* Отключаем клики по молекулам */
+    transform: rotate(10deg);
+}
+
+#main-content {
+    position: relative;
+    z-index: 1;
+}
+
+
+.s {
+    /* Размер и позиция атома кислорода */
+    height: var(--molecule-size);
+    width: var(--molecule-size);
+    background: radial-gradient(ellipse at top left, #aaa 0%, #eee 60%, #aaa 75%, #aaa 100%);
+    position: absolute;
+    border-radius: 100%;
+}
+
+.a, .b {
+    /* Размер и позиция атомов водорода */
+    position: absolute;
+    width: calc(var(--molecule-size) * 0.65);
+    height: calc(var(--molecule-size) * 0.65);
+    top: calc(var(--molecule-size) * 0.45);
+    background: radial-gradient(ellipse at top left, #FFEE32 0%, #FFD04A 50%, #DDAA03 75%, #B58802 100%);
+    border-radius: 100%;
+}
+
+.a {
+    /* Позиция левого атома водорода */
+    left: calc(var(--molecule-size) * -0.35);
+}
+
+.b {
+    /* Позиция правого атома водорода */
+    right: calc(var(--molecule-size) * -0.35);
+}
+
+.s:nth-child(1) {
+    left: 24%;
+    top: 34%;
+}
+
+.s:nth-child(2) {
+    right: 9%;
+    top: 20%;
+}
+
+.s:nth-child(3) {
+    left: 70%;
+    top: 55%;
+}
+
+
+.s:nth-child(4) {
+    right: 56%;
+    top: 54%;
+}
+
+.s:nth-child(5) {
+    right: 70%;
+    top: 79%;
+}
+
+
+.s:nth-child(6) {
+    right: 50%;
+    top: 15%;
+}
+
+.s:nth-child(7) {
+    left: 80%;
+    top: 78%;
 }
