@@ -14,6 +14,10 @@
         <p class="intro-text">Добро пожаловать в косметологический центр “Галатея”. Мы заботимся о вашей конфиденциальности и защищаем ваши персональные данные. Настоящая Политика конфиденциальности объясняет, как мы собираем, используем и защищаем информацию о вас.</p>
 
         <a href="#code-example" class="code-link">Перейти к примеру кода защиты данных и фигуре</a>
+        <a href="#" class="code-link" id="read-aloud">Прочитать за вас</a>
+        <div id="speaker-icon" class="hidden">
+            <img src="{% static 'main/speaker.png' %}" alt="Speaker Icon">
+        </div>
 
         <h2 class="section-title">1. Сбор личной информации</h2>
         <p class="section-text">Мы можем собирать следующую информацию:</p>
@@ -82,4 +86,6 @@
             <li>Телефон: +375 (29) 614-63-37</li>
         </ul>
     </div>
+
+<script src="{% static 'main/js/privacy_policy.js' %}"></script>
 {% endblock %}

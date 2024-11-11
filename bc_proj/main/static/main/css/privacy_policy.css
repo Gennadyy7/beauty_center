@@ -185,3 +185,23 @@
     font-style: italic;
     color: #555;
 }
+
+/* Стили для всплывающего динамика */
+#speaker-icon {
+    position: fixed;
+    bottom: -100px;
+    right: 20px;
+    opacity: 0;
+    transition: bottom 0.5s ease, opacity 0.5s ease;
+    z-index: 1000;
+}
+
+#speaker-icon img {
+    width: 80px;
+}
+
+/* Активный класс для анимации */
+#speaker-icon.show {
+    bottom: 20px;
+    opacity: 1;
+}
