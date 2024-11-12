@@ -12,3 +12,16 @@ body {
     max-width: 600px;
     position: relative;
 }
+
+/* Стили для кнопки сохранения */
+#saveChartButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

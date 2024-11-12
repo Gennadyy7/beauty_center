@@ -120,3 +120,12 @@ const arcsinChart = new Chart(ctx, {
         }
     }
 });
+
+// Обработчик для кнопки сохранения графика
+document.getElementById('saveChartButton').addEventListener('click', function () {
+    const image = arcsinChart.toBase64Image(); // Получаем изображение графика
+    const link = document.createElement('a');
+    link.href = image;
+    link.download = 'arcsin_chart.png'; // Название файла
+    link.click();
+});
