@@ -158,3 +158,6 @@ def privacy_policy(request):
 
 class SeventhTask(TemplateView):
     template_name = 'main/seventh_task.html'
+
+class NinthTask(TemplateView):
+    template_name = 'main/ninth_task.html'
